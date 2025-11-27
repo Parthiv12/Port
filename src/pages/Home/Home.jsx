@@ -8,7 +8,7 @@ import Skills from '../components/Skills'
 import Contact from '../components/Contact'
 import Footer from '../components/Footer'
 import NetworkViz from '../components/NetworkViz'
-import LightRays from '../backgroundM/LightRays'
+import LightRays from '../assets/backgroundM/LightRays'
 
 const Home = () => {
   useEffect(() => {

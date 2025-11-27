@@ -1,7 +1,7 @@
 import React from "react";
 import { Canvas } from "@react-three/fiber";
 import SilkC from "./SilkC";
-import LightRays from "../../backgroundM/LightRays";
+import LightRays from "../../assets/backgroundM/LightRays";
 import "./t3.css";
 
 const T3 = () => {
