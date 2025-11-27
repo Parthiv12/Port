@@ -41,18 +41,18 @@ const getAnchorAndDir = (origin, w, h) => {
 // --------------------- MAIN LIGHTRAYS COMPONENT ------------------------
 
 export default function LightRays({
-  raysOrigin = "bottom-center",
-  raysColor = "#4cb5ff",
-  raysSpeed = 1.2,
-  lightSpread = 1.6,
+  raysOrigin = "top-center",
+  raysColor = "#cce7ff",
+  raysSpeed = 1,
+  lightSpread = 1,
   rayLength = 1.9,
-  pulsating = false,
-  fadeDistance = 1.1,
+  pulsating = true,
+  fadeDistance = 1,
   saturation = .95,
   followMouse = true,
   mouseInfluence = 0.35,
   noiseAmount = 0.08,
-  distortion = 0.12,
+  distortion = 0.0,
   className = "",
 }) {
   const containerRef = useRef(null);
