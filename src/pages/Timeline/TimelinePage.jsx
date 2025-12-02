@@ -1,8 +1,19 @@
+
 import { useState, useMemo } from "react";
 import FadeIn from "../../components/ui/FadeIn.jsx";
 import YearSection from "./YearSection.jsx";
 import YearNav from "./YearNav.jsx";
 import PreviewPanel from "./PreviewPanel.jsx";
+
+import {
+  SiReact,
+  SiPython,
+  SiFlask,
+  SiJavascript,
+  SiNodedotjs,
+  SiMongodb,
+  SiMysql,
+} from "react-icons/si";
 
 const timelineData = [
   {
@@ -17,6 +28,12 @@ const timelineData = [
         title: "Movie Recommendation Engine",
         tags: ["ML", "Full-Stack"],
         summary: "Built a recommendation engine using clustering and metadata.",
+        techStack: [
+          { node: SiPython, title: "Python" },
+          { node: SiFlask, title: "Flask" },
+          { node: SiReact, title: "React" },
+          { node: SiMongodb, title: "MongoDB" },
+        ]
       },
       {
         id: "gamified-search",
