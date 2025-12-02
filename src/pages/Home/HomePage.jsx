@@ -1,42 +1,34 @@
-import Hero from "./Hero.jsx";
-import FeaturedProjects from "./FeaturedProjects.jsx";
-import Skills from "./Skills.jsx";
-import CTA from "./CTA.jsx";
+import React from "react";
+import LightRays from "../../assets/backgroundM/LightRays.jsx";
+import "./HomePage.css";
 
 export default function HomePage() {
   return (
-    <>
-      {/* SECTION 1: LightRays region (100vh) */}
-      <div style={{ position: "relative", minHeight: "100vh" }}>
-        <Hero />
+    <div className="home-container">
 
-              {/* Fade-out gradient */}
-              <div
-                  style={{
-                      position: "absolute",
-                      bottom: 0,
-                      width: "100vw",
-                      height: "250px",
-                      background:
-                          "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,1) 100%)",
-                      pointerEvents: "none",
-                  }}
-              />
-          </div>
-
-      {/* SECTION 2+: Grain background */}
-      <div
-        style={{
-          background: "url('/grain.png') repeat",
-          backgroundSize: "300px",
-          minHeight: "100vh",
-          paddingBottom: "80px",
-        }}
-      >
-        <FeaturedProjects />
-        <Skills />
-        <CTA />
+      {/* Background */}
+      <div className="home-bg">
+        <LightRays
+          raysOrigin="bottom-center"
+          raysColor="#58fbdc"
+          raysSpeed={1.0}
+          lightSpread={0.75}
+          rayLength={3}
+          followMouse={true}
+          mouseInfluence={0.1}
+          noiseAmount={0.05}
+          distortion={0.03}
+        />
       </div>
-    </>
+
+      {/* Centered Hero Content */}
+      <div className="hero-content fade-in">
+        <h1 className="hero-title">Parthiv Chandra Gajula</h1>
+        <p className="hero-subtitle">
+          Building intelligent, aesthetic systems — AI, ML, and interactive engineering.
+        </p>
+      </div>
+
+    </div>
   );
 }

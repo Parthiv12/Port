@@ -1,0 +1,60 @@
+.home-container {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* LightRays full background */
+.home-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Center hero section */
+.hero-content {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-top: 4rem; /* ensures no overlap with navbar */
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  color: white;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+  animation: float 6s ease-in-out infinite;
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 1.8vw, 1.3rem);
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 700px;
+  font-weight: 400;
+  margin-top: 0.5rem;
+}
+
+/* Fade-in animation */
+.fade-in {
+  opacity: 0;
+  animation: fadeInHero 1.6s ease forwards;
+}
+
+@keyframes fadeInHero {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Soft floating motion */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}

@@ -134,6 +134,7 @@ export default function PreviewPanel({ project, year }) {
                         <span style={{ fontSize: "1rem", display: "flex" }}>
                             {tech.node && <tech.node />}
                         </span>
+                    {tech.title}
                 </span>
               </div>
             ))}
