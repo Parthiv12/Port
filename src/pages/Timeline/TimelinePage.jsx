@@ -17,75 +17,131 @@ import {
 
 const timelineData = [
   {
-    year: "2025",
-    highlight: {
+  year: "2025",
+  highlight: {
+    title: "Movie Recommendation Engine",
+    slug: "movie-recommender",
+  },
+  projects: [
+    {
+      id: "movie-rec",
       title: "Movie Recommendation Engine",
-      slug: "movie-recommender",
+      tags: ["ML", "Full-Stack"],
+      summary: "Built a recommendation engine using clustering and metadata.",
+      kind: "personal",
+      icon: "💻",
+      pill: "Personal",
+      techStack: [
+        { node: SiPython, title: "Python" },
+        { node: SiFlask, title: "Flask" },
+        { node: SiReact, title: "React" },
+        { node: SiMongodb, title: "MongoDB" },
+      ]
     },
-    projects: [
-      {
-        id: "movie-rec",
-        title: "Movie Recommendation Engine",
-        tags: ["ML", "Full-Stack"],
-        summary: "Built a recommendation engine using clustering and metadata.",
-        techStack: [
-          { node: SiPython, title: "Python" },
-          { node: SiFlask, title: "Flask" },
-          { node: SiReact, title: "React" },
-          { node: SiMongodb, title: "MongoDB" },
-        ]
-      },
-      {
-        id: "gamified-search",
-        title: "Gamified Job Search Platform",
-        tags: ["React", "API Dev"],
-        summary: "Turned job search into a gamified experience with levels and streaks.",
-      },
-      {
-        id: "github-stats-api",
-        title: "GitHub Stats API Tool",
-        tags: ["API", "JavaScript"],
-        summary: "Small web app using GitHub API to fetch user stats and profile info.",
-      },
-    ],
-    experience: ["Database Intern @ 365 Retail Markets"],
-    skills: [
-      "SQL tuning",
-      "Replication",
-      "Clustering improvements",
-      "JWT auth",
-      "Flask + React integration",
-    ],
-  },
+    {
+      id: "gamified-search",
+      title: "Gamified Job Search Platform",
+      tags: ["React", "API Dev"],
+      summary: "Turned job search into a gamified experience with levels and streaks.",
+      kind: "personal",
+      icon: "💻",
+      pill: "Personal",
+    },
+    {
+      id: "github-stats-api",
+      title: "GitHub Stats API Tool",
+      tags: ["API", "JavaScript"],
+      summary: "Small web app using GitHub API to fetch user stats and profile info.",
+      kind: "personal",
+      icon: "💻",
+      pill: "Personal",
+    },
+
+    // ⭐ NEW — COURSE PROJECT
+    {
+      id: "os-secure-s3-fs",
+      title: "Secure S3 File System — Operating Systems (Fall 2025)",
+      tags: ["Systems", "Security"],
+      summary: "Built an encrypted file system over AWS S3 using FUSE and AES-256-CBC hooks.",
+      kind: "coursework",
+      icon: "🎓",
+      pill: "Coursework",
+      hoverDetails: "",
+    },
+  ],
+  experience: ["Database Intern @ 365 Retail Markets"],
+  skills: [
+    "SQL tuning",
+    "Replication",
+    "Clustering improvements",
+    "JWT auth",
+    "Flask + React integration",
+  ],
+}
+,
   {
-    year: "2024",
-    highlight: {
-      title: "HarmonAIze — Hackathon Winner",
-      slug: "harmonAIze",
-    },
-    projects: [
-      {
-        id: "harmonaize",
-        title: "HarmonAIze",
-        tags: ["ML", "Hackathon"],
-        summary: "BPM-based music recommendation app that won at GrizzHacks.",
-      },
-      {
-        id: "linux-imaging",
-        title: "Linux Imaging & Boot System Design",
-        tags: ["Linux", "Systems"],
-        summary: "Defined boot + imaging flow for Actineon PCs using Clonezilla.",
-      },
-      {
-        id: "early-ml",
-        title: "Early ML Experiments",
-        tags: ["AI/ML"],
-        summary: "First experiments with clustering, sentiment, and recommendation.",
-      },
-    ],
-    experience: ["Operations & Hardware Intern @ 365 Retail Markets"],
-    skills: ["ML workflows", "BPM clustering", "Linux imaging", "Team collaboration"],
+  year: "2024",
+  highlight: {
+    title: "HarmonAIze — Hackathon Winner",
+    slug: "harmonAIze",
   },
+  projects: [
+    {
+      id: "harmonaize",
+      title: "HarmonAIze",
+      tags: ["ML", "Hackathon"],
+      summary: "BPM-based music recommendation app that won at GrizzHacks.",
+      kind: "hackathon",
+      icon: "🏆",
+      pill: "Hackathon",
+    },
+    {
+      id: "linux-imaging",
+      title: "Linux Imaging & Boot System Design",
+      tags: ["Linux", "Systems"],
+      summary: "Defined boot + imaging flow for Actineon PCs using Clonezilla.",
+      kind: "personal",
+      icon: "💻",
+      pill: "Personal",
+    },
+    {
+      id: "early-ml",
+      title: "Early ML Experiments",
+      tags: ["AI/ML"],
+      summary: "First experiments with clustering, sentiment, and recommendation.",
+      kind: "personal",
+      icon: "💻",
+      pill: "Personal",
+    },
+
+    // ⭐ NEW — COURSE PROJECT 1
+    {
+      id: "sysadmin-ssl",
+      title: "SSL Certificate & Server Hardening — System Administration (Fall 2024)",
+      tags: ["Security", "Linux"],
+      summary: "Configured HTTPS on Ubuntu with SSL/TLS, ran OpenVAS scans, and hardened Apache2.",
+      kind: "coursework",
+      icon: "🎓",
+      pill: "Coursework",
+      hoverDetails: "",
+    },
+
+    // ⭐ NEW — COURSE PROJECT 2
+    {
+      id: "llm-rag-lstm",
+      title: "RAG + LSTM Implementations — Intro to LLMs (Winter 2024)",
+      tags: ["AI/ML", "LLMs"],
+      summary: "Built RAG pipelines and LSTM models to study LLM behaviors and training differences.",
+      kind: "coursework",
+      icon: "🎓",
+      pill: "Coursework",
+      hoverDetails: "",
+    },
+  ],
+  experience: ["Operations & Hardware Intern @ 365 Retail Markets"],
+  skills: ["ML workflows", "BPM clustering", "Linux imaging", "Team collaboration"],
+}
+,
   // add more years later as needed
 ];
 

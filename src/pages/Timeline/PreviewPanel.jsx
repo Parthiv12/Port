@@ -1,8 +1,9 @@
-import LogoLoop from "../../components/ui/LogoLoop"; // optional if you keep the file, safe to leave
 import FadeIn from "../../components/ui/FadeIn.jsx";
 
 export default function PreviewPanel({ project, year }) {
   if (!project) return null;
+
+  const isCourse = project.kind === "coursework";
 
   // Generate a simple gradient background based on title hash
   const hash = project.title
@@ -25,9 +26,16 @@ export default function PreviewPanel({ project, year }) {
         borderRadius: "18px",
         padding: "16px 20px 20px",
         background: "rgba(0,0,0,0.45)",
-        border: "1px solid rgba(255,255,255,0.16)",
+        border: isCourse
+          ? "1px solid rgba(250, 204, 120, 0.45)" // gold border
+          : "1px solid rgba(255,255,255,0.16)",
         backdropFilter: "blur(12px)",
         minHeight: "240px",
+
+        // ⭐ Soft glow for coursework preview ONLY
+        ...(isCourse && {
+          boxShadow: "0 0 18px rgba(250, 204, 120, 0.22)",
+        }),
       }}
     >
       {/* Header */}
@@ -41,15 +49,41 @@ export default function PreviewPanel({ project, year }) {
         Preview · {year ?? ""}
       </div>
 
+      {/* Title + Coursework pill */}
       <div
         style={{
-          fontSize: "1.05rem",
-          color: "white",
-          fontWeight: 600,
+          display: "flex",
+          alignItems: "center",
+          gap: "8px",
           marginBottom: "10px",
         }}
       >
-        {project.title}
+        <div
+          style={{
+            fontSize: "1.05rem",
+            color: "white",
+            fontWeight: 600,
+          }}
+        >
+          {project.title}
+        </div>
+
+        {/* coursework pill only */}
+        {isCourse && (
+          <span
+            style={{
+              padding: "3px 10px",
+              fontSize: "0.75rem",
+              borderRadius: "10px",
+              background: "rgba(250, 204, 120, 0.15)",
+              border: "1px solid rgba(250, 204, 120, 0.35)",
+              color: "rgba(255,255,255,0.9)",
+              whiteSpace: "nowrap",
+            }}
+          >
+            Coursework
+          </span>
+        )}
       </div>
 
       {/* Visual Preview Card */}
@@ -85,7 +119,7 @@ export default function PreviewPanel({ project, year }) {
         </div>
       </div>
 
-      {/* ⭐ NEW: Premium Tech Stack Pills (replacing LogoLoop) */}
+      {/* Tech Stack Pills */}
       {project.techStack && (
         <div style={{ marginTop: "6px" }}>
           <div
@@ -122,20 +156,10 @@ export default function PreviewPanel({ project, year }) {
                   gap: "6px",
                 }}
               >
-                <span
-                  style={{
-                    fontSize: "1rem",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                        {/* FIXED: render icon as JSX */}
-                        <span style={{ fontSize: "1rem", display: "flex" }}>
-                            {tech.node && <tech.node />}
-                        </span>
-                    {tech.title}
+                <span style={{ fontSize: "1rem", display: "flex" }}>
+                  {tech.node && <tech.node />}
                 </span>
+                {tech.title}
               </div>
             ))}
           </div>
