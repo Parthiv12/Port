@@ -1,39 +1,48 @@
 import FadeIn from "../../components/ui/FadeIn.jsx";
 import { Link } from "react-router-dom";
 import ProjectCard from "./ProjectCard.jsx";
+import ChevronUp from "../../assets/data/chevron-up.svg";
+import ChevronDown from "../../assets/data/chevron-down.svg";
 
 export default function YearSection({
   data,
   isActive,
   onToggle,
   onProjectHover,
-  onProjectLeave,
   onProjectClick,
   lockedProjectId,
 }) {
+  // Split main vs coursework
+  const mainProjects =
+    data.projects?.filter((p) => p.kind !== "coursework") ?? [];
+
+  const courseProjects =
+    data.projects?.filter((p) => p.kind === "coursework") ?? [];
+
   return (
     <FadeIn delay={0.1}>
       <div
         id={`year-${data.year}`}
+        onClick={onToggle}
         style={{
           background: "rgba(255, 255, 255, 0.07)",
           border: "1px solid rgba(255,255,255,0.15)",
           backdropFilter: "blur(12px)",
           borderRadius: "18px",
           padding: "20px 24px",
-          marginBottom: "32px",
+          marginBottom: "48px",
           cursor: "pointer",
-          transition: "border-color 0.25s ease, background 0.25s ease",
+          transition: "all 0.25s ease",
           maxWidth: "720px",
+          boxShadow: "0 0 80px rgba(255,255,255,0.05)", // halo
         }}
-        onClick={onToggle}
       >
         {/* Header row */}
         <div
           style={{
             display: "flex",
             justifyContent: "space-between",
-            alignItems: "baseline",
+            alignItems: "center",
             marginBottom: isActive ? "14px" : "6px",
           }}
         >
@@ -47,18 +56,18 @@ export default function YearSection({
             {data.year}
           </h2>
 
-          <span
+          <img
+            src={isActive ? ChevronUp : ChevronDown}
+            alt=""
             style={{
-              fontSize: "1.1rem",
-              color: "rgba(255,255,255,0.6)",
-              userSelect: "none",
+              width: "18px",
+              opacity: 0.4,
+              pointerEvents: "none",
             }}
-          >
-            {isActive ? "▲" : "▼"}
-          </span>
+          />
         </div>
 
-        {/* Highlight project – gradient underline */}
+        {/* Highlight project */}
         <div style={{ marginBottom: isActive ? "16px" : 0 }}>
           <Link
             to={`/projects/${data.highlight.slug}`}
@@ -79,6 +88,21 @@ export default function YearSection({
           >
             {data.highlight.title}
           </Link>
+
+          {/* Featured tag */}
+          <div
+            style={{
+              marginTop: "6px",
+              fontSize: "0.75rem",
+              background: "rgba(255,255,255,0.12)",
+              borderRadius: "6px",
+              padding: "2px 6px",
+              opacity: 0.75,
+              display: "inline-block",
+            }}
+          >
+            Featured Project
+          </div>
         </div>
 
         {/* Collapsible content */}
@@ -88,51 +112,108 @@ export default function YearSection({
             opacity: isActive ? 1 : 0,
             overflow: "hidden",
             transition: "max-height 0.45s ease, opacity 0.35s ease",
+            maskImage: isActive
+              ? "none"
+              : "linear-gradient(to bottom, black 60%, transparent 100%)",
+            WebkitMaskImage: isActive
+              ? "none"
+              : "linear-gradient(to bottom, black 60%, transparent 100%)",
           }}
         >
-          {/* Projects */}
-          <div style={{ marginTop: "10px", marginBottom: "16px" }}>
-            <h3
-              style={{
-                fontSize: "1.05rem",
-                color: "rgba(255,255,255,0.9)",
-                marginBottom: "10px",
-              }}
-            >
-              Projects
-            </h3>
+          {/* MAIN PROJECTS */}
+          {mainProjects.length > 0 && (
+            <div style={{ marginTop: "10px", marginBottom: "10px" }}>
+              <div
+                style={{
+                  fontSize: "0.78rem",
+                  opacity: 0.55,
+                  letterSpacing: "0.5px",
+                  textTransform: "uppercase",
+                  marginBottom: "8px",
+                }}
+              >
+                Projects
+              </div>
 
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "10px",
-              }}
-            >
-              {data.projects.map((p) => (
-                <ProjectCard
-                  key={p.id}
-                  project={p}
-                  isLocked={lockedProjectId === p.id}
-                  onHover={onProjectHover}
-                  onLeave={onProjectLeave}
-                  onClick={onProjectClick}
-                />
-              ))}
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "6px",
+                }}
+              >
+                {mainProjects.map((p) => (
+                  <ProjectCard
+                    key={p.id}
+                    project={p}
+                    isLocked={lockedProjectId === p.id}
+                    onHover={onProjectHover}
+                    onClick={onProjectClick}
+                  />
+                ))}
+              </div>
             </div>
-          </div>
+          )}
 
-          {/* Experience */}
+          {/* COURSE PROJECTS */}
+          {courseProjects.length > 0 && (
+            <div style={{ marginTop: "20px", marginBottom: "10px" }}>
+              {/* separation line */}
+              <div
+                style={{
+                  height: "1px",
+                  background:
+                    "linear-gradient(to right, transparent, rgba(255,255,255,0.25), transparent)",
+                  marginBottom: "12px",
+                }}
+              />
+
+              <div
+                style={{
+                  fontSize: "0.78rem",
+                  opacity: 0.55,
+                  letterSpacing: "0.5px",
+                  textTransform: "uppercase",
+                  marginBottom: "8px",
+                }}
+              >
+                Course Projects
+              </div>
+
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "6px",
+                }}
+              >
+                {courseProjects.map((p) => (
+                  <ProjectCard
+                    key={p.id}
+                    project={p}
+                    isLocked={lockedProjectId === p.id}
+                    onHover={onProjectHover}
+                    onClick={onProjectClick}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* EXPERIENCE */}
           {data.experience?.length > 0 && (
-            <div style={{ marginBottom: "20px" }}>
-              <h3 style={{
-                fontSize: "1.1rem",
-                color: "rgba(255,255,255,0.9)",
-                marginBottom: "10px",
-                fontWeight: 600,
-              }}>
+            <div style={{ marginBottom: "20px", marginTop: "22px" }}>
+              <div
+                style={{
+                  fontSize: "0.78rem",
+                  opacity: 0.55,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.5px",
+                  marginBottom: "6px",
+                }}
+              >
                 Work Experience
-              </h3>
+              </div>
 
               <div
                 style={{
@@ -143,17 +224,41 @@ export default function YearSection({
                   backdropFilter: "blur(12px)",
                 }}
               >
-                <div style={{ fontSize: "1rem", fontWeight: 600, color: "white", marginBottom: "6px" }}>
+                <div
+                  style={{
+                    fontSize: "1rem",
+                    fontWeight: 600,
+                    color: "white",
+                    marginBottom: "6px",
+                  }}
+                >
                   Database Intern @ 365 Retail Markets
                 </div>
 
-                <div style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.75)", marginBottom: "12px" }}>
+                <div
+                  style={{
+                    fontSize: "0.85rem",
+                    color: "rgba(255,255,255,0.75)",
+                    marginBottom: "12px",
+                  }}
+                >
                   May – Aug 2025
                 </div>
 
-                {/* Skill bubbles inside experience card */}
-                <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
-                  {["SQL tuning", "Replication", "Optimization", "Plan Cache", "Execution Plans"].map(skill => (
+                <div
+                  style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    gap: "8px",
+                  }}
+                >
+                  {[
+                    "SQL tuning",
+                    "Replication",
+                    "Optimization",
+                    "Plan Cache",
+                    "Execution Plans",
+                  ].map((skill) => (
                     <span
                       key={skill}
                       style={{
@@ -171,26 +276,30 @@ export default function YearSection({
                 </div>
               </div>
             </div>
-)}
+          )}
 
-          {/* Skills gained */}
+          {/* SKILLS */}
           {data.skills?.length > 0 && (
-            <div style={{ marginTop: "4px" }}>
-              <h3
+            <div style={{ marginTop: "16px" }}>
+              <div
                 style={{
-                  fontSize: "1.05rem",
-                  color: "rgba(255,255,255,0.9)",
-                  marginBottom: "6px",
+                  fontSize: "0.78rem",
+                  opacity: 0.55,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.5px",
+                  marginBottom: "8px",
                 }}
               >
                 Skills Gained
-              </h3>
-              <div style={{
-                display: "flex",
-                flexWrap: "wrap",
-                gap: "10px",
-                marginTop: "10px"
-              }}>
+              </div>
+
+              <div
+                style={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  gap: "10px",
+                }}
+              >
                 {data.skills.map((skill) => (
                   <span
                     key={skill}
@@ -207,11 +316,21 @@ export default function YearSection({
                   </span>
                 ))}
               </div>
-
             </div>
           )}
         </div>
       </div>
+
+      {/* Divider between years */}
+      <div
+        style={{
+          height: "1px",
+          width: "100%",
+          background:
+            "linear-gradient(to right, transparent, rgba(255,255,255,0.05), transparent)",
+          margin: "40px 0",
+        }}
+      />
     </FadeIn>
   );
 }

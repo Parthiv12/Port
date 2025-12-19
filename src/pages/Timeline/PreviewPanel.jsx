@@ -5,7 +5,7 @@ export default function PreviewPanel({ project, year }) {
 
   const isCourse = project.kind === "coursework";
 
-  // Generate a simple gradient background based on title hash
+  // Generate a consistent gradient based on title hash
   const hash = project.title
     .split("")
     .reduce((acc, c) => acc + c.charCodeAt(0), 0);
@@ -24,51 +24,52 @@ export default function PreviewPanel({ project, year }) {
     <div
       style={{
         borderRadius: "18px",
-        padding: "16px 20px 20px",
+        padding: "18px 22px",
         background: "rgba(0,0,0,0.45)",
         border: isCourse
-          ? "1px solid rgba(250, 204, 120, 0.45)" // gold border
+          ? "1px solid rgba(250, 204, 120, 0.45)" // gold border for coursework
           : "1px solid rgba(255,255,255,0.16)",
         backdropFilter: "blur(12px)",
-        minHeight: "240px",
+        minHeight: "250px",
+        transition: "all 0.25s ease",
 
-        // ⭐ Soft glow for coursework preview ONLY
+        // ⭐ coursework glow
         ...(isCourse && {
-          boxShadow: "0 0 18px rgba(250, 204, 120, 0.22)",
+          boxShadow: "0 0 22px rgba(250, 204, 120, 0.25)",
         }),
       }}
     >
       {/* Header */}
       <div
         style={{
-          fontSize: "0.85rem",
+          fontSize: "0.8rem",
           color: "rgba(255,255,255,0.6)",
-          marginBottom: "4px",
+          marginBottom: "6px",
+          letterSpacing: "0.4px",
         }}
       >
-        Preview · {year ?? ""}
+        Preview · {year}
       </div>
 
-      {/* Title + Coursework pill */}
+      {/* Title + Pill */}
       <div
         style={{
           display: "flex",
           alignItems: "center",
-          gap: "8px",
-          marginBottom: "10px",
+          gap: "10px",
+          marginBottom: "12px",
         }}
       >
         <div
           style={{
-            fontSize: "1.05rem",
+            fontSize: "1.15rem",
             color: "white",
-            fontWeight: 600,
+            fontWeight: 700,
           }}
         >
           {project.title}
         </div>
 
-        {/* coursework pill only */}
         {isCourse && (
           <span
             style={{
@@ -86,49 +87,46 @@ export default function PreviewPanel({ project, year }) {
         )}
       </div>
 
-      {/* Visual Preview Card */}
+      {/* Preview Card */}
       <div
         style={{
           borderRadius: "14px",
           overflow: "hidden",
-          position: "relative",
-          height: "150px",
+          height: "160px",
+          marginBottom: "20px",
           background: `
-            radial-gradient(circle at 20% 20%, ${colors[0]}, transparent 60%),
-            radial-gradient(circle at bottom right, ${colors[1]}, transparent 70%)
+            linear-gradient(120deg, ${colors[0]} 0%, transparent 40%),
+            linear-gradient(240deg, ${colors[1]} 0%, transparent 45%)
           `,
-          marginBottom: "18px",
+          position: "relative",
         }}
       >
         <div
           style={{
             position: "absolute",
             inset: 0,
-            background:
-              "linear-gradient(to bottom right, rgba(0,0,0,0.25), rgba(0,0,0,0.65))",
-            color: "rgba(255,255,255,0.9)",
+            background: "rgba(0,0,0,0.45)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             padding: "0 14px",
             textAlign: "center",
             fontSize: "0.85rem",
+            color: "rgba(255,255,255,0.85)",
           }}
         >
           Upcoming preview — video / screenshot / hackathon photo here.
         </div>
       </div>
 
-      {/* Tech Stack Pills */}
+      {/* Tech Stack */}
       {project.techStack && (
-        <div style={{ marginTop: "6px" }}>
+        <div>
           <div
             style={{
               fontSize: "0.78rem",
               color: "rgba(255,255,255,0.65)",
               marginBottom: "6px",
-              fontWeight: 500,
-              letterSpacing: "0.5px",
             }}
           >
             Tech Stack

@@ -9,7 +9,6 @@ import ProjectsDetailPage from "../pages/Projects/ProjectsDetailPage.jsx";
 import AboutPage from "../pages/About/AboutPage.jsx";
 import ContactPage from "../pages/Contact/ContactPage.jsx";
 import StackPage from "../pages/Stack/StackPage.jsx";
-import ExperiencePage from "../pages/Experience/ExperiencePage.jsx";
 // import Playground from '../pages/Playground/PlaygroundPage.jsx';
 
 export default function AppRoutes() {
@@ -33,8 +32,6 @@ export default function AppRoutes() {
         {/* Tech Stack */}
         <Route path="/stack" element={<StackPage />} />
 
-        {/* Experience */}
-        <Route path="/experience" element={<ExperiencePage />} />
 
         {/* Playground */}
         { /* <Route path="/playground/*" element={<Playground />} />

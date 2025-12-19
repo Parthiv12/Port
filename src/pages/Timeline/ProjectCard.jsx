@@ -1,34 +1,32 @@
-function ProjectCard({ project, onHover }) {
+function ProjectCard({ project, onHover, onClick }) {
   const isCourse = project.kind === "coursework";
 
   return (
     <div
       onMouseEnter={() => onHover(project)}
-      onMouseLeave={() => onHover(null)}
+      onClick={() => onClick(project)}
       style={{
-        padding: "16px 18px",
+        padding: "14px 18px 14px 18px", // ⭐ fixed consistent padding
         borderBottom: "1px solid rgba(255,255,255,0.1)",
         cursor: "pointer",
-        transition: "background 0.2s ease",
+        transition: "all 0.18s ease",
         position: "relative",
 
-        // ⭐ Soft gold accent bar ONLY for coursework
+        // ⭐ gold bar overlay instead of padding shift
         ...(isCourse && {
-          borderLeft: "3px solid rgba(250, 204, 120, 0.85)",
-          paddingLeft: "15px",
+          boxShadow: "inset 3px 0 0 rgba(250, 204, 120, 0.85)",
         }),
       }}
     >
-      {/* TITLE + OPTIONAL PILL (only coursework) */}
+      {/* Title + Pill */}
       <div
         style={{
           display: "flex",
           alignItems: "center",
           gap: "8px",
-          marginBottom: "6px",
+          marginBottom: "4px",
         }}
       >
-        {/* Title */}
         <div
           style={{
             fontSize: "1rem",
@@ -40,17 +38,16 @@ function ProjectCard({ project, onHover }) {
           {project.title}
         </div>
 
-        {/* Only show pill for coursework */}
         {isCourse && (
           <span
             style={{
               padding: "2px 8px",
               fontSize: "0.7rem",
               borderRadius: "8px",
-              whiteSpace: "nowrap",
               background: "rgba(250, 204, 120, 0.15)",
               border: "1px solid rgba(250, 204, 120, 0.35)",
               color: "rgba(255,255,255,0.85)",
+              whiteSpace: "nowrap",
             }}
           >
             Coursework
@@ -58,12 +55,11 @@ function ProjectCard({ project, onHover }) {
         )}
       </div>
 
-      {/* Summary */}
       <div
         style={{
           fontSize: "0.85rem",
           color: "rgba(255,255,255,0.7)",
-          lineHeight: 1.45,
+          lineHeight: 1.4,
         }}
       >
         {project.summary}

@@ -10,7 +10,6 @@ export default function Navbar() {
       <Link to="/projects" className={pathname === "/projects" ? "active" : ""}>Projects</Link>
       <Link to="/timeline" className={pathname === "/timeline" ? "active" : ""}>Timeline</Link>
       <Link to="/stack" className={pathname === "/stack" ? "active" : ""}>Tech Stack</Link>
-      <Link to="/experience" className={pathname === "/experience" ? "active" : ""}>Experience</Link>
 
 
       { /* <Link to="/playground" className={pathname === "/playground" ? "active" : ""}>Playground</Link>
