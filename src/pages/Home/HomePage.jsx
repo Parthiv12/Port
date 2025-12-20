@@ -2,6 +2,7 @@ import React from "react";
 import LightRays from "../../assets/backgroundM/LightRays";
 import "./HomePage.css";
 import { FaGithub, FaLinkedin, FaFileAlt } from "react-icons/fa";
+import profileImg from "../../assets/data/fi.jpg";
 
 export default function HomePage() {
   return (
@@ -10,63 +11,66 @@ export default function HomePage() {
       {/* Background */}
       <div className="home-bg">
         <LightRays
-          raysOrigin="bottom-center"
+          raysOrigin="top-center"
           raysColor="#58fbdc"
-          raysSpeed={1.0}
-          lightSpread={0.75}
-          rayLength={3}
+          raysSpeed={0.8}
+          lightSpread={0.6}
+          rayLength={2.5}
           followMouse={true}
-          mouseInfluence={0.15}
-          noiseAmount={0.05}
-          distortion={0.03}
+          mouseInfluence={0.1}
+          noiseAmount={0.03}
+          distortion={0.02}
         />
       </div>
 
-      {/* Hero Content */}
-      <div className="hero-wrapper fade-in">
+      {/* Split Layout */}
+      <div className="hero-split fade-in">
 
-        {/* Name */}
-        <h1 className="hero-title">Parthiv Chandra Gajula</h1>
+        {/* Left: Text Content */}
+        <div className="hero-content">
+          <h1 className="hero-title">Parthiv Gajula</h1>
 
-        {/* Typewriter subtitle */}
-        <p className="hero-typewriter">
-          <span className="typing-text">AI · ML · Interactive Engineering</span>
-          <span className="cursor">|</span>
-        </p>
+          <p className="hero-typewriter">
+            <span className="typing-text">Computer Science @ Wayne State • LLM Development & AI Systems</span>
+            <span className="cursor">|</span>
+          </p>
 
-        {/* Minimal Social Row */}
-        <div className="social-row">
+          <div className="social-row">
+            <a
+              href="https://github.com/Parthiv12"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-btn"
+            >
+              <FaGithub size={20} />
+              GitHub
+            </a>
 
-          <a
-            href="https://github.com/Parthiv12"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="social-btn"
-          >
-            <FaGithub size={20} />
-            GitHub
-          </a>
+            <a
+              href="https://www.linkedin.com/in/parthiv-gajula-b84a12182/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-btn"
+            >
+              <FaLinkedin size={20} />
+              LinkedIn
+            </a>
 
-          <a
-            href="https://www.linkedin.com/in/parthiv-gajula-b84a12182/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="social-btn"
-          >
-            <FaLinkedin size={20} />
-            LinkedIn
-          </a>
+            <a
+              href="/Parthiv_Gajula_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-btn"
+            >
+              <FaFileAlt size={20} />
+              Resume
+            </a>
+          </div>
+        </div>
 
-          <a
-            href="/Parthiv_Gajula_Resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="social-btn"
-          >
-            <FaFileAlt size={20} />
-            Resume
-          </a>
-
+        {/* Right: Image */}
+        <div className="hero-image">
+          <img src={profileImg} alt="Parthiv Gajula" />
         </div>
 
       </div>

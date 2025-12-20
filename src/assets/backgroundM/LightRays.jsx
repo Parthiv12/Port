@@ -43,10 +43,10 @@ const getAnchorAndDir = (origin, w, h) => {
 export default function LightRays({
   raysOrigin = "top-center",
   raysColor = "#cce7ff",
-  raysSpeed = 1,
+  raysSpeed = 0.5,
   lightSpread = 1,
   rayLength = 1.9,
-  pulsating = true,
+  pulsating = false,
   fadeDistance = 1,
   saturation = .95,
   followMouse = true,
