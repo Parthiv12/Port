@@ -25,16 +25,16 @@ export default function YearSection({
         id={`year-${data.year}`}
         onClick={onToggle}
         style={{
-          background: "rgba(255, 255, 255, 0.07)",
-          border: "1px solid rgba(255,255,255,0.15)",
+          background: "rgba(8, 10, 16, 0.5)",
+          border: "1px solid rgba(255,255,255,0.18)",
           backdropFilter: "blur(12px)",
           borderRadius: "18px",
           padding: "20px 24px",
-          marginBottom: "48px",
+          marginBottom: "26px",
           cursor: "pointer",
           transition: "all 0.25s ease",
-          maxWidth: "720px",
-          boxShadow: "0 0 80px rgba(255,255,255,0.05)", // halo
+          width: "100%",
+          boxShadow: "0 14px 44px rgba(0, 0, 0, 0.35)",
         }}
       >
         {/* Header row */}
@@ -80,7 +80,7 @@ export default function YearSection({
               display: "inline-block",
               paddingBottom: "6px",
               backgroundImage:
-                "linear-gradient(to right, #78f3ff, #9d7eff)",
+                "linear-gradient(to right, #78f3ff, #80d0ff)",
               backgroundSize: "100% 3px",
               backgroundPosition: "0 100%",
               backgroundRepeat: "no-repeat",
@@ -218,7 +218,7 @@ export default function YearSection({
               <div
                 style={{
                   background: "rgba(255,255,255,0.08)",
-                  border: "1px solid rgba(255,255,255,0.15)",
+                  border: "1px solid rgba(255,255,255,0.18)",
                   borderRadius: "16px",
                   padding: "16px 20px",
                   backdropFilter: "blur(12px)",
@@ -328,7 +328,7 @@ export default function YearSection({
           width: "100%",
           background:
             "linear-gradient(to right, transparent, rgba(255,255,255,0.05), transparent)",
-          margin: "40px 0",
+          margin: "20px 0",
         }}
       />
     </FadeIn>

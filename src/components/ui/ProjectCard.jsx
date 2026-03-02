@@ -7,15 +7,23 @@ export default function ProjectCard({ title, description, tags }) {
         <h3
           style={{
             color: "white",
-            fontSize: "1.45rem",
+            fontSize: "1.55rem",
             marginBottom: "10px",
             fontWeight: 600,
+            lineHeight: 1.25,
           }}
         >
           {title}
         </h3>
 
-        <p style={{ color: "rgba(255,255,255,0.65)", marginBottom: "18px" }}>
+        <p
+          style={{
+            color: "rgba(255,255,255,0.72)",
+            marginBottom: "18px",
+            lineHeight: 1.5,
+            minHeight: "72px",
+          }}
+        >
           {description}
         </p>
 

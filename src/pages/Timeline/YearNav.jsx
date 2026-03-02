@@ -3,14 +3,13 @@ export default function YearNav({ years, activeYear, onSelectYear }) {
     <div
       style={{
         position: "sticky",
-        top: "140px",
+        top: "112px",
         alignSelf: "flex-start",
-        minWidth: "180px",
-        marginLeft: "40px",
+        width: "100%",
         padding: "12px 14px",
         borderRadius: "16px",
-        background: "rgba(0, 0, 0, 0.35)",
-        border: "1px solid rgba(255,255,255,0.16)",
+        background: "rgba(6, 8, 12, 0.58)",
+        border: "1px solid rgba(255,255,255,0.18)",
         backdropFilter: "blur(10px)",
       }}
     >

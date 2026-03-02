@@ -1,38 +1,19 @@
 import React from "react";
-import LightRays from "../../assets/backgroundM/LightRays";
 import "./HomePage.css";
 import { FaGithub, FaLinkedin, FaFileAlt } from "react-icons/fa";
-import profileImg from "../../assets/data/fi.jpg";
+import profileImg from "../../assets/data/p2.jpg";
 
 export default function HomePage() {
   return (
     <div className="home-container">
-
-      {/* Background */}
-      <div className="home-bg">
-        <LightRays
-          raysOrigin="top-center"
-          raysColor="#58fbdc"
-          raysSpeed={0.8}
-          lightSpread={0.6}
-          rayLength={2.5}
-          followMouse={true}
-          mouseInfluence={0.1}
-          noiseAmount={0.03}
-          distortion={0.02}
-        />
-      </div>
-
-      {/* Split Layout */}
       <div className="hero-split fade-in">
-
-        {/* Left: Text Content */}
         <div className="hero-content">
           <h1 className="hero-title">Parthiv Gajula</h1>
 
           <p className="hero-typewriter">
-            <span className="typing-text">Computer Science @ Wayne State • LLM Development & AI Systems</span>
-            <span className="cursor">|</span>
+            <span className="typing-text">
+              CS @ Wayne State | I build AI tools, full-stack apps, and hackathon projects.
+            </span>
           </p>
 
           <div className="social-row">
@@ -68,13 +49,10 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Right: Image */}
         <div className="hero-image">
           <img src={profileImg} alt="Parthiv Gajula" />
         </div>
-
       </div>
-
     </div>
   );
 }

@@ -1,13 +1,64 @@
 import FadeIn from "../../components/ui/FadeIn.jsx";
 
+const stackGroups = [
+  {
+    title: "Languages",
+    items: ["Python", "Java", "C++", "C", "JavaScript", "R", "Kotlin"],
+  },
+  {
+    title: "Web and Frameworks",
+    items: ["React", "Next.js", "Flask", "REST APIs"],
+  },
+  {
+    title: "AI / ML",
+    items: [
+      "K-Means Clustering",
+      "Collaborative Filtering",
+      "TensorFlow / Keras",
+      "Hugging Face",
+      "LLMs (ASI-1, OpenAI-style APIs)",
+      "Multi-Agent Systems (uAgents)",
+    ],
+  },
+  {
+    title: "Databases",
+    items: [
+      "MySQL",
+      "SQL Server",
+      "MongoDB",
+      "Supabase (Postgres)",
+      "Indexing and Query Optimization",
+      "Replication and Triggers",
+    ],
+  },
+  {
+    title: "Backend and Systems",
+    items: [
+      "API Design",
+      "JWT Authentication",
+      "Linux (Ubuntu, Kali)",
+      "Apache2",
+      "Ubuntu Server Administration",
+    ],
+  },
+  {
+    title: "DevOps and Tooling",
+    items: ["Docker", "Kubernetes (intro)", "Git and GitHub", "Vite", "OpenVAS"],
+  },
+  {
+    title: "Voice and Agents",
+    items: ["Fetch.ai ASI-1", "uAgents", "ElevenLabs TTS", "Web Speech API (STT)"],
+  },
+];
+
 export default function StackPage() {
   return (
-    <div style={{ padding: "140px 5% 120px", maxWidth: "1100px", margin: "0 auto" }}>
+    <div style={{ padding: "122px 5% 110px", maxWidth: "1380px", margin: "0 auto" }}>
       <FadeIn>
         <h1
           style={{
             color: "white",
-            fontSize: "3rem",
+            fontSize: "clamp(2.2rem, 4vw, 3.2rem)",
             fontWeight: 700,
             marginBottom: "12px",
           }}
@@ -16,14 +67,14 @@ export default function StackPage() {
         </h1>
         <p
           style={{
-            color: "rgba(255,255,255,0.7)",
-            fontSize: "1.1rem",
-            maxWidth: "680px",
-            lineHeight: 1.7,
+            color: "rgba(255,255,255,0.76)",
+            fontSize: "1.15rem",
+            maxWidth: "760px",
+            lineHeight: 1.75,
           }}
         >
-          I work across AI/ML, full-stack web, databases, and security. 
-          Here’s the stack I actually use to build, deploy, and tune systems.
+          Tools I use in project work, coursework, and hackathons. This page is
+          scoped to what I can build with right now, not generic buzzwords.
         </p>
       </FadeIn>
 
@@ -31,95 +82,13 @@ export default function StackPage() {
         style={{
           marginTop: "40px",
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-          gap: "26px",
+          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+          gap: "20px",
         }}
       >
-        {/* Languages */}
-        <StackCard
-          title="Languages"
-          items={[
-            "Python",
-            "Java",
-            "C++",
-            "C",
-            "JavaScript",
-            "R",
-            "Kotlin",
-          ]}
-        />
-
-        {/* Web & Frameworks */}
-        <StackCard
-          title="Web & Frameworks"
-          items={[
-            "React",
-            "Next.js",
-            "Flask",
-            "REST APIs",
-          ]}
-        />
-
-        {/* AI / ML */}
-        <StackCard
-          title="AI / ML"
-          items={[
-            "K-Means Clustering",
-            "Collaborative Filtering",
-            "TensorFlow / Keras",
-            "Hugging Face",
-            "LLMs (ASI-1, OpenAI style APIs)",
-            "Multi-Agent Systems (uAgents)",
-          ]}
-        />
-
-        {/* Databases */}
-        <StackCard
-          title="Databases"
-          items={[
-            "MySQL",
-            "SQL Server",
-            "MongoDB",
-            "Supabase (Postgres)",
-            "Indexing & Query Optimization",
-            "Replication & Triggers",
-          ]}
-        />
-
-        {/* Backend & Systems */}
-        <StackCard
-          title="Backend & Systems"
-          items={[
-            "API Design",
-            "JWT Authentication",
-            "Linux (Ubuntu, Kali)",
-            "Apache2",
-            "Ubuntu Server Admin",
-          ]}
-        />
-
-        {/* DevOps & Tools */}
-        <StackCard
-          title="DevOps & Tooling"
-          items={[
-            "Docker",
-            "Kubernetes (intro level)",
-            "Git & GitHub",
-            "Vite",
-            "OpenVAS",
-          ]}
-        />
-
-        {/* Voice / Agents */}
-        <StackCard
-          title="Voice & Agents"
-          items={[
-            "Fetch.ai ASI-1",
-            "uAgents",
-            "ElevenLabs TTS",
-            "Web Speech API (STT)",
-          ]}
-        />
+        {stackGroups.map((group) => (
+          <StackCard key={group.title} title={group.title} items={group.items} />
+        ))}
       </div>
     </div>
   );
@@ -129,8 +98,8 @@ function StackCard({ title, items }) {
   return (
     <div
       style={{
-        background: "rgba(255,255,255,0.06)",
-        border: "1px solid rgba(255,255,255,0.14)",
+        background: "linear-gradient(180deg, rgba(255,255,255,0.09), rgba(255,255,255,0.05))",
+        border: "1px solid rgba(255,255,255,0.16)",
         borderRadius: "16px",
         padding: "18px 20px 20px",
         backdropFilter: "blur(10px)",
@@ -140,9 +109,9 @@ function StackCard({ title, items }) {
       <h2
         style={{
           color: "white",
-          fontSize: "1.25rem",
+          fontSize: "1.2rem",
           marginBottom: "10px",
-          fontWeight: 600,
+          fontWeight: 650,
         }}
       >
         {title}
@@ -152,14 +121,14 @@ function StackCard({ title, items }) {
           listStyle: "none",
           padding: 0,
           margin: 0,
-          color: "rgba(255,255,255,0.75)",
+          color: "rgba(255,255,255,0.78)",
           fontSize: "0.98rem",
-          lineHeight: 1.6,
+          lineHeight: 1.65,
         }}
       >
         {items.map((item) => (
           <li key={item} style={{ marginBottom: "4px" }}>
-            • {item}
+            - {item}
           </li>
         ))}
       </ul>

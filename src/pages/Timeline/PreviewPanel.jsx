@@ -1,11 +1,7 @@
-import FadeIn from "../../components/ui/FadeIn.jsx";
-
 export default function PreviewPanel({ project, year }) {
   if (!project) return null;
 
   const isCourse = project.kind === "coursework";
-
-  // Generate a consistent gradient based on title hash
   const hash = project.title
     .split("")
     .reduce((acc, c) => acc + c.charCodeAt(0), 0);
@@ -25,21 +21,18 @@ export default function PreviewPanel({ project, year }) {
       style={{
         borderRadius: "18px",
         padding: "18px 22px",
-        background: "rgba(0,0,0,0.45)",
+        background: "rgba(6, 8, 12, 0.62)",
         border: isCourse
-          ? "1px solid rgba(250, 204, 120, 0.45)" // gold border for coursework
-          : "1px solid rgba(255,255,255,0.16)",
+          ? "1px solid rgba(250, 204, 120, 0.45)"
+          : "1px solid rgba(255,255,255,0.18)",
         backdropFilter: "blur(12px)",
-        minHeight: "250px",
+        minHeight: "270px",
         transition: "all 0.25s ease",
-
-        // ⭐ coursework glow
         ...(isCourse && {
-          boxShadow: "0 0 22px rgba(250, 204, 120, 0.25)",
+          boxShadow: "0 0 22px rgba(250, 204, 120, 0.22)",
         }),
       }}
     >
-      {/* Header */}
       <div
         style={{
           fontSize: "0.8rem",
@@ -48,10 +41,9 @@ export default function PreviewPanel({ project, year }) {
           letterSpacing: "0.4px",
         }}
       >
-        Preview · {year}
+        Preview - {year}
       </div>
 
-      {/* Title + Pill */}
       <div
         style={{
           display: "flex",
@@ -87,12 +79,11 @@ export default function PreviewPanel({ project, year }) {
         )}
       </div>
 
-      {/* Preview Card */}
       <div
         style={{
           borderRadius: "14px",
           overflow: "hidden",
-          height: "160px",
+          height: "168px",
           marginBottom: "20px",
           background: `
             linear-gradient(120deg, ${colors[0]} 0%, transparent 40%),
@@ -115,11 +106,10 @@ export default function PreviewPanel({ project, year }) {
             color: "rgba(255,255,255,0.85)",
           }}
         >
-          Upcoming preview — video / screenshot / hackathon photo here.
+          Add project screenshot or demo preview here.
         </div>
       </div>
 
-      {/* Tech Stack */}
       {project.techStack && (
         <div>
           <div

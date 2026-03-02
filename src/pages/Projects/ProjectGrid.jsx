@@ -52,15 +52,15 @@ export default function ProjectGrid() {
   ];
 
   return (
-    <div style={{ padding: "130px 5%", width: "100%" }}>
+    <div style={{ padding: "122px 5% 100px", width: "100%", maxWidth: "1380px", margin: "0 auto" }}>
       {/* Header */}
       <FadeIn>
         <h1
           style={{
             color: "white",
-            fontSize: "3rem",
+            fontSize: "clamp(2.2rem, 4vw, 3.2rem)",
             fontWeight: 700,
-            marginBottom: "18px",
+            marginBottom: "12px",
           }}
         >
           Projects
@@ -68,10 +68,11 @@ export default function ProjectGrid() {
 
         <p
           style={{
-            color: "rgba(255,255,255,0.65)",
-            maxWidth: "600px",
-            marginBottom: "45px",
-            lineHeight: 1.6,
+            color: "rgba(255,255,255,0.74)",
+            maxWidth: "760px",
+            marginBottom: "36px",
+            lineHeight: 1.75,
+            fontSize: "1.08rem",
           }}
         >
           A curated collection of my real engineering work — from machine
@@ -82,10 +83,10 @@ export default function ProjectGrid() {
       {/* Project Grid */}
       <div
         style={{
-          marginTop: "20px",
+          marginTop: "12px",
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(330px, 1fr))",
-          gap: "40px",
+          gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+          gap: "24px",
         }}
       >
         {projects.map((p) => (
