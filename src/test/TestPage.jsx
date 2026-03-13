@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
-import LightRays from '../backgroundM/LightRays'
-import '../backgroundM/LightRays.css'
+import LightRays from '../assets/backgroundM/LightRays'
+import '../assets/backgroundM/LightRays.css'
 import './TestPage.css'
 
 const TestPage = () => {
