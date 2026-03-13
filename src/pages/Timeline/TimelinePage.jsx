@@ -13,6 +13,19 @@ const timelineData = [
       title: "Movie Recommendation Engine",
       slug: "movie-recommender",
     },
+    experience: [
+      {
+        role: "Database Intern",
+        company: "365 Retail Markets",
+        period: "May 2025 - Aug 2025",
+        bullets: [
+          "Optimized SQL queries with indexing and plan analysis.",
+          "Configured replication between database instances.",
+          "Worked with plan cache and buffer pool for tuning.",
+        ],
+        tags: ["SQL Tuning", "Replication", "Query Plans"],
+      },
+    ],
     projects: [
       {
         id: "movie-rec",
@@ -56,14 +69,6 @@ const timelineData = [
         pill: "Coursework",
       },
     ],
-    experience: ["Database Intern @ 365 Retail Markets"],
-    skills: [
-      "SQL tuning",
-      "Replication",
-      "Clustering improvements",
-      "JWT auth",
-      "Flask + React integration",
-    ],
   },
   {
     year: "2024",
@@ -71,6 +76,19 @@ const timelineData = [
       title: "HarmonAIze - Hackathon Winner",
       slug: "harmonAIze",
     },
+    experience: [
+      {
+        role: "Operations and Hardware Intern",
+        company: "365 Retail Markets",
+        period: "Jun 2024 - Aug 2024",
+        bullets: [
+          "Built and tested self-service kiosk systems.",
+          "Imaged Linux onto Actineon PCs with Clonezilla.",
+          "Worked across support and infra workflows.",
+        ],
+        tags: ["Linux Imaging", "Hardware", "Ops"],
+      },
+    ],
     projects: [
       {
         id: "harmonaize",
@@ -115,13 +133,6 @@ const timelineData = [
         pill: "Coursework",
       },
     ],
-    experience: ["Operations and Hardware Intern @ 365 Retail Markets"],
-    skills: [
-      "ML workflows",
-      "BPM clustering",
-      "Linux imaging",
-      "Team collaboration",
-    ],
   },
 ];
 
@@ -129,12 +140,12 @@ export default function TimelinePage() {
   const [activeYear, setActiveYear] = useState(timelineData[0]?.year ?? null);
   const [lockedProject, setLockedProject] = useState(null);
   const [hoverProject, setHoverProject] = useState(null);
-  const [isNarrow, setIsNarrow] = useState(() => window.innerWidth < 1180);
+  const [isNarrow, setIsNarrow] = useState(() => window.innerWidth < 1200);
 
   const years = timelineData.map((b) => b.year);
 
   useEffect(() => {
-    const onResize = () => setIsNarrow(window.innerWidth < 1180);
+    const onResize = () => setIsNarrow(window.innerWidth < 1200);
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
   }, []);
@@ -157,14 +168,14 @@ export default function TimelinePage() {
   };
 
   return (
-    <div style={{ padding: "118px 2.8vw 96px", minHeight: "100vh" }}>
+    <div style={{ padding: "112px clamp(16px, 2vw, 34px) 92px", minHeight: "100vh" }}>
       <FadeIn>
         <h1
           style={{
             color: "white",
-            fontSize: "clamp(2.2rem, 3.7vw, 3.2rem)",
-            width: "min(1720px, 100%)",
-            margin: "0 auto 34px",
+            fontSize: "clamp(2.2rem, 3.6vw, 3.2rem)",
+            width: "100%",
+            margin: "0 0 26px",
             fontWeight: 700,
           }}
         >
@@ -174,11 +185,10 @@ export default function TimelinePage() {
 
       <div
         style={{
-          width: "min(1720px, 100%)",
-          margin: "0 auto",
+          width: "100%",
           display: isNarrow ? "block" : "grid",
-          gridTemplateColumns: "minmax(0, 1fr) minmax(320px, 360px)",
-          gap: "28px",
+          gridTemplateColumns: "minmax(0, 1fr) minmax(300px, 340px)",
+          gap: "20px",
           alignItems: "flex-start",
         }}
       >
@@ -200,14 +210,14 @@ export default function TimelinePage() {
         <div
           style={{
             width: "100%",
-            maxWidth: isNarrow ? "100%" : "360px",
+            maxWidth: isNarrow ? "100%" : "340px",
             position: isNarrow ? "static" : "sticky",
-            top: "112px",
+            top: "104px",
             alignSelf: "flex-start",
             display: "flex",
             flexDirection: "column",
-            gap: "14px",
-            marginTop: isNarrow ? "16px" : 0,
+            gap: "12px",
+            marginTop: isNarrow ? "12px" : 0,
           }}
         >
           <YearNav

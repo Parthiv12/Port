@@ -1,24 +1,23 @@
-function ProjectCard({ project, onHover, onClick }) {
+function ProjectCard({ project, onHover, onLeave, onClick, isLocked }) {
   const isCourse = project.kind === "coursework";
 
   return (
     <div
       onMouseEnter={() => onHover(project)}
+      onMouseLeave={() => onLeave?.()}
       onClick={() => onClick(project)}
       style={{
-        padding: "14px 18px 14px 18px", // ⭐ fixed consistent padding
+        padding: "14px 18px",
         borderBottom: "1px solid rgba(255,255,255,0.1)",
         cursor: "pointer",
         transition: "all 0.18s ease",
         position: "relative",
-
-        // ⭐ gold bar overlay instead of padding shift
+        background: isLocked ? "rgba(255,255,255,0.08)" : "transparent",
         ...(isCourse && {
           boxShadow: "inset 3px 0 0 rgba(250, 204, 120, 0.85)",
         }),
       }}
     >
-      {/* Title + Pill */}
       <div
         style={{
           display: "flex",
@@ -58,7 +57,7 @@ function ProjectCard({ project, onHover, onClick }) {
       <div
         style={{
           fontSize: "0.85rem",
-          color: "rgba(255,255,255,0.7)",
+          color: "rgba(255,255,255,0.72)",
           lineHeight: 1.4,
         }}
       >
