@@ -16,6 +16,18 @@ export default function YearSection({
   const mainProjects = data.projects?.filter((p) => p.kind !== "coursework") ?? [];
   const courseProjects = data.projects?.filter((p) => p.kind === "coursework") ?? [];
 
+  const groupedMainProjects = mainProjects.reduce((acc, project) => {
+    const groupKey = project.kind || "other";
+    if (!acc[groupKey]) acc[groupKey] = [];
+    acc[groupKey].push(project);
+    return acc;
+  }, {});
+
+  const projectTypeOrder = ["hackathon", "personal", "open-source", "other"];
+  const sortedTypeKeys = Object.keys(groupedMainProjects).sort(
+    (left, right) => projectTypeOrder.indexOf(left) - projectTypeOrder.indexOf(right)
+  );
+
   return (
     <FadeIn delay={0.08}>
       <div
@@ -59,12 +71,12 @@ export default function YearSection({
             onClick={(e) => e.stopPropagation()}
             style={{
               textDecoration: "none",
-              color: "#e9fbff",
+              color: "rgba(233, 242, 247, 0.96)",
               fontSize: "1.08rem",
               fontWeight: 600,
               display: "inline-block",
               paddingBottom: "6px",
-              backgroundImage: "linear-gradient(to right, #78f3ff, #80d0ff)",
+              backgroundImage: "linear-gradient(to right, rgba(184, 207, 216, 0.8), rgba(168, 194, 206, 0.6))",
               backgroundSize: "100% 3px",
               backgroundPosition: "0 100%",
               backgroundRepeat: "no-repeat",
@@ -169,17 +181,34 @@ export default function YearSection({
           )}
 
           {mainProjects.length > 0 && (
-            <Section title="Projects">
-              <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-                {mainProjects.map((p) => (
-                  <ProjectCard
-                    key={p.id}
-                    project={p}
-                    isLocked={lockedProjectId === p.id}
-                    onHover={onProjectHover}
-                    onLeave={onProjectLeave}
-                    onClick={onProjectClick}
-                  />
+            <Section title="Projects by Type">
+              <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+                {sortedTypeKeys.map((type) => (
+                  <div key={type}>
+                    <div
+                      style={{
+                        fontSize: "0.72rem",
+                        letterSpacing: "0.4px",
+                        textTransform: "uppercase",
+                        color: "rgba(255,255,255,0.58)",
+                        marginBottom: "4px",
+                      }}
+                    >
+                      {formatProjectType(type)}
+                    </div>
+                    <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+                      {groupedMainProjects[type].map((p) => (
+                        <ProjectCard
+                          key={p.id}
+                          project={p}
+                          isLocked={lockedProjectId === p.id}
+                          onHover={onProjectHover}
+                          onLeave={onProjectLeave}
+                          onClick={onProjectClick}
+                        />
+                      ))}
+                    </div>
+                  </div>
                 ))}
               </div>
             </Section>
@@ -205,6 +234,13 @@ export default function YearSection({
       </div>
     </FadeIn>
   );
+}
+
+function formatProjectType(type) {
+  if (type === "hackathon") return "Hackathons";
+  if (type === "personal") return "Personal Projects";
+  if (type === "open-source") return "Open Source";
+  return "Other";
 }
 
 function Section({ title, children }) {

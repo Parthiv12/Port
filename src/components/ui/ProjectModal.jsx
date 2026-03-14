@@ -1,8 +1,18 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 export default function ProjectModal({ project, onClose }) {
   if (!project) return null;
+
+  useEffect(() => {
+    const onKeyDown = (event) => {
+      if (event.key === "Escape") onClose();
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [onClose]);
 
   return (
     <motion.div
@@ -27,6 +37,7 @@ export default function ProjectModal({ project, onClose }) {
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.9, opacity: 0 }}
         style={{
+          position: "relative",
           width: "650px",
           maxWidth: "95%",
           background: "rgba(255,255,255,0.07)",
@@ -47,6 +58,24 @@ export default function ProjectModal({ project, onClose }) {
         >
           {project.title}
         </h2>
+
+        <button
+          onClick={onClose}
+          aria-label="Close project preview"
+          style={{
+            position: "absolute",
+            top: "18px",
+            right: "18px",
+            background: "transparent",
+            border: "none",
+            color: "rgba(255,255,255,0.68)",
+            fontSize: "1.5rem",
+            lineHeight: 1,
+            cursor: "pointer",
+          }}
+        >
+          ×
+        </button>
 
         {/* Description */}
         <p
@@ -77,18 +106,39 @@ export default function ProjectModal({ project, onClose }) {
           ))}
         </div>
 
-        {/* See More */}
-        <Link
-          to={`/projects/${project.slug}`}
-          style={{
-            color: "#50eaff",
-            textDecoration: "none",
-            fontWeight: 500,
-            fontSize: "1.05rem",
-          }}
-        >
-          Read Full Case Study →
-        </Link>
+        <div style={{ display: "flex", gap: "10px", flexWrap: "wrap", marginTop: "2px" }}>
+          <Link
+            to={`/projects/${project.slug}`}
+            onClick={onClose}
+            style={{
+              color: "#061019",
+              background: "#50eaff",
+              textDecoration: "none",
+              fontWeight: 700,
+              fontSize: "0.96rem",
+              borderRadius: "10px",
+              padding: "10px 14px",
+            }}
+          >
+            Open Case Study
+          </Link>
+
+          <button
+            onClick={onClose}
+            style={{
+              border: "1px solid rgba(255,255,255,0.2)",
+              background: "rgba(255,255,255,0.08)",
+              color: "rgba(255,255,255,0.9)",
+              borderRadius: "10px",
+              padding: "10px 14px",
+              cursor: "pointer",
+              fontWeight: 500,
+              fontSize: "0.94rem",
+            }}
+          >
+            Keep Browsing
+          </button>
+        </div>
       </motion.div>
     </motion.div>
   );

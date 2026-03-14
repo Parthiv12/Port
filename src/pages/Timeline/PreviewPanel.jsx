@@ -7,11 +7,11 @@ export default function PreviewPanel({ project, year }) {
     .reduce((acc, c) => acc + c.charCodeAt(0), 0);
 
   const gradientColors = [
-    ["#78f3ff", "#9d7eff"],
-    ["#ffb8ff", "#7ea4ff"],
-    ["#7dffdb", "#4dc7ff"],
-    ["#ffcf71", "#f76b1c"],
-    ["#b471ff", "#71eaff"],
+    ["#8ba4b0", "#5f7687"],
+    ["#9f8fae", "#677c95"],
+    ["#7f9ea1", "#5e728a"],
+    ["#8e8778", "#756a60"],
+    ["#8f99ad", "#6f8298"],
   ];
 
   const colors = gradientColors[hash % gradientColors.length];
@@ -41,7 +41,7 @@ export default function PreviewPanel({ project, year }) {
           letterSpacing: "0.4px",
         }}
       >
-        Preview - {year}
+        Highlight Preview · {year}
       </div>
 
       <div
