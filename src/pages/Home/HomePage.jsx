@@ -12,7 +12,7 @@ export default function HomePage() {
 
           <p className="hero-typewriter">
             <span className="typing-text">
-              CS @ Wayne State | I build AI tools, full-stack apps, and hackathon projects.
+              Studying Computer Science at Wayne State | Concentrating in building LLMS from scratch
             </span>
           </p>
 

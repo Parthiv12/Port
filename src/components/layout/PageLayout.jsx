@@ -3,16 +3,9 @@ import LightRays from "../../assets/backgroundM/LightRays.jsx";
 import Silk from "../../assets/backgroundM/Silk.jsx";
 import Navbar from "./Navbar.jsx";
 
-const projectsBackdrop = {
-  position: "fixed",
-  inset: 0,
-  zIndex: -1,
-  background:
-    "radial-gradient(circle at 20% 0%, rgba(120, 243, 255, 0.1), transparent 40%), #06070a",
-};
-
 export default function PageLayout() {
   const { pathname } = useLocation();
+  const isProjectsRoute = pathname.startsWith("/projects");
 
   const renderBackground = () => {
     if (pathname === "/") {
@@ -32,7 +25,39 @@ export default function PageLayout() {
     }
 
     if (pathname === "/timeline") return <Silk />;
-    if (pathname === "/projects") return <div style={projectsBackdrop} />;
+
+    if (isProjectsRoute) {
+      return (
+        <div
+          style={{
+            position: "fixed",
+            inset: 0,
+            zIndex: -1,
+            overflow: "hidden",
+          }}
+        >
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              opacity: 0.42,
+              filter: "saturate(0.85) brightness(0.85)",
+            }}
+          >
+            <LightRays />
+          </div>
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              background:
+                "radial-gradient(circle at 18% 2%, rgba(60, 225, 210, 0.09), transparent 42%), rgba(6, 8, 13, 0.6)",
+            }}
+          />
+        </div>
+      );
+    }
+
     return null;
   };
 

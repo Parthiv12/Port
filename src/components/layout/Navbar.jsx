@@ -3,13 +3,17 @@ import "./Navbar.css";
 
 export default function Navbar() {
   const { pathname } = useLocation();
+  const isActive = (href) => {
+    if (href === "/") return pathname === "/";
+    return pathname === href || pathname.startsWith(`${href}/`);
+  };
 
   return (
     <nav className="nav">
-      <Link to="/" className={pathname === "/" ? "active" : ""}>Home</Link>
-      <Link to="/projects" className={pathname === "/projects" ? "active" : ""}>Projects</Link>
-      <Link to="/timeline" className={pathname === "/timeline" ? "active" : ""}>Timeline</Link>
-      <Link to="/stack" className={pathname === "/stack" ? "active" : ""}>Tech Stack</Link>
+      <Link to="/" className={isActive("/") ? "active" : ""}>Home</Link>
+      <Link to="/projects" className={isActive("/projects") ? "active" : ""}>Projects</Link>
+      <Link to="/timeline" className={isActive("/timeline") ? "active" : ""}>Timeline</Link>
+      <Link to="/stack" className={isActive("/stack") ? "active" : ""}>Tech Stack</Link>
 
 
       { /* <Link to="/playground" className={pathname === "/playground" ? "active" : ""}>Playground</Link>
@@ -17,8 +21,8 @@ export default function Navbar() {
        */ }
 
        
-      <Link to="/about" className={pathname === "/about" ? "active" : ""}>About</Link>
-      <Link to="/contact" className={pathname === "/contact" ? "active" : ""}>Contact</Link>
+      <Link to="/about" className={isActive("/about") ? "active" : ""}>About</Link>
+      <Link to="/contact" className={isActive("/contact") ? "active" : ""}>Contact</Link>
     </nav>
   );
 }
