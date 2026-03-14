@@ -3,12 +3,24 @@ import MagneticButton from "../../components/ui/MagneticButton.jsx";
 
 export default function AboutPage() {
   return (
-    <div style={{ padding: "140px 5%", maxWidth: "820px", margin: "0 auto" }}>
+    <div style={{ padding: "122px clamp(16px, 4vw, 64px) 94px", maxWidth: "1120px", margin: "0 auto" }}>
+      <div
+        style={{
+          maxWidth: "860px",
+          margin: "0 auto",
+          borderRadius: "20px",
+          border: "1px solid rgba(255,255,255,0.14)",
+          background: "rgba(7, 11, 18, 0.5)",
+          backdropFilter: "blur(10px)",
+          boxShadow: "0 16px 36px rgba(0,0,0,0.26)",
+          padding: "34px clamp(20px, 3vw, 36px)",
+        }}
+      >
       <FadeIn>
         <h1
           style={{
             color: "white",
-            fontSize: "3rem",
+            fontSize: "clamp(2.1rem, 4vw, 3rem)",
             fontWeight: 700,
             marginBottom: "20px",
           }}
@@ -76,6 +88,7 @@ export default function AboutPage() {
       <FadeIn delay={0.5}>
         <MagneticButton to="/contact">Let's Connect</MagneticButton>
       </FadeIn>
+      </div>
     </div>
   );
 }

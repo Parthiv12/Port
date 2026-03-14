@@ -1,11 +1,7 @@
-import { useState } from "react";
 import FadeIn from "../../components/ui/FadeIn.jsx";
 import ProjectCard from "../../components/ui/ProjectCard.jsx";
-import ProjectModal from "../../components/ui/ProjectModal.jsx";
 
 export default function ProjectGrid() {
-  const [selected, setSelected] = useState(null);
-
   const projects = [
     {
       title: "HarmonAIze — GrizzHacks Winner",
@@ -52,7 +48,7 @@ export default function ProjectGrid() {
   ];
 
   return (
-    <div style={{ padding: "122px 5% 100px", width: "100%", maxWidth: "1380px", margin: "0 auto" }}>
+    <div style={{ padding: "122px clamp(16px, 4vw, 64px) 100px", width: "100%", maxWidth: "1600px", margin: "0 auto" }}>
       {/* Header */}
       <FadeIn>
         <h1
@@ -78,6 +74,16 @@ export default function ProjectGrid() {
           A curated collection of my real engineering work — from machine
           intelligence to backend systems, security, and hackathon builds.
         </p>
+        <p
+          style={{
+            color: "rgba(255,255,255,0.62)",
+            fontSize: "0.92rem",
+            marginTop: "-20px",
+            marginBottom: "30px",
+          }}
+        >
+          Open any project to jump straight to the case study.
+        </p>
       </FadeIn>
 
       {/* Project Grid */}
@@ -85,25 +91,20 @@ export default function ProjectGrid() {
         style={{
           marginTop: "12px",
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+          gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))",
           gap: "24px",
         }}
       >
         {projects.map((p) => (
-          <div key={p.slug} onClick={() => setSelected(p)}>
-            <ProjectCard
-              title={p.title}
-              description={p.description}
-              tags={p.tags}
-            />
-          </div>
+          <ProjectCard
+            key={p.slug}
+            title={p.title}
+            description={p.description}
+            tags={p.tags}
+            slug={p.slug}
+          />
         ))}
       </div>
-
-      {/* Modal */}
-      {selected && (
-        <ProjectModal project={selected} onClose={() => setSelected(null)} />
-      )}
     </div>
   );
 }

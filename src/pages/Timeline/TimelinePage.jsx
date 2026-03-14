@@ -168,7 +168,14 @@ export default function TimelinePage() {
   };
 
   return (
-    <div style={{ padding: "112px clamp(16px, 2vw, 34px) 92px", minHeight: "100vh" }}>
+    <div
+      style={{
+        padding: "112px clamp(16px, 3.2vw, 56px) 92px",
+        minHeight: "100vh",
+        maxWidth: "1520px",
+        margin: "0 auto",
+      }}
+    >
       <FadeIn>
         <h1
           style={{
@@ -181,6 +188,17 @@ export default function TimelinePage() {
         >
           Timeline
         </h1>
+        <p
+          style={{
+            color: "rgba(255,255,255,0.68)",
+            marginTop: "-8px",
+            marginBottom: "22px",
+            maxWidth: "780px",
+            lineHeight: 1.65,
+          }}
+        >
+          Each year is grouped around a featured project, then split by project type and coursework for quick scanning.
+        </p>
       </FadeIn>
 
       <div

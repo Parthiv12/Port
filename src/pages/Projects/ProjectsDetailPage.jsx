@@ -61,11 +61,11 @@ export default function ProjectDetailPage() {
             key={t}
             style={{
               padding: "6px 14px",
-              background: "rgba(88, 251, 220, 0.15)",
-              border: "1px solid rgba(88, 251, 220, 0.3)",
+              background: "rgba(188, 208, 215, 0.14)",
+              border: "1px solid rgba(188, 208, 215, 0.26)",
               borderRadius: "20px",
               fontSize: "0.85rem",
-              color: "rgba(88, 251, 220, 0.95)",
+              color: "rgba(227, 238, 243, 0.94)",
             }}
           >
             {t}

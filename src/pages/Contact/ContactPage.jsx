@@ -381,17 +381,29 @@ export default function ContactPage() {
   return (
     <div
       style={{
-        padding: "160px 5%",
-        maxWidth: "700px",
+        padding: "122px clamp(16px, 4vw, 64px) 96px",
+        maxWidth: "1120px",
         margin: "0 auto",
-        textAlign: "center",
       }}
     >
+      <div
+        style={{
+          maxWidth: "760px",
+          margin: "0 auto",
+          textAlign: "center",
+          borderRadius: "20px",
+          border: "1px solid rgba(255,255,255,0.14)",
+          background: "rgba(7, 11, 18, 0.5)",
+          backdropFilter: "blur(10px)",
+          boxShadow: "0 16px 36px rgba(0,0,0,0.26)",
+          padding: "36px clamp(20px, 3vw, 36px)",
+        }}
+      >
       <FadeIn>
         <h1
           style={{
             color: "white",
-            fontSize: "3rem",
+            fontSize: "clamp(2.1rem, 4vw, 3rem)",
             fontWeight: 700,
             marginBottom: "20px",
           }}
@@ -447,7 +459,7 @@ export default function ContactPage() {
               target="_blank"
               rel="noopener noreferrer"
               style={{
-                color: "#7edaff",
+                color: "rgba(221, 235, 241, 0.92)",
                 textDecoration: "none",
                 marginRight: "20px",
               }}
@@ -460,7 +472,7 @@ export default function ContactPage() {
               target="_blank"
               rel="noopener noreferrer"
               style={{
-                color: "#7edaff",
+                color: "rgba(221, 235, 241, 0.92)",
                 textDecoration: "none",
               }}
             >
@@ -469,6 +481,7 @@ export default function ContactPage() {
           </div>
         </div>
       </FadeIn>
+      </div>
     </div>
   );
 }

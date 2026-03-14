@@ -54,7 +54,7 @@ const stackGroups = [
 
 export default function StackPage() {
   return (
-    <div style={{ padding: "122px 5% 110px", maxWidth: "1380px", margin: "0 auto" }}>
+    <div style={{ padding: "122px clamp(16px, 4vw, 64px) 110px", maxWidth: "1520px", margin: "0 auto" }}>
       <FadeIn>
         <h1
           style={{
@@ -112,15 +112,15 @@ function StackCard({ title, items }) {
         hidden: { opacity: 0, y: 20, scale: 0.985 },
         show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.42, ease: "easeOut" } },
       }}
-      whileHover={{ y: -5, scale: 1.01 }}
+      whileHover={{ y: -3 }}
       style={{
-        background: "linear-gradient(165deg, rgba(255,255,255,0.12), rgba(255,255,255,0.05) 58%)",
-        border: "1px solid rgba(255,255,255,0.14)",
+        background: "linear-gradient(165deg, rgba(255,255,255,0.1), rgba(255,255,255,0.04) 58%)",
+        border: "1px solid rgba(255,255,255,0.13)",
         borderRadius: "16px",
         padding: "18px 18px 16px",
         backdropFilter: "blur(9px)",
         minHeight: "180px",
-        boxShadow: "0 12px 32px rgba(0,0,0,0.18)",
+        boxShadow: "0 10px 30px rgba(0,0,0,0.2)",
       }}
     >
       <h2
@@ -155,8 +155,8 @@ function StackCard({ title, items }) {
             style={{
               padding: "6px 10px",
               borderRadius: "999px",
-              border: "1px solid rgba(255,255,255,0.18)",
-              background: "rgba(8, 16, 30, 0.38)",
+              border: "1px solid rgba(255,255,255,0.16)",
+              background: "rgba(12, 18, 28, 0.4)",
               whiteSpace: "nowrap",
             }}
           >
