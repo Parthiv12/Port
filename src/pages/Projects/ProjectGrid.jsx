@@ -29,18 +29,7 @@ export default function ProjectGrid() {
             fontSize: "1.08rem",
           }}
         >
-          A curated collection of my real engineering work — from machine
-          intelligence to backend systems, security, and hackathon builds.
-        </p>
-        <p
-          style={{
-            color: "rgba(255,255,255,0.62)",
-            fontSize: "0.92rem",
-            marginTop: "-20px",
-            marginBottom: "30px",
-          }}
-        >
-          Open any project to jump straight to the full project page.
+          Core engineering work across AI/ML, backend systems, security, and hackathon builds — open any project for full implementation details.
         </p>
       </FadeIn>
 

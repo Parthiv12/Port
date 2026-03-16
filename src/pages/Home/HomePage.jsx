@@ -1,7 +1,7 @@
 import React from "react";
 import "./HomePage.css";
 import { FaGithub, FaLinkedin, FaFileAlt } from "react-icons/fa";
-import profileImg from "../../assets/data/p2.jpg";
+import profileImg from "../../assets/data/port2.jpeg";
 
 export default function HomePage() {
   return (
@@ -12,8 +12,12 @@ export default function HomePage() {
 
           <p className="hero-typewriter">
             <span className="typing-text">
-              Studying Computer Science at Wayne State | Concentrating in building LLMS from scratch
+              Software engineer building practical AI and backend systems with a focus on reliability, performance, and clean architecture.
             </span>
+          </p>
+
+          <p className="hero-subline">
+            Recent work includes recommendation engines, multi-agent voice workflows, SQL performance tuning, and security-oriented systems projects.
           </p>
 
           <div className="social-row">

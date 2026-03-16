@@ -114,13 +114,13 @@ function StackCard({ title, items }) {
       }}
       whileHover={{ y: -3 }}
       style={{
-        background: "linear-gradient(165deg, rgba(255,255,255,0.1), rgba(255,255,255,0.04) 58%)",
-        border: "1px solid rgba(255,255,255,0.13)",
+        background: "linear-gradient(165deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03) 58%)",
+        border: "1px solid rgba(255,255,255,0.12)",
         borderRadius: "16px",
         padding: "18px 18px 16px",
-        backdropFilter: "blur(9px)",
+        backdropFilter: "blur(6px)",
         minHeight: "180px",
-        boxShadow: "0 10px 30px rgba(0,0,0,0.2)",
+        boxShadow: "0 8px 22px rgba(0,0,0,0.2)",
       }}
     >
       <h2
