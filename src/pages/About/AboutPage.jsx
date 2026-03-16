@@ -33,26 +33,27 @@ export default function AboutPage() {
         <p
           style={{
             color: "rgba(255,255,255,0.75)",
-            fontSize: "1.2rem",
-            lineHeight: 1.7,
-            marginBottom: "40px",
+            fontSize: "1.08rem",
+            lineHeight: 1.75,
+            marginBottom: "28px",
           }}
         >
-          Hey, I’m Parthiv — a software engineer focused on AI/ML systems,
-          backend architecture, and secure full-stack applications. I’m driven
-          by the idea of building things that feel intelligent, seamless, and a
-          bit magical.
-          <br />
-          <br />
-          I’ve worked across machine learning, agent-based systems, databases,
-          and security — from winning hackathons with ML-powered projects to
-          optimizing real production SQL systems and integrating multi-agent
-          voice pipelines using Fetch.ai and ElevenLabs.
-          <br />
-          <br />
-          At the core, I love taking complex systems and turning them into
-          smooth, elegant user experiences. My goal is to keep pushing deeper
-          into intelligent systems, scalable backend design, and applied AI.
+          I’m Parthiv, a software engineer focused on practical AI and backend systems.
+          Most of my work sits at the intersection of product and infrastructure:
+          recommendation engines, voice-agent workflows, and performance-focused data systems.
+          I care about clean architecture, reliable APIs, and interfaces that are straightforward to use.
+        </p>
+        <p
+          style={{
+            color: "rgba(255,255,255,0.7)",
+            fontSize: "1rem",
+            lineHeight: 1.75,
+            marginBottom: "36px",
+          }}
+        >
+          Recent work includes SQL performance tuning in production environments,
+          hackathon projects that shipped quickly under constraints, and applied ML projects
+          where model quality and UX both mattered.
         </p>
       </FadeIn>
 
@@ -71,17 +72,16 @@ export default function AboutPage() {
         <ul
           style={{
             color: "rgba(255,255,255,0.75)",
-            fontSize: "1.15rem",
-            lineHeight: 1.7,
+            fontSize: "1.03rem",
+            lineHeight: 1.72,
             marginBottom: "40px",
             marginLeft: "20px",
           }}
         >
-          <li>Multi-agent AI systems & real-time intelligence</li>
-          <li>Full-stack ML apps with clean UX</li>
-          <li>Database performance, replication, & system tuning</li>
-          <li>Security engineering and system hardening</li>
-          <li>Building scalable APIs and backend services</li>
+          <li>Building AI features that are useful in real workflows, not demo-only.</li>
+          <li>Designing backend services that stay maintainable as complexity grows.</li>
+          <li>Improving query performance and reliability in SQL-heavy systems.</li>
+          <li>Documenting decisions so projects are easier to extend and review.</li>
         </ul>
       </FadeIn>
 

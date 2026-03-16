@@ -3,6 +3,7 @@ import FadeIn from "../../components/ui/FadeIn.jsx";
 import YearSection from "./YearSection.jsx";
 import YearNav from "./YearNav.jsx";
 import PreviewPanel from "./PreviewPanel.jsx";
+import { projectBySlug } from "../../data/projects.js";
 
 import { SiReact, SiPython, SiFlask, SiMongodb } from "react-icons/si";
 
@@ -29,6 +30,7 @@ const timelineData = [
     projects: [
       {
         id: "movie-rec",
+        slug: "movie-recommender",
         title: "Movie Recommendation Engine",
         tags: ["ML", "Full-Stack"],
         summary: "Built a recommendation engine using clustering and metadata.",
@@ -43,6 +45,7 @@ const timelineData = [
       },
       {
         id: "gamified-search",
+        slug: "job-search-app",
         title: "Gamified Job Search Platform",
         tags: ["React", "API Dev"],
         summary:
@@ -52,6 +55,7 @@ const timelineData = [
       },
       {
         id: "github-stats-api",
+        slug: "github-stats-api",
         title: "GitHub Stats API Tool",
         tags: ["API", "JavaScript"],
         summary:
@@ -61,6 +65,7 @@ const timelineData = [
       },
       {
         id: "os-secure-s3-fs",
+        slug: "secure-s3-filesystem",
         title: "Secure S3 File System - Operating Systems (Fall 2025)",
         tags: ["Systems", "Security"],
         summary:
@@ -92,6 +97,7 @@ const timelineData = [
     projects: [
       {
         id: "harmonaize",
+        slug: "harmonAIze",
         title: "HarmonAIze",
         tags: ["ML", "Hackathon"],
         summary: "BPM-based music recommendation app that won at GrizzHacks.",
@@ -100,6 +106,7 @@ const timelineData = [
       },
       {
         id: "linux-imaging",
+        slug: "linux-imaging-boot",
         title: "Linux Imaging and Boot System Design",
         tags: ["Linux", "Systems"],
         summary: "Defined boot + imaging flow for Actineon PCs using Clonezilla.",
@@ -108,6 +115,7 @@ const timelineData = [
       },
       {
         id: "early-ml",
+        slug: "early-ml-experiments",
         title: "Early ML Experiments",
         tags: ["AI/ML"],
         summary: "First experiments with clustering, sentiment, and recommendation.",
@@ -116,6 +124,7 @@ const timelineData = [
       },
       {
         id: "sysadmin-ssl",
+        slug: "security-ssl",
         title: "SSL Certificate and Server Hardening - SysAdmin (Fall 2024)",
         tags: ["Security", "Linux"],
         summary:
@@ -125,6 +134,7 @@ const timelineData = [
       },
       {
         id: "llm-rag-lstm",
+        slug: "rag-lstm-llm",
         title: "RAG + LSTM Implementations - Intro to LLMs (Winter 2024)",
         tags: ["AI/ML", "LLMs"],
         summary:
@@ -142,7 +152,25 @@ export default function TimelinePage() {
   const [hoverProject, setHoverProject] = useState(null);
   const [isNarrow, setIsNarrow] = useState(() => window.innerWidth < 1200);
 
-  const years = timelineData.map((b) => b.year);
+  const normalizedTimelineData = useMemo(
+    () =>
+      timelineData.map((block) => ({
+        ...block,
+        projects: block.projects.map((project) => {
+          const meta = projectBySlug[project.slug] ?? {};
+          return {
+            ...project,
+            title: project.title ?? meta.title,
+            tags: project.tags ?? meta.tags ?? [],
+            summary: project.summary ?? meta.description,
+            started: meta.started,
+          };
+        }),
+      })),
+    []
+  );
+
+  const years = normalizedTimelineData.map((b) => b.year);
 
   useEffect(() => {
     const onResize = () => setIsNarrow(window.innerWidth < 1200);
@@ -151,8 +179,8 @@ export default function TimelinePage() {
   }, []);
 
   const activeYearData = useMemo(
-    () => timelineData.find((y) => y.year === activeYear) ?? null,
-    [activeYear]
+    () => normalizedTimelineData.find((y) => y.year === activeYear) ?? null,
+    [activeYear, normalizedTimelineData]
   );
 
   const projectForPreview = useMemo(() => {
@@ -211,7 +239,7 @@ export default function TimelinePage() {
         }}
       >
         <div style={{ width: "100%" }}>
-          {timelineData.map((block) => (
+          {normalizedTimelineData.map((block) => (
             <YearSection
               key={block.year}
               data={block}

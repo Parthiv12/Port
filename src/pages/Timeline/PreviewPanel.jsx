@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function PreviewPanel({ project, year }) {
   if (!project) return null;
 
@@ -79,8 +81,11 @@ export default function PreviewPanel({ project, year }) {
         )}
       </div>
 
-      <div
+      <Link
+        to={`/projects/${project.slug}`}
         style={{
+          display: "block",
+          textDecoration: "none",
           borderRadius: "14px",
           overflow: "hidden",
           height: "168px",
@@ -90,6 +95,7 @@ export default function PreviewPanel({ project, year }) {
             linear-gradient(240deg, ${colors[1]} 0%, transparent 45%)
           `,
           position: "relative",
+          border: "1px solid rgba(255,255,255,0.16)",
         }}
       >
         <div
@@ -106,8 +112,22 @@ export default function PreviewPanel({ project, year }) {
             color: "rgba(255,255,255,0.85)",
           }}
         >
-          Add project screenshot or demo preview here.
+          Open project page →
         </div>
+      </Link>
+
+      <div style={{ marginTop: "-8px", marginBottom: "14px" }}>
+        <Link
+          to={`/projects/${project.slug}`}
+          style={{
+            color: "rgba(224,236,242,0.92)",
+            textDecoration: "none",
+            fontSize: "0.88rem",
+            fontWeight: 600,
+          }}
+        >
+          Open project page
+        </Link>
       </div>
 
       {project.techStack && (

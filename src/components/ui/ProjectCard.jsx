@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion as Motion } from "framer-motion";
 
-export default function ProjectCard({ title, description, tags, slug }) {
+export default function ProjectCard({ title, description, tags, slug, started }) {
   return (
     <Motion.article
       initial={{ opacity: 0, y: 16 }}
@@ -20,6 +20,28 @@ export default function ProjectCard({ title, description, tags, slug }) {
       }}
     >
       <div>
+        {started && (
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "flex-end",
+              marginBottom: "8px",
+            }}
+          >
+            <span
+              style={{
+                fontSize: "0.72rem",
+                padding: "3px 8px",
+                borderRadius: "999px",
+                color: "rgba(230,238,244,0.82)",
+                background: "rgba(255,255,255,0.08)",
+                border: "1px solid rgba(255,255,255,0.14)",
+              }}
+            >
+              {started}
+            </span>
+          </div>
+        )}
         <h3
           style={{
             color: "white",
@@ -74,7 +96,7 @@ export default function ProjectCard({ title, description, tags, slug }) {
               fontSize: "0.95rem",
             }}
           >
-            Case Study →
+            Open project page →
           </Link>
         </div>
       </div>
