@@ -120,7 +120,7 @@ export default function ProjectModal({ project, onClose }) {
               padding: "10px 14px",
             }}
           >
-            Open Case Study
+            Open project page
           </Link>
 
           <button

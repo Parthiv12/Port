@@ -22,19 +22,38 @@ function ProjectCard({ project, onHover, onLeave, onClick, isLocked }) {
         style={{
           display: "flex",
           alignItems: "center",
+          justifyContent: "space-between",
           gap: "8px",
           marginBottom: "4px",
         }}
       >
-        <div
-          style={{
-            fontSize: "1rem",
-            fontWeight: 600,
-            color: "white",
-            flex: 1,
-          }}
-        >
-          {project.title}
+        <div style={{ display: "flex", alignItems: "center", gap: "8px", flex: 1 }}>
+          <div
+            style={{
+              fontSize: "1rem",
+              fontWeight: 600,
+              color: "white",
+              flex: 1,
+            }}
+          >
+            {project.title}
+          </div>
+
+          {project.started && (
+            <span
+              style={{
+                fontSize: "0.68rem",
+                color: "rgba(255,255,255,0.72)",
+                border: "1px solid rgba(255,255,255,0.14)",
+                background: "rgba(255,255,255,0.06)",
+                borderRadius: "999px",
+                padding: "2px 7px",
+                whiteSpace: "nowrap",
+              }}
+            >
+              {project.started}
+            </span>
+          )}
         </div>
 
         {isCourse && (
