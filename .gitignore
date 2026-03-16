@@ -96,3 +96,9 @@ pids
 # Temporary folders
 tmp/
 temp/
+
+# Local AI assistant files
+.agents/
+.impeccable.md
+CLAUDE.md
+skills-lock.json

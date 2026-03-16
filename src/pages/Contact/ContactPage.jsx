@@ -15,10 +15,10 @@ export default function ContactPage() {
           margin: "0 auto",
           textAlign: "center",
           borderRadius: "20px",
-          border: "1px solid rgba(255,255,255,0.14)",
-          background: "rgba(7, 11, 18, 0.5)",
-          backdropFilter: "blur(10px)",
-          boxShadow: "0 16px 36px rgba(0,0,0,0.26)",
+          border: "1px solid rgba(255,255,255,0.12)",
+          background: "rgba(7, 11, 18, 0.42)",
+          backdropFilter: "blur(7px)",
+          boxShadow: "0 12px 30px rgba(0,0,0,0.22)",
           padding: "36px clamp(20px, 3vw, 36px)",
         }}
       >
