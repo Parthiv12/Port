@@ -1,7 +1,10 @@
+import { lazy, Suspense } from "react";
 import { Outlet, useLocation } from "react-router-dom";
-import LightRays from "../../assets/backgroundM/LightRays.jsx";
-import Silk from "../../assets/backgroundM/Silk.jsx";
 import Navbar from "./Navbar.jsx";
+
+// Heavy WebGL backgrounds lazy-loaded so they don't block the initial bundle
+const LightRays = lazy(() => import("../../assets/backgroundM/LightRays.jsx"));
+const Silk = lazy(() => import("../../assets/backgroundM/Silk.jsx"));
 
 export default function PageLayout() {
   const { pathname } = useLocation();
@@ -120,7 +123,7 @@ export default function PageLayout() {
 
   return (
     <div>
-      {renderBackground()}
+      <Suspense fallback={null}>{renderBackground()}</Suspense>
       <Navbar />
       <div style={{ position: "relative", zIndex: 1 }}>
         <Outlet />
