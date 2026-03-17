@@ -1,43 +1,43 @@
+import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import PageLayout from "../components/layout/PageLayout.jsx";
 
-// Pages
-import HomePage from "../pages/Home/HomePage.jsx";
-import TimelinePage from "../pages/Timeline/TimelinePage.jsx";
-import ProjectsPage from "../pages/Projects/ProjectPage.jsx";
-import ProjectsDetailPage from "../pages/Projects/ProjectsDetailPage.jsx";
-import AboutPage from "../pages/About/AboutPage.jsx";
-import ContactPage from "../pages/Contact/ContactPage.jsx";
-import StackPage from "../pages/Stack/StackPage.jsx";
-// import Playground from '../pages/Playground/PlaygroundPage.jsx';
+// Pages — lazy loaded so each route gets its own chunk
+const HomePage = lazy(() => import("../pages/Home/HomePage.jsx"));
+const TimelinePage = lazy(() => import("../pages/Timeline/TimelinePage.jsx"));
+const ProjectsPage = lazy(() => import("../pages/Projects/ProjectPage.jsx"));
+const ProjectsDetailPage = lazy(() => import("../pages/Projects/ProjectsDetailPage.jsx"));
+const AboutPage = lazy(() => import("../pages/About/AboutPage.jsx"));
+const ContactPage = lazy(() => import("../pages/Contact/ContactPage.jsx"));
+const StackPage = lazy(() => import("../pages/Stack/StackPage.jsx"));
+// const Playground = lazy(() => import('../pages/Playground/PlaygroundPage.jsx'));
 
 export default function AppRoutes() {
   return (
-    <Routes>
-      <Route element={<PageLayout />}>
-        {/* Home */}
-        <Route path="/" element={<HomePage />} />
+    <Suspense fallback={null}>
+      <Routes>
+        <Route element={<PageLayout />}>
+          {/* Home */}
+          <Route path="/" element={<HomePage />} />
 
-        {/* Projects */}
-        <Route path="/projects" element={<ProjectsPage />} />
-        <Route path="/projects/:slug" element={<ProjectsDetailPage />} />
+          {/* Projects */}
+          <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/projects/:slug" element={<ProjectsDetailPage />} />
 
-        {/* Timeline */}
-        <Route path="/timeline" element={<TimelinePage />} />
+          {/* Timeline */}
+          <Route path="/timeline" element={<TimelinePage />} />
 
-        {/* About & Contact */}
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/contact" element={<ContactPage />} />
+          {/* About & Contact */}
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
 
-        {/* Tech Stack */}
-        <Route path="/stack" element={<StackPage />} />
+          {/* Tech Stack */}
+          <Route path="/stack" element={<StackPage />} />
 
-
-        {/* Playground */}
-        { /* <Route path="/playground/*" element={<Playground />} />
-          --> not sure if im going to keep this route for now.
-        */}
-      </Route>
-    </Routes>
+          {/* Playground */}
+          {/* <Route path="/playground/*" element={<Playground />} /> */}
+        </Route>
+      </Routes>
+    </Suspense>
   );
 }

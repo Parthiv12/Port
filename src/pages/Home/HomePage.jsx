@@ -42,7 +42,7 @@ export default function HomePage() {
             </a>
 
             <a
-              href="/Parthiv_Gajula_Resume.pdf"
+              href="/PGResume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="social-btn"
