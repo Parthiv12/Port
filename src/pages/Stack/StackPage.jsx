@@ -74,8 +74,7 @@ export default function StackPage() {
             lineHeight: 1.7,
           }}
         >
-          Tools I use in project work, coursework, and hackathons. This page is
-          scoped to what I can build with right now, not generic buzzwords.
+          Tools I use in project work, coursework, and hackathons
         </p>
       </FadeIn>
 

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -13,7 +14,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --bg-0: rgba(6, 10, 15, 1);
+  --bg-0: #050d19;
   --bg-1: rgba(10, 14, 20, 1);
   --surface-1: rgba(255, 255, 255, 0.06);
   --surface-2: rgba(255, 255, 255, 0.1);
@@ -50,8 +51,23 @@ body {
 }
 
 h1 {
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 3.2em;
+  font-weight: 700;
   line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 button {
