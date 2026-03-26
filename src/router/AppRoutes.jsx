@@ -10,6 +10,7 @@ const ProjectsDetailPage = lazy(() => import("../pages/Projects/ProjectsDetailPa
 const AboutPage = lazy(() => import("../pages/About/AboutPage.jsx"));
 const ContactPage = lazy(() => import("../pages/Contact/ContactPage.jsx"));
 const StackPage = lazy(() => import("../pages/Stack/StackPage.jsx"));
+const RAGPage = lazy(() => import("../pages/RAG/RAGPage.jsx"));
 // const Playground = lazy(() => import('../pages/Playground/PlaygroundPage.jsx'));
 
 export default function AppRoutes() {
@@ -33,6 +34,9 @@ export default function AppRoutes() {
 
           {/* Tech Stack */}
           <Route path="/stack" element={<StackPage />} />
+
+          {/* RAG Research */}
+          <Route path="/rag" element={<RAGPage />} />
 
           {/* Playground */}
           {/* <Route path="/playground/*" element={<Playground />} /> */}

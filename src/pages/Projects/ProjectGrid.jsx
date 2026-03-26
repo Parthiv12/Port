@@ -14,7 +14,7 @@ export default function ProjectGrid() {
             color: "white",
             fontSize: "clamp(2.2rem, 4vw, 3.2rem)",
             fontWeight: 700,
-            marginBottom: "12px",
+            marginBottom: "16px",
           }}
         >
           Projects
@@ -24,7 +24,7 @@ export default function ProjectGrid() {
           style={{
             color: "rgba(255,255,255,0.74)",
             maxWidth: "760px",
-            marginBottom: "36px",
+            marginBottom: "56px",
             lineHeight: 1.75,
             fontSize: "1.08rem",
           }}
@@ -39,7 +39,7 @@ export default function ProjectGrid() {
           marginTop: "12px",
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))",
-          gap: "24px",
+          gap: "48px",
         }}
       >
         {projects.map((p) => (
@@ -50,6 +50,7 @@ export default function ProjectGrid() {
             tags={p.tags}
             slug={p.slug}
             started={p.started}
+            proofPoints={p.proofPoints}
           />
         ))}
       </div>

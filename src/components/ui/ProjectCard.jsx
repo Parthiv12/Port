@@ -1,7 +1,21 @@
 import { Link } from "react-router-dom";
 import { motion as Motion } from "framer-motion";
 
-export default function ProjectCard({ title, description, tags, slug, started }) {
+export default function ProjectCard({ title, description, tags, slug, started, proofPoints }) {
+  // Generate custom label based on project characteristics
+  const getCustomLabel = () => {
+    if (proofPoints) {
+      if (proofPoints.some(p => p.includes("winner"))) return "AWARD";
+      if (proofPoints.some(p => p.match(/\d+%/))) {
+        const match = proofPoints.find(p => p.match(/\d+%/))?.match(/\d+%/)?.[0];
+        return match ? `IMPACT: ${match}` : "SHIPPED";
+      }
+    }
+    return null;
+  };
+
+  const customLabel = getCustomLabel();
+
   return (
     <Motion.article
       initial={{ opacity: 0, y: 16 }}
@@ -20,14 +34,23 @@ export default function ProjectCard({ title, description, tags, slug, started })
       }}
     >
       <div>
-        {started && (
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "flex-end",
-              marginBottom: "8px",
-            }}
-          >
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "12px", gap: "8px" }}>
+          {customLabel && (
+            <div style={{
+              padding: "6px 12px",
+              background: customLabel.includes("AWARD") ? "rgba(255, 193, 7, 0.15)" : "rgba(176, 198, 209, 0.12)",
+              border: `2px solid ${customLabel.includes("AWARD") ? "rgba(255, 193, 7, 0.4)" : "rgba(176, 198, 209, 0.3)"}`,
+              borderRadius: "6px",
+              fontSize: "0.7rem",
+              fontWeight: 700,
+              letterSpacing: "0.08em",
+              color: customLabel.includes("AWARD") ? "rgba(255, 193, 7, 0.9)" : "rgba(176, 198, 209, 0.85)",
+              textTransform: "uppercase",
+            }}>
+              {customLabel}
+            </div>
+          )}
+          {started && (
             <span
               style={{
                 fontSize: "0.72rem",
@@ -40,8 +63,8 @@ export default function ProjectCard({ title, description, tags, slug, started })
             >
               {started}
             </span>
-          </div>
-        )}
+          )}
+        </div>
         <h3
           style={{
             color: "white",

@@ -22,7 +22,7 @@ export default function AboutPage() {
             color: "white",
             fontSize: "clamp(2.1rem, 4vw, 3rem)",
             fontWeight: 700,
-            marginBottom: "20px",
+            marginBottom: "32px",
           }}
         >
           About Me
@@ -35,7 +35,7 @@ export default function AboutPage() {
             color: "rgba(255,255,255,0.75)",
             fontSize: "1.08rem",
             lineHeight: 1.75,
-            marginBottom: "28px",
+            marginBottom: "40px",
           }}
         >
           I’m Parthiv, a software engineer focused on practical AI and backend systems.

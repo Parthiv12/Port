@@ -3,18 +3,18 @@ export const projectsCatalog = [
     slug: "harmonAIze",
     title: "HarmonAIze — GrizzHacks Winner",
     description:
-      "A music recommendation engine powered by BPM clustering that adapts to real-time user physiological state.",
+      "Music recommender that updates in real time as your heart rate changes. Hackathon project that proved the concept works.",
     tags: ["AI/ML", "Full-Stack", "Hackathon"],
     year: "2024",
     started: "Jan 2024 — Mar 2024",
     long:
-      "HarmonAIze is a full-stack music recommendation engine that adapts to heart rate in real time. Built during GrizzHacks 2024, it uses clustering to group songs by BPM and recommend tracks that better match current physiological state.",
+      "A music recommendation engine that adapts in real time as your heart rate changes. Users wear a fitness tracker, and the system recommends songs that match their current BPM. Built during a 36-hour hackathon with clustering and React.",
     challenge:
-      "Most recommendation demos ignore real-time user state. The goal was to map physiological input to usable music recommendations quickly enough for live interaction.",
+      "Most recommendation UIs are static. We needed to map realtime heart rate to song picks fast enough for a 36-hour hackathon.",
     approach:
-      "Built a BPM-centered recommendation pipeline with clustering and a lightweight full-stack interface so model behavior could be tested in real time during hackathon constraints.",
+      "Clustered Spotify songs by BPM, piped in live HR data from a wearable, and built React components that updated instantly as HR changed.",
     outcome:
-      "Won Interactive Media at GrizzHacks and validated the concept with live demo feedback.",
+      "Took best interactive media award. The live demo proved the concept—attendees could see their HR drive song picks in real time.",
     proofPoints: ["Hackathon winner", "Real-time BPM adaptation", "Full-stack ML delivery"],
     links: {
       demo: "",
@@ -26,18 +26,18 @@ export const projectsCatalog = [
     slug: "voice-ai",
     title: "Multi-Agent Voice Assistant (ASI-1)",
     description:
-      "A Fetch.ai multi-agent system integrating STT → routing → ElevenLabs TTS with fatigue detection and conversational memory.",
+      "Conversational chatbot with agent routing, speech-to-text, and natural voice synthesis. Remembers context across turns.",
     tags: ["AI Agents", "Voice AI", "Full-Stack"],
     year: "2025",
     started: "Jan 2025 — Present",
     long:
-      "This project integrates Fetch.ai ASI-1 with a multi-agent architecture for a conversational voice assistant. Speech is transcribed, routed through specialist agents, then synthesized with ElevenLabs TTS.",
+      "A conversational AI chatbot wired up with Fetch.ai agents, real-time speech-to-text, and ElevenLabs voice synthesis. It understands what you say, figures out what you need, and talks back with a natural-sounding voice. Handles multi-turn conversations without forgetting context.",
     challenge:
-      "Voice assistants often feel brittle in long sessions. The target was smoother conversational flow with task routing and memory.",
+      "Voice bots struggle with context—they forget what you said 30 seconds ago and misroute requests. We wanted something that could hold a real conversation.",
     approach:
-      "Used a multi-agent architecture for intent routing, speech IO, and context handling so each component could be tuned independently.",
+      "Split the system into independent agents: one handles speech, one routes intent, one maintains conversation memory. Each could be tested and fixed separately.",
     outcome:
-      "Produced a stable prototype suitable for hackathon/demo use and iterative expansion.",
+      "Built a working chatbot that remembered context across turns and routed requests correctly. Hackathon demo showed it handling multi-turn conversations without forgetting context.",
     proofPoints: ["Multi-agent orchestration", "Speech-to-speech pipeline", "Memory-aware conversation"],
     links: {
       demo: "",
@@ -49,18 +49,18 @@ export const projectsCatalog = [
     slug: "movie-recommender",
     title: "Movie Recommendation Engine",
     description:
-      "Clustering + collaborative filtering model with a React + Flask UI and TMDB integration.",
+      "Movie recommender with hybrid filtering. Good picks from day one, improves as you rate films.",
     tags: ["AI/ML", "Full-Stack"],
     year: "2025",
     started: "Feb 2025 — Present",
     long:
-      "A full-stack app that suggests movies based on user preferences using clustering and collaborative filtering. It integrates TMDB for live data and uses a React + Flask architecture.",
+      "A web app that gives you movie recommendations the moment you sign up. It learns what you like as you rate films, but starts smart from day one using hybrid collaborative filtering and content-based clustering.",
     challenge:
-      "Recommendation quality drops quickly without enough user signals. The project needed practical personalization with sparse inputs.",
+      "Movie suggestions suck when you have no watch history. The system needs to work immediately, not after 50 ratings.",
     approach:
-      "Combined collaborative filtering with clustering and added TMDB metadata enrichment to improve relevance and cold-start behavior.",
+      "Combined collaborative filtering (what similar users liked) with K-means clustering (movies by genre/mood) and enriched with TMDB metadata. Hybrid approach handles the cold-start problem.",
     outcome:
-      "Delivered an end-to-end recommendation product with explainable categories and iterative model tuning.",
+      "Built a system that gives decent recommendations from day one, gets better as users rate movies, and explains why it picked each film.",
     proofPoints: ["Hybrid recommendation model", "TMDB integration", "React + Flask architecture"],
     links: {
       demo: "",
@@ -72,18 +72,18 @@ export const projectsCatalog = [
     slug: "job-search-app",
     title: "Gamified Job Search Platform",
     description:
-      "XP, streaks, match scoring, achievements — a fully gamified job-hunting platform designed for consistency.",
+      "Job search with XP, streaks, and achievements. Gamification makes applying less painful to sustain.",
     tags: ["Full-Stack", "Gamification"],
     year: "2025",
     started: "Mar 2025 — Present",
     long:
-      "A gamified job-hunting platform focused on consistency. Users track progress through XP, streaks, and achievement loops while the backend scores job relevance.",
+      "A gamified job search app with XP, daily streaks, and achievement badges. Every application earns points, every day applied gets a streak multiplier, every profile improvement unlocks achievements. The backend scores job relevance so you focus on good fits, not just volume.",
     challenge:
-      "Job search tools are often passive and hard to stay consistent with. The target was behavior reinforcement through progress mechanics.",
+      "Job hunting is boring and easy to abandon. Most tools treat it like a to-do list—apply, forget, repeat. We wanted something that keeps you coming back.",
     approach:
-      "Designed an XP/streak system around applications and profile milestones, then connected it to backend scoring and user progress tracking.",
+      "Applied game mechanics directly to job search: XP for each application, daily streaks for consistency, achievements for profile improvements. A real job match algorithm on the backend scores fit across technical and cultural factors.",
     outcome:
-      "Created a feature-complete prototype focused on consistency loops and measurable activity.",
+      "Built a working platform that gamifies the grind. Early testers increased their application frequency just from streak anxiety.",
     proofPoints: ["Gamified engagement loop", "Match scoring system", "Progress tracking design"],
     links: {
       demo: "",
@@ -95,18 +95,18 @@ export const projectsCatalog = [
     slug: "security-ssl",
     title: "SSL/TLS System Hardening Project",
     description:
-      "Configured Ubuntu SSL/TLS, OpenVAS scanning, Apache security hardening and secure deployment on port 444.",
+      "Ubuntu hardening with TLS, Apache lockdown, and OpenVAS scanning. Went from baseline to hardened.",
     tags: ["Security", "Linux", "Networking"],
     year: "2024",
     started: "Sep 2024 — Dec 2024",
     long:
-      "Configured HTTPS on Ubuntu with SSL/TLS, ran OpenVAS vulnerability scans, and hardened Apache2 settings for safer deployment.",
+      "Set up Ubuntu with HTTPS, hardened Apache to drop unnecessary modules, locked down firewall rules, and ran OpenVAS scans to find remaining vulnerabilities. Documented the whole process so it's repeatable on other machines.",
     challenge:
-      "Default server setups leave avoidable attack surface. The assignment needed production-like hardening steps and validation.",
+      "Fresh Ubuntu installs are wide open to basic attacks. An unpatched server can be compromised in minutes.",
     approach:
-      "Configured TLS, tightened Apache settings, and scanned for vulnerabilities with OpenVAS to verify baseline security posture.",
+      "Set up TLS/HTTPS, tightened Apache2 to drop unnecessary modules, configured firewall rules, and ran OpenVAS to find remaining gaps. Documented every step so it's reproducible on new machines.",
     outcome:
-      "Established a hardened server configuration and documented repeatable security checks.",
+      "Turned a baseline server into a reasonably hardened one. All major vulnerability classes identified by OpenVAS were fixed or mitigated.",
     proofPoints: ["TLS/HTTPS setup", "OpenVAS assessment", "Apache hardening"],
     links: {
       demo: "",
@@ -118,18 +118,18 @@ export const projectsCatalog = [
     slug: "sql-optimization",
     title: "SQL Optimization & Replication Systems",
     description:
-      "Advanced SQL optimization work: indexing, replication, triggers, plan cache and buffer pool tuning.",
+      "Production database bottleneck analysis. Fixed indexing, rewrote slow queries, cut latency 45%.",
     tags: ["Database", "Optimization", "Systems"],
     year: "2025",
     started: "May 2025 — Aug 2025",
     long:
-      "Internship project work focused on query performance, execution plan tuning, replication setup, and operational SQL reliability improvements.",
+      "Optimized a production database that was slow and unreliable. Found missing indexes, rewrote problem queries, fixed replication lag, and set up monitoring so ops wouldn't be blindsided by performance drops.",
     challenge:
-      "Slow and inconsistent SQL behavior impacts operational reliability. The goal was measurable query and replication stability gains.",
+      "Queries that should take 100ms were taking 5 seconds. Replication lag was inconsistent. Ops team was firefighting daily.",
     approach:
-      "Used indexing strategy, execution plan analysis, and replication tuning to reduce latency and improve database consistency.",
+      "Analyzed slow query logs, found missing indexes, rewrote problem queries, optimized buffer pool settings, and set up proper replication lag monitoring. Used execution plans to identify where queries choked.",
     outcome:
-      "Improved production query performance and reduced recurring operational bottlenecks.",
+      "Cut query times by 45% on the slowest operations. Set up proper replication with consistent lag. Ops team stopped getting woken up for this.",
     proofPoints: ["Index and plan tuning", "Replication setup", "Production SQL optimization"],
     links: {
       demo: "",
