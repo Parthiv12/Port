@@ -12,12 +12,8 @@ export default function HomePage() {
 
           <p className="hero-typewriter">
             <span className="typing-text">
-              Software engineer building practical AI and backend systems with a focus on reliability, performance, and clean architecture.
+              Currently building LLMs from scratch across transformer architectures.
             </span>
-          </p>
-
-          <p className="hero-subline">
-            Recent work includes recommendation engines, multi-agent voice workflows, SQL performance tuning, and security-oriented systems projects.
           </p>
 
           <div className="social-row">
@@ -42,7 +38,7 @@ export default function HomePage() {
             </a>
 
             <a
-              href="/parthiv-UG.pdf"
+              href="/ParthivUG.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="social-btn"

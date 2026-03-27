@@ -93,7 +93,7 @@ export default function StackPage() {
           marginTop: "40px",
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-          gap: "18px",
+          gap: "22px",
         }}
       >
         {stackGroups.map((group) => (
@@ -113,13 +113,13 @@ function StackCard({ title, items }) {
       }}
       whileHover={{ y: -3 }}
       style={{
-        background: "linear-gradient(165deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03) 58%)",
-        border: "1px solid rgba(255,255,255,0.12)",
+        background: "var(--panel-navy-bg)",
+        border: "1px solid var(--panel-navy-border)",
         borderRadius: "16px",
         padding: "18px 18px 16px",
-        backdropFilter: "blur(6px)",
+        backdropFilter: "blur(8px)",
         minHeight: "180px",
-        boxShadow: "0 8px 22px rgba(0,0,0,0.2)",
+        boxShadow: "var(--panel-navy-shadow)",
       }}
     >
       <h2
@@ -154,8 +154,8 @@ function StackCard({ title, items }) {
             style={{
               padding: "6px 10px",
               borderRadius: "999px",
-              border: "1px solid rgba(255,255,255,0.16)",
-              background: "rgba(12, 18, 28, 0.4)",
+              border: "1px solid rgba(170, 194, 208, 0.22)",
+              background: "rgba(8, 14, 24, 0.72)",
               whiteSpace: "nowrap",
             }}
           >
