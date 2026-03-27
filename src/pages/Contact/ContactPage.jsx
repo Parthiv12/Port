@@ -5,20 +5,20 @@ export default function ContactPage() {
     <div
       style={{
         padding: "122px clamp(16px, 4vw, 64px) 96px",
-        maxWidth: "1120px",
+        maxWidth: "1280px",
         margin: "0 auto",
       }}
     >
       <div
         style={{
-          maxWidth: "760px",
+          maxWidth: "1040px",
           margin: "0 auto",
-          textAlign: "center",
+          textAlign: "left",
           borderRadius: "20px",
-          border: "1px solid rgba(255,255,255,0.12)",
-          background: "rgba(7, 11, 18, 0.42)",
+          border: "1px solid var(--panel-navy-border)",
+          background: "var(--panel-navy-bg)",
           backdropFilter: "blur(7px)",
-          boxShadow: "0 12px 30px rgba(0,0,0,0.22)",
+          boxShadow: "var(--panel-navy-shadow)",
           padding: "36px clamp(20px, 3vw, 36px)",
         }}
       >
@@ -44,8 +44,7 @@ export default function ContactPage() {
             marginBottom: "16px",
           }}
         >
-          If you’re hiring, collaborating, or want to review project work in more detail,
-          email is the fastest way to reach me.
+          If you’re building in backend, data, or applied AI and want to connect, email is the fastest way to reach me.
         </p>
         <p
           style={{
@@ -55,7 +54,7 @@ export default function ContactPage() {
             marginBottom: "34px",
           }}
         >
-          I can share repo walkthroughs, architecture notes, and implementation tradeoffs for any project listed here.
+          I’m happy to share repo walkthroughs, architecture decisions, performance notes, and technical tradeoffs from any project here.
         </p>
       </FadeIn>
 
@@ -76,7 +75,7 @@ export default function ContactPage() {
             transition: "0.25s ease",
           }}
         >
-          Email Me →
+          Message Me →
         </a>
       </FadeIn>
 
