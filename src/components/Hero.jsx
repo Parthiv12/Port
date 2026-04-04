@@ -25,7 +25,7 @@ const Hero = ({ name, contact }) => {
         <h1 style={{fontSize: 'clamp(2rem, 5vw, 3.2rem)', margin: 0}}>{name}</h1>
         <p style={{color: '#9aa4b2', marginTop: '.5rem', maxWidth: 680}}>
           I'm a Computer Science student at Wayne State University focused on AI, systems, and full-stack development.
-          I build AI-powered applications and scalable systems. I'm currently working on a gamified job search app and an AI movie recommender.
+          Flexible, curious, and hands-on — I like turning new ideas into usable systems.
         </p>
         <div style={{marginTop: '1rem', display:'flex', gap: '0.75rem'}}>
           <a href={contact.linkedin} target="_blank" rel="noreferrer"><button>LinkedIn</button></a>

@@ -8,10 +8,8 @@ const TimelinePage = lazy(() => import("../pages/Timeline/TimelinePage.jsx"));
 const ProjectsPage = lazy(() => import("../pages/Projects/ProjectPage.jsx"));
 const ProjectsDetailPage = lazy(() => import("../pages/Projects/ProjectsDetailPage.jsx"));
 const AboutPage = lazy(() => import("../pages/About/AboutPage.jsx"));
-const ContactPage = lazy(() => import("../pages/Contact/ContactPage.jsx"));
 const StackPage = lazy(() => import("../pages/Stack/StackPage.jsx"));
 const RAGPage = lazy(() => import("../pages/RAG/RAGPage.jsx"));
-// const Playground = lazy(() => import('../pages/Playground/PlaygroundPage.jsx'));
 
 export default function AppRoutes() {
   return (
@@ -28,18 +26,14 @@ export default function AppRoutes() {
           {/* Timeline */}
           <Route path="/timeline" element={<TimelinePage />} />
 
-          {/* About & Contact */}
+          {/* About */}
           <Route path="/about" element={<AboutPage />} />
-          <Route path="/contact" element={<ContactPage />} />
 
           {/* Tech Stack */}
           <Route path="/stack" element={<StackPage />} />
 
           {/* RAG Research */}
           <Route path="/rag" element={<RAGPage />} />
-
-          {/* Playground */}
-          {/* <Route path="/playground/*" element={<Playground />} /> */}
         </Route>
       </Routes>
     </Suspense>

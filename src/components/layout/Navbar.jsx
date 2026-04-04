@@ -14,15 +14,7 @@ export default function Navbar() {
       <Link to="/projects" className={isActive("/projects") ? "active" : ""}>Projects</Link>
       <Link to="/timeline" className={isActive("/timeline") ? "active" : ""}>Timeline</Link>
       <Link to="/stack" className={isActive("/stack") ? "active" : ""}>Tech Stack</Link>
-
-
-      { /* <Link to="/playground" className={pathname === "/playground" ? "active" : ""}>Playground</Link>
-      --> not sure if im going to include /playground paths yet.
-       */ }
-
-       
       <Link to="/about" className={isActive("/about") ? "active" : ""}>About</Link>
-      <Link to="/contact" className={isActive("/contact") ? "active" : ""}>Contact</Link>
     </nav>
   );
 }
