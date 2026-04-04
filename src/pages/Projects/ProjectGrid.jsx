@@ -29,7 +29,7 @@ export default function ProjectGrid() {
             fontSize: "1.08rem",
           }}
         >
-          Core engineering work across AI/ML, backend systems, security, and hackathon builds — open any project for full implementation details.
+          Core work across AI/ML, backend, and security. Open any project for the full breakdown.
         </p>
       </FadeIn>
 

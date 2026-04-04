@@ -5,6 +5,7 @@ import Navbar from "./Navbar.jsx";
 // Heavy WebGL backgrounds lazy-loaded so they don't block the initial bundle
 const LightRays = lazy(() => import("../../assets/backgroundM/LightRays.jsx"));
 const Silk = lazy(() => import("../../assets/backgroundM/Silk.jsx"));
+const Beams = lazy(() => import("../../assets/backgroundM/Beams.jsx"));
 
 export default function PageLayout() {
   const { pathname } = useLocation();
@@ -26,6 +27,31 @@ export default function PageLayout() {
           }}
         >
           <LightRays />
+        </div>
+      );
+    }
+
+    if (pathname === "/t2") {
+      return (
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            height: "100vh",
+            overflow: "hidden",
+            zIndex: -1,
+          }}
+        >
+          <Beams
+            beamWidth={1.5}
+            beamHeight={40}
+            beamNumber={35}
+            lightColor="#e2e8f0"
+            speed={1.2}
+            noiseIntensity={1.1}
+            scale={0.15}
+            rotation={-25}
+          />
         </div>
       );
     }

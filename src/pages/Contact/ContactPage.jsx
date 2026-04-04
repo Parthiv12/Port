@@ -44,7 +44,7 @@ export default function ContactPage() {
             marginBottom: "16px",
           }}
         >
-          If you’re building in backend, data, or applied AI and want to connect, email is the fastest way to reach me.
+          Building something cool in backend, data, or AI? Let's connect. Email is the fastest way to reach me.
         </p>
         <p
           style={{
@@ -54,7 +54,7 @@ export default function ContactPage() {
             marginBottom: "34px",
           }}
         >
-          I’m happy to share repo walkthroughs, architecture decisions, performance notes, and technical tradeoffs from any project here.
+          I'm always happy to talk architecture, technical tradeoffs, and system performance.
         </p>
       </FadeIn>
 

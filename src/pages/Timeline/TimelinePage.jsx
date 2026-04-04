@@ -1,206 +1,72 @@
-import { useState, useMemo, useEffect } from "react";
+import { motion } from "framer-motion";
 import FadeIn from "../../components/ui/FadeIn.jsx";
-import YearSection from "./YearSection.jsx";
-import YearNav from "./YearNav.jsx";
-import PreviewPanel from "./PreviewPanel.jsx";
 import { projectBySlug } from "../../data/projects.js";
-
-import { SiReact, SiPython, SiFlask, SiMongodb } from "react-icons/si";
 
 const timelineData = [
   {
     year: "2025",
-    highlight: {
-      title: "Movie Recommendation Engine",
-      slug: "movie-recommender",
-    },
-    experience: [
+    items: [
       {
+        slug: "movie-recommender",
+        type: "Featured Project",
+        role: "Movie Recommendation Engine",
+        context: "Built a recommendation engine using clustering and metadata. Gives good picks from day one using hybrid collaborative filtering.",
+      },
+      {
+        slug: "sql-intern",
+        type: "Experience",
         role: "Database Intern",
         company: "365 Retail Markets",
-        period: "May 2025 - Aug 2025",
-        bullets: [
-          "Optimized SQL queries with indexing and plan analysis.",
-          "Configured replication between database instances.",
-          "Worked with plan cache and buffer pool for tuning.",
-        ],
-        tags: ["SQL Tuning", "Replication", "Query Plans"],
+        context: "Optimized SQL queries with indexing and plan analysis. Configured replication between database instances and tuned buffer pools.",
       },
-    ],
-    projects: [
-      {
-        id: "movie-rec",
-        slug: "movie-recommender",
-        title: "Movie Recommendation Engine",
-        tags: ["ML", "Full-Stack"],
-        summary: "Built a recommendation engine using clustering and metadata.",
-        kind: "personal",
-        pill: "Personal",
-        techStack: [
-          { node: SiPython, title: "Python" },
-          { node: SiFlask, title: "Flask" },
-          { node: SiReact, title: "React" },
-          { node: SiMongodb, title: "MongoDB" },
-        ],
-      },
-      {
-        id: "gamified-search",
-        slug: "job-search-app",
-        title: "Gamified Job Search Platform",
-        tags: ["React", "API Dev"],
-        summary:
-          "Turned job search into a gamified experience with levels and streaks.",
-        kind: "personal",
-        pill: "Personal",
-      },
-      {
-        id: "github-stats-api",
-        slug: "github-stats-api",
-        title: "GitHub Stats API Tool",
-        tags: ["API", "JavaScript"],
-        summary:
-          "Small web app using GitHub API to fetch user stats and profile info.",
-        kind: "personal",
-        pill: "Personal",
-      },
-      {
-        id: "os-secure-s3-fs",
-        slug: "secure-s3-filesystem",
-        title: "Secure S3 File System - Operating Systems (Fall 2025)",
-        tags: ["Systems", "Security"],
-        summary:
-          "Built an encrypted file system over AWS S3 using FUSE and AES-256-CBC hooks.",
-        kind: "coursework",
-        pill: "Coursework",
-      },
-    ],
+    ]
   },
   {
     year: "2024",
-    highlight: {
-      title: "HarmonAIze - Hackathon Winner",
-      slug: "harmonAIze",
-    },
-    experience: [
+    items: [
       {
+        slug: "tracelens",
+        type: "Featured Project",
+        role: "TraceLens – Distributed Tracing Platform",
+        context: "End-to-end distributed tracing observability platform for complex microservices. Pinpoints bottlenecks in multi-service networks natively.",
+      },
+      {
+        slug: "harmonaize",
+        type: "Hackathon Winner",
+        role: "HarmonAIze",
+        company: "GrizzHacks",
+        context: "BPM-based music recommendation app. Music recommender that updates in real time as your heart rate changes.",
+      },
+      {
+        slug: "ops-intern",
+        type: "Experience",
         role: "Operations and Hardware Intern",
         company: "365 Retail Markets",
-        period: "Jun 2024 - Aug 2024",
-        bullets: [
-          "Built and tested self-service kiosk systems.",
-          "Imaged Linux onto Actineon PCs with Clonezilla.",
-          "Worked across support and infra workflows.",
-        ],
-        tags: ["Linux Imaging", "Hardware", "Ops"],
-      },
-    ],
-    projects: [
-      {
-        id: "harmonaize",
-        slug: "harmonAIze",
-        title: "HarmonAIze",
-        tags: ["ML", "Hackathon"],
-        summary: "BPM-based music recommendation app that won at GrizzHacks.",
-        kind: "hackathon",
-        pill: "Hackathon",
+        context: "Imaged Linux onto hardware with Clonezilla, built self-service kiosk systems, and handled cross-functional infrastructure workflows.",
       },
       {
-        id: "linux-imaging",
-        slug: "linux-imaging-boot",
-        title: "Linux Imaging and Boot System Design",
-        tags: ["Linux", "Systems"],
-        summary: "Defined boot + imaging flow for Actineon PCs using Clonezilla.",
-        kind: "personal",
-        pill: "Personal",
+        slug: "secure-s3-filesystem",
+        type: "Systems / Security",
+        role: "Secure S3 File System",
+        context: "Built an encrypted file system over AWS S3 using FUSE and AES-256-CBC hooks to transparently encrypt data at rest.",
       },
       {
-        id: "early-ml",
-        slug: "early-ml-experiments",
-        title: "Early ML Experiments",
-        tags: ["AI/ML"],
-        summary: "First experiments with clustering, sentiment, and recommendation.",
-        kind: "personal",
-        pill: "Personal",
-      },
-      {
-        id: "sysadmin-ssl",
-        slug: "security-ssl",
-        title: "SSL Certificate and Server Hardening - SysAdmin (Fall 2024)",
-        tags: ["Security", "Linux"],
-        summary:
-          "Configured HTTPS on Ubuntu with SSL/TLS, ran OpenVAS scans, and hardened Apache2.",
-        kind: "coursework",
-        pill: "Coursework",
-      },
-      {
-        id: "llm-rag-lstm",
-        slug: "rag-lstm-llm",
-        title: "RAG + LSTM Implementations - Intro to LLMs (Winter 2024)",
-        tags: ["AI/ML", "LLMs"],
-        summary:
-          "Built RAG pipelines and LSTM models to study LLM behaviors and training differences.",
-        kind: "coursework",
-        pill: "Coursework",
-      },
-    ],
-  },
+        slug: "speechmatch",
+        type: "Capstone",
+        role: "Team Lead — SpeechMatch",
+        context: "Led backend direction, scoring logic, and technical coordination across the team for an AI-driven speech evaluation and modeling tool.",
+      }
+    ]
+  }
 ];
 
 export default function TimelinePage() {
-  const [activeYear, setActiveYear] = useState(timelineData[0]?.year ?? null);
-  const [lockedProject, setLockedProject] = useState(null);
-  const [hoverProject, setHoverProject] = useState(null);
-  const [isNarrow, setIsNarrow] = useState(() => window.innerWidth < 1200);
-
-  const normalizedTimelineData = useMemo(
-    () =>
-      timelineData.map((block) => ({
-        ...block,
-        projects: block.projects.map((project) => {
-          const meta = projectBySlug[project.slug] ?? {};
-          return {
-            ...project,
-            title: project.title ?? meta.title,
-            tags: project.tags ?? meta.tags ?? [],
-            summary: project.summary ?? meta.description,
-            started: meta.started,
-          };
-        }),
-      })),
-    []
-  );
-
-  const years = normalizedTimelineData.map((b) => b.year);
-
-  useEffect(() => {
-    const onResize = () => setIsNarrow(window.innerWidth < 1200);
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
-  }, []);
-
-  const activeYearData = useMemo(
-    () => normalizedTimelineData.find((y) => y.year === activeYear) ?? null,
-    [activeYear, normalizedTimelineData]
-  );
-
-  const projectForPreview = useMemo(() => {
-    if (hoverProject) return hoverProject;
-    if (lockedProject) return lockedProject;
-    if (activeYearData?.projects?.length) return activeYearData.projects[0];
-    return null;
-  }, [hoverProject, lockedProject, activeYearData]);
-
-  const handleYearToggle = (year) => {
-    setActiveYear((prev) => (prev === year ? null : year));
-    setHoverProject(null);
-  };
-
   return (
     <div
       style={{
         padding: "112px clamp(16px, 3.2vw, 56px) 92px",
         minHeight: "100vh",
-        maxWidth: "1520px",
+        maxWidth: "1040px",
         margin: "0 auto",
       }}
     >
@@ -210,7 +76,7 @@ export default function TimelinePage() {
             color: "white",
             fontSize: "clamp(2.2rem, 3.6vw, 3.2rem)",
             width: "100%",
-            margin: "0 0 26px",
+            margin: "0 0 16px",
             fontWeight: 700,
           }}
         >
@@ -218,67 +84,107 @@ export default function TimelinePage() {
         </h1>
         <p
           style={{
-            color: "rgba(255,255,255,0.68)",
-            marginTop: "-8px",
-            marginBottom: "22px",
-            maxWidth: "780px",
+            color: "rgba(255,255,255,0.6)",
+            marginTop: "0",
+            marginBottom: "64px",
+            maxWidth: "600px",
             lineHeight: 1.65,
+            fontSize: "1.1rem"
           }}
         >
-          Each year is grouped around a featured project, then split by project type and coursework for quick scanning.
+          A progression of the projects, hackathons, and systems engineering experiences that have shaped my technical foundation.
         </p>
       </FadeIn>
 
-      <div
-        style={{
-          width: "100%",
-          display: isNarrow ? "block" : "grid",
-          gridTemplateColumns: "minmax(0, 1fr) minmax(300px, 340px)",
-          gap: "20px",
-          alignItems: "flex-start",
-        }}
-      >
-        <div style={{ width: "100%" }}>
-          {normalizedTimelineData.map((block) => (
-            <YearSection
-              key={block.year}
-              data={block}
-              isActive={block.year === activeYear}
-              onToggle={() => handleYearToggle(block.year)}
-              onProjectHover={(project) => setHoverProject(project)}
-              onProjectLeave={() => setHoverProject(null)}
-              onProjectClick={(project) => setLockedProject(project)}
-              lockedProjectId={lockedProject?.id ?? null}
-            />
-          ))}
-        </div>
+      <div style={{ position: "relative", marginLeft: "12px" }}>
+        {/* Vertical line connecting nodes */}
+        <div style={{
+          position: "absolute",
+          top: 0,
+          bottom: 0,
+          left: "8px",
+          width: "1px",
+          background: "linear-gradient(to bottom, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.02) 100%)",
+          zIndex: 0
+        }} />
 
-        <div
-          style={{
-            width: "100%",
-            maxWidth: isNarrow ? "100%" : "340px",
-            position: isNarrow ? "static" : "sticky",
-            top: "104px",
-            alignSelf: "flex-start",
-            display: "flex",
-            flexDirection: "column",
-            gap: "12px",
-            marginTop: isNarrow ? "12px" : 0,
-          }}
-        >
-          <YearNav
-            years={years}
-            activeYear={activeYear}
-            onSelectYear={(year) => {
-              handleYearToggle(year);
-              const target = document.getElementById(`year-${year}`);
-              if (target) {
-                target.scrollIntoView({ behavior: "smooth", block: "start" });
-              }
-            }}
-          />
-          <PreviewPanel project={projectForPreview} year={activeYear} />
-        </div>
+        {timelineData.map((block, i) => (
+          <div key={block.year} style={{ marginBottom: "56px" }}>
+            <FadeIn delay={i * 0.1}>
+              <h2 style={{
+                fontSize: "2rem",
+                color: "white",
+                fontWeight: 600,
+                marginBottom: "32px",
+                marginLeft: "32px",
+                display: "flex",
+                alignItems: "center"
+              }}>
+                {block.year}
+              </h2>
+            </FadeIn>
+
+            <div style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
+              {block.items.map((item, j) => (
+                <motion.div
+                  key={j}
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.5, delay: j * 0.05 }}
+                  style={{
+                    position: "relative",
+                    paddingLeft: "32px",
+                  }}
+                >
+                  {/* Timeline Dot */}
+                  <div style={{
+                    position: "absolute",
+                    left: "5px",
+                    top: "10px",
+                    width: "7px",
+                    height: "7px",
+                    borderRadius: "50%",
+                    background: "rgba(255,255,255,0.5)",
+                    zIndex: 1,
+                    boxShadow: "0 0 10px rgba(255,255,255,0.2)"
+                  }} />
+
+                  <div style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "6px"
+                  }}>
+                    <div style={{ 
+                      fontSize: "0.8rem", 
+                      textTransform: "uppercase", 
+                      letterSpacing: "0.05em",
+                      color: "rgba(255,255,255,0.4)" 
+                    }}>
+                      {item.type}
+                    </div>
+                    <div style={{
+                      fontSize: "1.2rem",
+                      fontWeight: 500,
+                      color: "rgba(255,255,255,0.95)"
+                    }}>
+                      {item.role} {item.company && <span style={{ color: "rgba(255,255,255,0.6)" }}>@ {item.company}</span>}
+                    </div>
+                    <p style={{
+                      fontSize: "1rem",
+                      color: "rgba(255,255,255,0.6)",
+                      lineHeight: 1.6,
+                      margin: "4px 0 0 0",
+                      maxWidth: "680px"
+                    }}>
+                      {item.context}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

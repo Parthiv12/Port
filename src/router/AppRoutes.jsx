@@ -12,6 +12,7 @@ const ContactPage = lazy(() => import("../pages/Contact/ContactPage.jsx"));
 const StackPage = lazy(() => import("../pages/Stack/StackPage.jsx"));
 const RAGPage = lazy(() => import("../pages/RAG/RAGPage.jsx"));
 // const Playground = lazy(() => import('../pages/Playground/PlaygroundPage.jsx'));
+const T2Page = lazy(() => import("../pages/T2/T2Page.jsx"));
 
 export default function AppRoutes() {
   return (
@@ -20,6 +21,7 @@ export default function AppRoutes() {
         <Route element={<PageLayout />}>
           {/* Home */}
           <Route path="/" element={<HomePage />} />
+          <Route path="/t2" element={<T2Page />} />
 
           {/* Projects */}
           <Route path="/projects" element={<ProjectsPage />} />

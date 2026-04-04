@@ -20,7 +20,7 @@ export default function Navbar() {
       --> not sure if im going to include /playground paths yet.
        */ }
 
-       
+      <Link to="/t2" className={isActive("/t2") ? "active" : ""}>AI Focus</Link>
       <Link to="/about" className={isActive("/about") ? "active" : ""}>About</Link>
       <Link to="/contact" className={isActive("/contact") ? "active" : ""}>Contact</Link>
     </nav>
