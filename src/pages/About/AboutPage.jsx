@@ -90,7 +90,7 @@ export default function AboutPage() {
                 fontWeight: 400
               }}
             >
-              I’m Parthiv — I like figuring out how things work, then pushing them until they work better. Most of what I build sits at the intersection of AI, backend systems, and real-world usability. Lately that’s meant working with LLM-related ideas, recommendation systems, voice workflows, and system-heavy projects where performance and architecture actually matter.
+              I’m Parthiv — I like understanding how things work, then pushing them until they work better.
             </motion.p>
             
             <motion.p
@@ -102,7 +102,7 @@ export default function AboutPage() {
                 fontWeight: 400
               }}
             >
-              I’m especially drawn to new technology when it can be applied to something practical. I’m not interested in building projects just to say I built them — I care more about whether they solve a real problem, teach me something meaningful, or can scale into something useful.
+              I tend to get pulled toward problems that feel a little messy at first — systems that aren’t quite scalable, ideas that aren’t fully figured out yet, or tools that could be more intuitive. I enjoy sitting in that space and slowly shaping things into something clean, usable, and reliable.
             </motion.p>
             
             <motion.p
@@ -114,7 +114,19 @@ export default function AboutPage() {
                 fontWeight: 400
               }}
             >
-              At 365 Retail, I got hands-on with SQL performance, replication, and production-minded debugging. Outside of that, hackathons and side projects have pushed me to stay flexible, learn fast, and keep experimenting with better ways to build.
+              A lot of what I build sits somewhere between engineering and curiosity. I like experimenting, breaking things, and learning just enough to make something real out of an idea. For me, the process matters just as much as the outcome.
+            </motion.p>
+            
+            <motion.p
+              variants={itemVariants}
+              style={{
+                color: "rgba(255,255,255,0.6)",
+                fontSize: "1.05rem",
+                lineHeight: 1.8,
+                fontWeight: 400
+              }}
+            >
+              Outside of that, I’m usually exploring new tech, refining past projects, or just going down random rabbit holes that somehow end up being useful later.
             </motion.p>
 
             <motion.div variants={itemVariants} style={{ marginTop: "12px" }}>
