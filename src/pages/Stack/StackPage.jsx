@@ -1,168 +1,130 @@
 import FadeIn from "../../components/ui/FadeIn.jsx";
-import { motion as Motion } from "framer-motion";
+import { motion } from "framer-motion";
 
-const stackGroups = [
+const categorizedStack = [
   {
-    title: "Languages",
-    items: ["Python", "Java", "C++", "C", "JavaScript", "R", "Kotlin"],
-  },
-  {
-    title: "Web and Frameworks",
-    items: ["React", "Next.js", "Flask", "REST APIs"],
+    title: "Core Stack I Use Most",
+    description: "The languages and frameworks I reach for first when building systems from scratch.",
+    items: "Python, Next.js, React, Node.js, C++",
   },
   {
     title: "AI / ML",
-    items: [
-      "K-Means Clustering",
-      "Collaborative Filtering",
-      "TensorFlow / Keras",
-      "Hugging Face",
-      "LLMs (ASI-1, OpenAI-style APIs)",
-      "Multi-Agent Systems (uAgents)",
-    ],
+    description: "Architectures, libraries, and models I use for machine learning pipelines.",
+    items: "TensorFlow / Keras, Hugging Face, LLMs (OpenAI-style APIs), Sequence Models, K-Means Clustering, Collaborative Filtering",
   },
   {
-    title: "Databases",
-    items: [
-      "MySQL",
-      "SQL Server",
-      "MongoDB",
-      "Supabase (Postgres)",
-      "Indexing and Query Optimization",
-      "Replication and Triggers",
-    ],
+    title: "Backend / Systems",
+    description: "System engineering, API design, and distributed architectures.",
+    items: "REST APIs, Flask, Express, JWT Authentication, Multi-Agent Systems (uAgents)",
   },
   {
-    title: "Backend and Systems",
-    items: [
-      "API Design",
-      "JWT Authentication",
-      "Linux (Ubuntu, Kali)",
-      "Apache2",
-      "Ubuntu Server Administration",
-    ],
+    title: "Data / Infra",
+    description: "Databases, deployment, and underlying infrastructure.",
+    items: "PostgreSQL (Supabase), MySQL, MongoDB, Docker, Git / GitHub, Ubuntu Server",
   },
   {
-    title: "DevOps and Tooling",
-    items: ["Docker", "Kubernetes (intro)", "Git and GitHub", "Vite", "OpenVAS"],
-  },
-  {
-    title: "Voice and Agents",
-    items: ["Fetch.ai ASI-1", "uAgents", "ElevenLabs TTS", "Web Speech API (STT)"],
-  },
+    title: "Also Comfortable With",
+    description: "Tools I use as needed for specific projects or legacy systems.",
+    items: "Java, C, SQL Server, Kubernetes (intro), R, Kotlin, OpenVAS",
+  }
 ];
 
 export default function StackPage() {
   return (
-    <div style={{ padding: "122px clamp(16px, 4vw, 64px) 110px", maxWidth: "1520px", margin: "0 auto" }}>
+    <div style={{ padding: "122px clamp(20px, 5vw, 64px) 96px", maxWidth: "960px", margin: "0 auto", fontFamily: "system-ui, sans-serif" }}>
       <FadeIn>
         <h1
           style={{
             color: "white",
-            fontSize: "clamp(2.2rem, 4vw, 3.2rem)",
+            fontSize: "clamp(2.5rem, 5vw, 3.5rem)",
             fontWeight: 700,
-            marginBottom: "10px",
+            marginBottom: "16px",
+            letterSpacing: "-0.02em"
           }}
         >
           Tech Stack
         </h1>
         <p
           style={{
-            color: "rgba(255,255,255,0.8)",
-            fontSize: "1.08rem",
-            maxWidth: "820px",
-            lineHeight: 1.7,
+            color: "rgba(255,255,255,0.7)",
+            fontSize: "1.15rem",
+            maxWidth: "680px",
+            lineHeight: 1.6,
+            marginBottom: "80px",
           }}
         >
-          Tools I use in project work, coursework, and hackathons
+          An honest breakdown of the tools I use daily versus the ones I pick up when a project demands it. No fluff, just the stack.
         </p>
       </FadeIn>
 
-      <Motion.div
+      <motion.div
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0.18 }}
+        viewport={{ once: true, amount: 0.1 }}
         variants={{
           hidden: { opacity: 0 },
-          show: {
-            opacity: 1,
-            transition: { staggerChildren: 0.08, delayChildren: 0.05 },
-          },
+          show: { opacity: 1, transition: { staggerChildren: 0.1 } },
         }}
-        style={{
-          marginTop: "40px",
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-          gap: "22px",
-        }}
+        style={{ display: "flex", flexDirection: "column", gap: "48px" }}
       >
-        {stackGroups.map((group) => (
-          <StackCard key={group.title} title={group.title} items={group.items} />
+        {categorizedStack.map((category) => (
+          <Row key={category.title} {...category} />
         ))}
-      </Motion.div>
+      </motion.div>
     </div>
   );
 }
 
-function StackCard({ title, items }) {
+function Row({ title, description, items }) {
   return (
-    <Motion.article
+    <motion.div
       variants={{
-        hidden: { opacity: 0, y: 20, scale: 0.985 },
-        show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.42, ease: "easeOut" } },
+        hidden: { opacity: 0, y: 15 },
+        show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
       }}
-      whileHover={{ y: -3 }}
       style={{
-        background: "var(--panel-navy-bg)",
-        border: "1px solid var(--panel-navy-border)",
-        borderRadius: "16px",
-        padding: "18px 18px 16px",
-        backdropFilter: "blur(8px)",
-        minHeight: "180px",
-        boxShadow: "var(--panel-navy-shadow)",
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+        gap: "24px",
+        paddingBottom: "48px",
+        borderBottom: "1px solid rgba(255,255,255,0.08)"
       }}
     >
-      <h2
-        style={{
+      <div>
+        <h2 style={{
           color: "white",
-          fontSize: "1.08rem",
-          marginBottom: "12px",
-          fontWeight: 700,
-          letterSpacing: "0.01em",
-        }}
-      >
-        {title}
-      </h2>
-      <Motion.ul
-        initial={{ opacity: 0.8 }}
-        whileHover={{ opacity: 1 }}
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          gap: "8px",
-          listStyle: "none",
-          padding: 0,
-          margin: 0,
-          color: "rgba(255,255,255,0.88)",
-          fontSize: "0.86rem",
-          lineHeight: 1.3,
-        }}
-      >
-        {items.map((item) => (
-          <li
-            key={item}
-            style={{
-              padding: "6px 10px",
-              borderRadius: "999px",
-              border: "1px solid rgba(170, 194, 208, 0.22)",
-              background: "rgba(8, 14, 24, 0.72)",
-              whiteSpace: "nowrap",
-            }}
-          >
-            {item}
-          </li>
-        ))}
-      </Motion.ul>
-    </Motion.article>
+          fontSize: "1.25rem",
+          fontWeight: 600,
+          marginBottom: "8px",
+          letterSpacing: "-0.01em"
+        }}>
+          {title}
+        </h2>
+        <p style={{
+          color: "rgba(255,255,255,0.5)",
+          fontSize: "0.95rem",
+          lineHeight: 1.5,
+          maxWidth: "360px",
+          margin: 0
+        }}>
+          {description}
+        </p>
+      </div>
+
+      <div style={{
+        display: "flex",
+        alignItems: "center"
+      }}>
+        <p style={{
+          color: "rgba(255,255,255,0.9)",
+          fontSize: "1.1rem",
+          lineHeight: 1.6,
+          fontWeight: 400,
+          margin: 0
+        }}>
+          {items}
+        </p>
+      </div>
+    </motion.div>
   );
 }

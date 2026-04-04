@@ -50,7 +50,9 @@ export default function ProjectGrid() {
               <Link to={`/projects/${p.slug}`} style={featuredCardStyle}>
                 <div style={{ marginBottom: "20px", display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
                    <span style={yearStyle}>{p.year}</span>
-                   <span style={viewProjectStyle}>View Project →</span>
+                   <span style={viewProjectStyle}>
+                     {p.slug === 'tracelens' ? 'See Architecture →' : 'Read Case Study →'}
+                   </span>
                 </div>
                 
                 <h3 style={{ fontSize: "2rem", fontWeight: 600, color: "white", marginBottom: "16px", letterSpacing: "-0.01em" }}>
@@ -83,7 +85,7 @@ export default function ProjectGrid() {
               <Link to={`/projects/${p.slug}`} style={coreCardStyle}>
                 <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "12px" }}>
                    <span style={yearStyle}>{p.year}</span>
-                   <span style={viewProjectStyle}>→</span>
+                   <span style={viewProjectStyle}>Open Breakdown →</span>
                 </div>
                 
                 <h4 style={{ fontSize: "1.25rem", fontWeight: 600, color: "white", marginBottom: "12px" }}>

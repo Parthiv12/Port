@@ -1,23 +1,23 @@
 import { motion } from "framer-motion";
 import FadeIn from "../../components/ui/FadeIn.jsx";
-import { projectBySlug } from "../../data/projects.js";
+import { Link } from "react-router-dom";
 
 const timelineData = [
   {
     year: "2025",
     items: [
       {
-        slug: "movie-recommender",
         type: "Featured Project",
         role: "Movie Recommendation Engine",
-        context: "Built a recommendation engine using clustering and metadata. Gives good picks from day one using hybrid collaborative filtering.",
+        context: "Clustering and metadata-based recommendation engine.",
+        link: "/projects/movie-recommender",
+        linkText: "View project →"
       },
       {
-        slug: "sql-intern",
         type: "Experience",
         role: "Database Intern",
         company: "365 Retail Markets",
-        context: "Optimized SQL queries with indexing and plan analysis. Configured replication between database instances and tuned buffer pools.",
+        context: "Tuned SQL queries, configured instance replication, and optimized buffer pools.",
       },
     ]
   },
@@ -25,36 +25,39 @@ const timelineData = [
     year: "2024",
     items: [
       {
-        slug: "tracelens",
         type: "Featured Project",
         role: "TraceLens – Distributed Tracing Platform",
-        context: "End-to-end distributed tracing observability platform for complex microservices. Pinpoints bottlenecks in multi-service networks natively.",
+        context: "Observability tool that pinpoints bottlenecks across microservices natively.",
+        link: "/projects/tracelens",
+        linkText: "See case study →"
       },
       {
-        slug: "harmonaize",
         type: "Hackathon Winner",
         role: "HarmonAIze",
         company: "GrizzHacks",
-        context: "BPM-based music recommendation app. Music recommender that updates in real time as your heart rate changes.",
+        context: "BPM-based music recommender updating in real-time via heart rate changes.",
+        link: "/projects/harmonaize",
+        linkText: "View project →"
       },
       {
-        slug: "ops-intern",
         type: "Experience",
-        role: "Operations and Hardware Intern",
+        role: "Operations & Hardware Intern",
         company: "365 Retail Markets",
-        context: "Imaged Linux onto hardware with Clonezilla, built self-service kiosk systems, and handled cross-functional infrastructure workflows.",
+        context: "Managed Linux imaging workflows and self-service kiosk infrastructure.",
       },
       {
-        slug: "secure-s3-filesystem",
         type: "Systems / Security",
         role: "Secure S3 File System",
-        context: "Built an encrypted file system over AWS S3 using FUSE and AES-256-CBC hooks to transparently encrypt data at rest.",
+        context: "Encrypted file system over AWS S3 using FUSE and AES-256-CBC hooks.",
+        link: "/projects/aws-s3-fuse-filesystem",
+        linkText: "See architecture →"
       },
       {
-        slug: "speechmatch",
         type: "Capstone",
         role: "Team Lead — SpeechMatch",
-        context: "Led backend direction, scoring logic, and technical coordination across the team for an AI-driven speech evaluation and modeling tool.",
+        context: "Led backend architecture and scoring pipelines for an AI speech evaluation tool.",
+        link: "/projects/speechmatch",
+        linkText: "See case study →"
       }
     ]
   }
@@ -68,16 +71,18 @@ export default function TimelinePage() {
         minHeight: "100vh",
         maxWidth: "1040px",
         margin: "0 auto",
+        fontFamily: "system-ui, sans-serif"
       }}
     >
       <FadeIn>
         <h1
           style={{
             color: "white",
-            fontSize: "clamp(2.2rem, 3.6vw, 3.2rem)",
+            fontSize: "clamp(2.5rem, 5vw, 3.5rem)",
             width: "100%",
             margin: "0 0 16px",
             fontWeight: 700,
+            letterSpacing: "-0.02em"
           }}
         >
           Timeline
@@ -104,7 +109,7 @@ export default function TimelinePage() {
           bottom: 0,
           left: "8px",
           width: "1px",
-          background: "linear-gradient(to bottom, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.02) 100%)",
+          background: "linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.02) 100%)",
           zIndex: 0
         }} />
 
@@ -112,8 +117,8 @@ export default function TimelinePage() {
           <div key={block.year} style={{ marginBottom: "56px" }}>
             <FadeIn delay={i * 0.1}>
               <h2 style={{
-                fontSize: "2rem",
-                color: "white",
+                fontSize: "1.5rem",
+                color: "rgba(255,255,255,0.8)",
                 fontWeight: 600,
                 marginBottom: "32px",
                 marginLeft: "32px",
@@ -124,7 +129,7 @@ export default function TimelinePage() {
               </h2>
             </FadeIn>
 
-            <div style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "32px" }}>
               {block.items.map((item, j) => (
                 <motion.div
                   key={j}
@@ -141,25 +146,27 @@ export default function TimelinePage() {
                   <div style={{
                     position: "absolute",
                     left: "5px",
-                    top: "10px",
+                    top: "8px",
                     width: "7px",
                     height: "7px",
                     borderRadius: "50%",
-                    background: "rgba(255,255,255,0.5)",
+                    background: "rgba(255,255,255,0.6)",
                     zIndex: 1,
-                    boxShadow: "0 0 10px rgba(255,255,255,0.2)"
+                    boxShadow: "0 0 10px rgba(255,255,255,0.3)"
                   }} />
 
                   <div style={{
                     display: "flex",
                     flexDirection: "column",
-                    gap: "6px"
+                    gap: "4px"
                   }}>
                     <div style={{ 
-                      fontSize: "0.8rem", 
+                      fontSize: "0.85rem", 
                       textTransform: "uppercase", 
-                      letterSpacing: "0.05em",
-                      color: "rgba(255,255,255,0.4)" 
+                      letterSpacing: "0.06em",
+                      color: "rgba(255,255,255,0.4)",
+                      marginBottom: "4px",
+                      fontWeight: 600
                     }}>
                       {item.type}
                     </div>
@@ -168,17 +175,33 @@ export default function TimelinePage() {
                       fontWeight: 500,
                       color: "rgba(255,255,255,0.95)"
                     }}>
-                      {item.role} {item.company && <span style={{ color: "rgba(255,255,255,0.6)" }}>@ {item.company}</span>}
+                      {item.role} {item.company && <span style={{ color: "rgba(255,255,255,0.5)" }}>@ {item.company}</span>}
                     </div>
                     <p style={{
-                      fontSize: "1rem",
-                      color: "rgba(255,255,255,0.6)",
-                      lineHeight: 1.6,
+                      fontSize: "1.05rem",
+                      color: "rgba(255,255,255,0.65)",
+                      lineHeight: 1.5,
                       margin: "4px 0 0 0",
                       maxWidth: "680px"
                     }}>
                       {item.context}
                     </p>
+                    
+                    {item.link && (
+                      <Link to={item.link} style={{
+                        marginTop: "8px",
+                        fontSize: "0.95rem",
+                        color: "rgba(255,255,255,0.8)",
+                        textDecoration: "none",
+                        fontWeight: 500,
+                        display: "inline-block",
+                        borderBottom: "1px solid rgba(255,255,255,0.2)",
+                        width: "fit-content",
+                        paddingBottom: "2px"
+                      }}>
+                        {item.linkText}
+                      </Link>
+                    )}
                   </div>
                 </motion.div>
               ))}

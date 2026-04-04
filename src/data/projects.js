@@ -28,7 +28,7 @@ export const projectsCatalog = [
     links: { demo: "", github: "", docs: "" },
   },
   {
-    slug: "aws-s3-fuse",
+    slug: "aws-s3-fuse-filesystem",
     title: "AWS S3 Encrypted FUSE Filesystem",
     description: "Encrypted file system mounted over AWS S3 using FUSE hooks and AES-based encryption.",
     tags: ["Systems", "Security", "Cloud"],
@@ -42,7 +42,7 @@ export const projectsCatalog = [
     links: { demo: "", github: "", docs: "" },
   },
   {
-    slug: "spotify-recommendation",
+    slug: "spotify-background-recommendation-app",
     title: "Spotify Background Recommendation App",
     description: "Algorithm-driven companion app for personalized background music curation.",
     tags: ["AI/ML", "Full-Stack"],
@@ -98,7 +98,7 @@ export const projectsCatalog = [
     links: { demo: "", github: "", docs: "" },
   },
   {
-    slug: "ubuntu-sysadmin",
+    slug: "ubuntu-system-administration",
     title: "Ubuntu System Administration Project",
     description: "Comprehensive server hardening, network configuration, and vulnerability management.",
     tags: ["Systems", "Security", "Linux"],
