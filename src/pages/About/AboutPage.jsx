@@ -144,7 +144,7 @@ export default function AboutPage() {
                 marginBottom: "12px",
                 letterSpacing: "-0.01em"
               }}>
-                Let’s build something interesting.
+                Let’s build something useful.
               </h2>
               <p style={{
                 color: "rgba(255,255,255,0.6)",

@@ -10,6 +10,7 @@ const ProjectsDetailPage = lazy(() => import("../pages/Projects/ProjectsDetailPa
 const AboutPage = lazy(() => import("../pages/About/AboutPage.jsx"));
 const StackPage = lazy(() => import("../pages/Stack/StackPage.jsx"));
 const RAGPage = lazy(() => import("../pages/RAG/RAGPage.jsx"));
+const NotesPage = lazy(() => import("../pages/Notes/NotesPage.jsx"));
 
 export default function AppRoutes() {
   return (
@@ -34,6 +35,9 @@ export default function AppRoutes() {
 
           {/* RAG Research */}
           <Route path="/rag" element={<RAGPage />} />
+
+          {/* Notes */}
+          <Route path="/notes" element={<NotesPage />} />
         </Route>
       </Routes>
     </Suspense>
