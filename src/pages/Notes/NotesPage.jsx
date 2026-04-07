@@ -48,7 +48,7 @@ export default function NotesPage() {
             fontSize: "1.15rem",
           }}
         >
-          Short, technical write-ups and observations from building systems.
+          Things I’ve learned while building systems.
         </p>
       </FadeIn>
 
