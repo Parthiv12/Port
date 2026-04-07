@@ -38,23 +38,6 @@
   padding: 1.25rem 1rem;
 }
 
-/* When on the home route, clear global background so only LightRays shows */
-body.home-isolated,
-html.home-isolated {
-  background: transparent !important;
-}
-
-/* Keep text readable with default colors on home */
-body.home-isolated,
-html.home-isolated,
-#root.home-isolated {
-  color: #e6eef5 !important;
-}
-
-#root.home-isolated {
-  background: transparent !important;
-}
-
 .card {
   padding: 2em;
 }

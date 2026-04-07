@@ -14,6 +14,7 @@ export default function Navbar() {
       <Link to="/projects" className={isActive("/projects") ? "active" : ""}>Projects</Link>
       <Link to="/timeline" className={isActive("/timeline") ? "active" : ""}>Timeline</Link>
       <Link to="/stack" className={isActive("/stack") ? "active" : ""}>Tech Stack</Link>
+      <Link to="/notes" className={isActive("/notes") ? "active" : ""}>Notes</Link>
       <Link to="/about" className={isActive("/about") ? "active" : ""}>About</Link>
     </nav>
   );

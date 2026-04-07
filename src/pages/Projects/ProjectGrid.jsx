@@ -1,6 +1,7 @@
 import FadeIn from "../../components/ui/FadeIn.jsx";
 import { Link } from "react-router-dom";
 import { projectsCatalog } from "../../data/projects.js";
+import "./ProjectGrid.css";
 
 export default function ProjectGrid() {
   const featuredSlugs = ["tracelens", "speechmatch"];
@@ -47,15 +48,15 @@ export default function ProjectGrid() {
         }}>
           {featured.map((p, index) => (
             <FadeIn delay={index * 0.1} key={p.slug}>
-              <Link to={`/projects/${p.slug}`} style={featuredCardStyle}>
+              <Link to={`/projects/${p.slug}`} className="project-card-featured">
                 <div style={{ marginBottom: "20px", display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
                    <span style={yearStyle}>{p.year}</span>
                    <span style={viewProjectStyle}>
-                     {p.slug === 'tracelens' ? 'See Architecture →' : 'Read Case Study →'}
+                     See more →
                    </span>
                 </div>
                 
-                <h3 style={{ fontSize: "2rem", fontWeight: 600, color: "white", marginBottom: "16px", letterSpacing: "-0.01em" }}>
+                <h3 style={{ fontSize: "2rem", fontWeight: 600, color: "rgba(255,255,255,0.95)", marginBottom: "16px", letterSpacing: "-0.01em", transition: "color 0.2s" }}>
                   {p.title}
                 </h3>
                 
@@ -82,13 +83,13 @@ export default function ProjectGrid() {
         }}>
           {core.map((p, index) => (
             <FadeIn delay={index * 0.05} key={p.slug}>
-              <Link to={`/projects/${p.slug}`} style={coreCardStyle}>
+              <Link to={`/projects/${p.slug}`} className="project-card-core">
                 <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "12px" }}>
                    <span style={yearStyle}>{p.year}</span>
-                   <span style={viewProjectStyle}>Open Breakdown →</span>
+                   <span style={viewProjectStyle}>View details →</span>
                 </div>
                 
-                <h4 style={{ fontSize: "1.25rem", fontWeight: 600, color: "white", marginBottom: "12px" }}>
+                <h4 style={{ fontSize: "1.25rem", fontWeight: 600, color: "rgba(255,255,255,0.9)", marginBottom: "12px", transition: "color 0.2s" }}>
                   {p.title}
                 </h4>
                 
@@ -132,26 +133,4 @@ const techLineStyle = {
   fontWeight: 500,
   paddingTop: "20px",
   borderTop: "1px solid rgba(255,255,255,0.06)"
-};
-
-const featuredCardStyle = {
-  display: "block",
-  textDecoration: "none",
-  background: "rgba(255,255,255,0.02)",
-  border: "1px solid rgba(255,255,255,0.06)",
-  borderRadius: "16px",
-  padding: "40px",
-  transition: "all 0.3s ease",
-};
-
-const coreCardStyle = {
-  display: "flex",
-  flexDirection: "column",
-  textDecoration: "none",
-  background: "rgba(255,255,255,0.01)",
-  border: "1px solid rgba(255,255,255,0.05)",
-  borderRadius: "12px",
-  padding: "24px",
-  height: "100%",
-  transition: "all 0.2s ease"
 };

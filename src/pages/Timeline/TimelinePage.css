@@ -1,0 +1,60 @@
+.timeline-node {
+  position: relative;
+  padding-left: 32px;
+  transition: transform 0.2s ease;
+}
+
+.timeline-node.is-project:hover {
+  transform: translateX(4px);
+}
+
+.timeline-dot {
+  position: absolute;
+  left: 5px;
+  top: 8px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.6);
+  z-index: 1;
+  box-shadow: 0 0 10px rgba(255,255,255,0.3);
+  transition: box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.timeline-node.is-project:hover .timeline-dot {
+  background: rgba(255,255,255,0.9);
+  box-shadow: 0 0 12px rgba(255,255,255,0.5);
+}
+
+.timeline-cta {
+  margin-top: 8px;
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-block;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  width: fit-content;
+  padding-bottom: 2px;
+  transition: color 0.2s ease, border-bottom-color 0.2s ease;
+}
+
+.timeline-cta:hover {
+  color: #fff;
+  border-bottom-color: rgba(255,255,255,0.6);
+}
+
+.type-project {
+  color: rgba(255,255,255,0.6);
+  font-weight: 600;
+}
+
+.type-experience {
+  color: rgba(255,255,255,0.4);
+  font-weight: 500;
+}
+
+.type-coursework {
+  color: rgba(255,255,255,0.3);
+  font-weight: 500;
+}
