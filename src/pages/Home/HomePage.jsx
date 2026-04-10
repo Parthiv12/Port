@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin, FaFileAlt } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaFileAlt, FaCode } from "react-icons/fa";
 
 // Sections
 import ProjectsSection from "../../components/sections/ProjectsSection.jsx";
@@ -48,15 +48,21 @@ export default function HomePage() {
             Concentrating in building LLMs from scratch.
           </motion.p>
           
-          <motion.div variants={itemVariants} style={{ display: "flex", justifyContent: "center", gap: "16px" }}>
+          <motion.div variants={itemVariants} style={{ display: "flex", justifyContent: "center", gap: "16px", flexWrap: "wrap" }}>
             <a href="https://github.com/Parthiv12" target="_blank" rel="noopener noreferrer" style={btnOutlineStyle}>
               <FaGithub size={16} /> GitHub
+            </a>
+            <a href="https://devpost.com/Parthiv12" target="_blank" rel="noopener noreferrer" style={btnOutlineStyle}>
+              <FaCode size={16} /> Devpost
             </a>
             <a href="https://www.linkedin.com/in/parthiv-gajula-b84a12182/" target="_blank" rel="noopener noreferrer" style={btnOutlineStyle}>
               <FaLinkedin size={16} /> LinkedIn
             </a>
-            <a href="/ParthivUG.pdf" target="_blank" rel="noopener noreferrer" style={btnPrimaryStyle}>
+            <a href="/PGResumeApril.pdf" target="_blank" rel="noopener noreferrer" style={btnPrimaryStyle}>
               <FaFileAlt size={16} /> Resume
+            </a>
+            <a href="/rag" style={btnOutlineStyle}>
+              <FaFileAlt size={16} /> RAG Demo
             </a>
           </motion.div>
         </motion.div>

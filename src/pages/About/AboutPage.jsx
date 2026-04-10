@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import AboutBackground from "../../components/ui/AboutBackground.jsx";
 import PortraitCard from "../../components/ui/PortraitCard.jsx";
-import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaEnvelope, FaCode } from "react-icons/fa";
 import profileImg from "../../assets/data/p2.jpg";
 
 export default function AboutPage() {
@@ -161,10 +161,40 @@ export default function AboutPage() {
                 <a href="https://github.com/Parthiv12" target="_blank" rel="noopener noreferrer" style={linkStyle}>
                   <FaGithub /> GitHub
                 </a>
+                <a href="https://devpost.com/Parthiv12" target="_blank" rel="noopener noreferrer" style={linkStyle}>
+                  <FaCode /> Devpost
+                </a>
                 <a href="https://www.linkedin.com/in/parthiv-gajula-b84a12182/" target="_blank" rel="noopener noreferrer" style={linkStyle}>
                   <FaLinkedin /> LinkedIn
                 </a>
               </div>
+            </motion.div>
+
+            {/* GitHub Stats */}
+            <motion.div
+              variants={itemVariants}
+              style={{
+                marginTop: "48px",
+                paddingTop: "48px",
+                borderTop: "1px solid rgba(255,255,255,0.1)",
+                display: "flex",
+                flexDirection: "column",
+                gap: "16px"
+              }}
+            >
+              <h2 style={{
+                color: "white",
+                fontSize: "1.5rem",
+                fontWeight: 600,
+                letterSpacing: "-0.01em"
+              }}>
+                GitHub Activity
+              </h2>
+              <img 
+                src="https://ghchart.rshah.org/Parthiv12" 
+                alt="Parthiv12 Github Chart" 
+                style={{ width: "100%", filter: "hue-rotate(80deg) brightness(1.2)" }} 
+              />
             </motion.div>
 
           </motion.div>

@@ -1,78 +1,84 @@
-import { motion } from "framer-motion";
-import FadeIn from "../../components/ui/FadeIn.jsx";
+import React from "react";
 import { Link } from "react-router-dom";
-import "./TimelinePage.css";
+import { motion } from "framer-motion";
+import { Terminal, Database, BrainCircuit, Activity, Briefcase, Lock, Search, ArrowRight } from "lucide-react";
+import FadeIn from "../../components/ui/FadeIn.jsx";
 
-const segmentedTimeline = [
+const timelineData = [
   {
-    category: "Projects",
-    type: "PROJECT",
+    year: "2026",
     items: [
       {
-        year: "2025",
-        role: "Movie Recommendation Engine",
-        context: "Clustering and metadata-based recommendation engine.",
-        link: "/projects/movie-recommender",
-        linkText: "See more →"
+        title: "TraceLens – Distributed Tracing Platform",
+        category: "Observability",
+        icon: Search,
+        description: "Observability tool that pinpoints bottlenecks across microservices natively.",
+        tech: ["OpenTelemetry", "Docker", "NestJS", "React"],
+        link: "/projects/tracelens"
       },
       {
-        year: "2024",
-        role: "TraceLens – Distributed Tracing Platform",
-        context: "Observability tool that pinpoints bottlenecks across microservices natively.",
-        link: "/projects/tracelens",
-        linkText: "View details →"
-      },
-      {
-        year: "2024",
-        role: "HarmonAIze",
-        company: "GrizzHacks",
-        context: "BPM-based music recommender updating in real-time via heart rate changes.",
-        link: "/projects/harmonaize",
-        linkText: "See more →"
-      },
-      {
-        year: "2024",
-        role: "Secure S3 File System",
-        context: "Encrypted file system over AWS S3 using FUSE and AES-256-CBC hooks.",
-        link: "/projects/aws-s3-fuse-filesystem",
-        linkText: "View details →"
-      },
-      {
-        year: "2024",
-        role: "Team Lead — SpeechMatch",
-        context: "Led backend architecture and scoring pipelines for an AI speech evaluation tool.",
-        link: "/projects/speechmatch",
-        linkText: "See more →"
+        title: "SpeechMatch — Capstone Team Lead",
+        category: "Voice AI",
+        icon: BrainCircuit,
+        description: "Led backend architecture and scoring pipelines for an AI speech evaluation tool.",
+        tech: ["Azure Speech", "OCR", "Python", "Mobile"],
+        link: "/projects/speechmatch"
       }
     ]
   },
   {
-    category: "Work Experience",
-    type: "EXPERIENCE",
+    year: "2025",
     items: [
       {
-        year: "2025",
-        role: "Database Intern",
-        company: "365 Retail Markets",
-        context: "Tuned SQL queries, configured instance replication, and optimized buffer pools.",
+        title: "Retrieval-Augmented Generation (RAG) Research",
+        category: "AI/ML",
+        icon: BrainCircuit,
+        description: "Rigorous study into vector retrieval methodologies and LLM hallucination reduction.",
+        tech: ["Python", "DPR", "ColBERT", "SELF-RAG"],
+        link: "/rag"
       },
       {
-        year: "2024",
-        role: "Operations & Hardware Intern",
-        company: "365 Retail Markets",
-        context: "Managed Linux imaging workflows and self-service kiosk infrastructure.",
+        title: "AWS S3 Encrypted FUSE Filesystem",
+        category: "Systems",
+        icon: Lock,
+        description: "Encrypted file system over AWS S3 using FUSE and AES-256-CBC hooks.",
+        tech: ["C++", "FUSE3", "AWS S3", "Encryption"],
+        link: "/projects/aws-s3-fuse-filesystem"
+      },
+      {
+        title: "Movie Recommendation Engine",
+        category: "Backend",
+        icon: Database,
+        description: "Clustering and metadata-based recommendation engine.",
+        tech: ["Flask", "Supabase", "K-Means"],
+        link: "/projects/movie-recommender"
+      },
+      {
+        title: "Database Intern @ 365 Retail Markets",
+        category: "Experience",
+        icon: Briefcase,
+        description: "Tuned SQL queries, configured instance replication, and optimized buffer pools.",
+        tech: ["SQL", "Replication", "Performance Tuning"]
       }
     ]
   },
   {
-    category: "Coursework / Foundations",
-    type: "COURSEWORK",
+    year: "2024",
     items: [
       {
-        year: "Current",
-        role: "B.S. Computer Science / AI Focus",
-        company: "Oakland University",
-        context: "Relevant focus on operating systems, algorithms, distributed systems, and sequence models.",
+        title: "HarmonAIze (GrizzHacks)",
+        category: "Full-Stack",
+        icon: Activity,
+        description: "BPM-based music recommender updating in real-time via heart rate changes.",
+        tech: ["React", "Flask", "K-Means"],
+        link: "/projects/harmonaize"
+      },
+      {
+        title: "Operations & Hardware Intern @ 365 Retail Markets",
+        category: "Experience",
+        icon: Briefcase,
+        description: "Managed Linux imaging workflows and self-service kiosk infrastructure.",
+        tech: ["Linux", "Infrastructure", "Hardware"]
       }
     ]
   }
@@ -81,126 +87,84 @@ const segmentedTimeline = [
 export default function TimelinePage() {
   return (
     <div
+      className="min-h-screen font-sans"
       style={{
-        padding: "112px clamp(16px, 3.2vw, 56px) 92px",
-        minHeight: "100vh",
-        maxWidth: "1040px",
+        padding: "120px clamp(16px, 4vw, 40px) 100px",
+        maxWidth: "840px",
         margin: "0 auto",
-        fontFamily: "system-ui, sans-serif"
       }}
     >
       <FadeIn>
-        <h1
-          style={{
-            color: "white",
-            fontSize: "clamp(2.5rem, 5vw, 3.5rem)",
-            width: "100%",
-            margin: "0 0 16px",
-            fontWeight: 700,
-            letterSpacing: "-0.02em"
-          }}
-        >
+        <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-white mb-12">
           Timeline
         </h1>
-        <p
-          style={{
-            color: "rgba(255,255,255,0.6)",
-            marginTop: "0",
-            marginBottom: "80px",
-            maxWidth: "600px",
-            lineHeight: 1.65,
-            fontSize: "1.1rem"
-          }}
-        >
-          A curated progression of systems engineering, applied AI projects, and professional experience.
-        </p>
       </FadeIn>
 
-      <div style={{ display: "flex", flexDirection: "column", gap: "80px" }}>
-        {segmentedTimeline.map((block, i) => (
-          <div key={block.category} style={{ position: "relative", marginLeft: "12px" }}>
-            <FadeIn delay={i * 0.1}>
-              <h2 style={{
-                fontSize: "1.5rem",
-                color: "white",
-                fontWeight: 600,
-                marginBottom: "40px",
-                marginLeft: "32px",
-                display: "flex",
-                alignItems: "center"
-              }}>
-                {block.category}
+      <div className="flex flex-col">
+        {timelineData.map((yearGroup, index) => (
+          <div key={yearGroup.year} className="mb-6">
+            <FadeIn delay={index * 0.1}>
+              <h2 className="text-3xl font-bold text-muted-foreground/50 mb-6 pl-1 tracking-tight">
+                {yearGroup.year}
               </h2>
-            </FadeIn>
-
-            {/* Vertical line connecting nodes for this segment */}
-            <div style={{
-              position: "absolute",
-              top: "60px",
-              bottom: 0,
-              left: "8px",
-              width: "1px",
-              background: "linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.02) 100%)",
-              zIndex: 0
-            }} />
-
-            <div style={{ display: "flex", flexDirection: "column", gap: "40px" }}>
-              {block.items.map((item, j) => {
-                const isProject = block.type === "PROJECT";
-                const typeClass = isProject ? "type-project" : (block.type === "EXPERIENCE" ? "type-experience" : "type-coursework");
-
-                return (
-                  <motion.div
-                    key={j}
-                    initial={{ opacity: 0, y: 15 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                    transition={{ duration: 0.5, delay: j * 0.05 }}
-                    className={`timeline-node ${isProject ? 'is-project' : ''}`}
-                  >
-                    {/* Timeline Dot */}
-                    <div className="timeline-dot" />
-
-                    <div style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: "4px"
-                    }}>
-                      <div className={typeClass} style={{ 
-                        fontSize: "0.85rem", 
-                        textTransform: "uppercase", 
-                        letterSpacing: "0.06em",
-                        marginBottom: "4px",
-                      }}>
-                        {item.year}
+              <div className="flex flex-col gap-2">
+                {yearGroup.items.map((item, j) => {
+                  const Icon = item.icon || Terminal;
+                  
+                  const rowContent = (
+                    <motion.div
+                      whileHover={{ x: 4 }}
+                      transition={{ duration: 0.2, ease: "easeOut" }}
+                      className="group flex flex-col sm:flex-row gap-4 sm:gap-6 py-6 border-b border-white/5 last:border-0 cursor-pointer"
+                    >
+                      <div className="flex mt-1">
+                        <Icon className="w-5 h-5 text-white/30" />
                       </div>
-                      <div style={{
-                        fontSize: "1.2rem",
-                        fontWeight: 500,
-                        color: isProject ? "rgba(255,255,255,0.95)" : "rgba(255,255,255,0.75)"
-                      }}>
-                        {item.role} {item.company && <span style={{ color: "rgba(255,255,255,0.4)" }}>@ {item.company}</span>}
-                      </div>
-                      <p style={{
-                        fontSize: "1.05rem",
-                        color: "rgba(255,255,255,0.65)",
-                        lineHeight: 1.5,
-                        margin: "4px 0 0 0",
-                        maxWidth: "680px"
-                      }}>
-                        {item.context}
-                      </p>
                       
-                      {isProject && item.link && (
-                        <Link to={item.link} className="timeline-cta">
-                          {item.linkText}
+                      <div className="flex flex-col flex-1">
+                        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-1">
+                          <h3 className="text-[1.15rem] font-medium text-white/90 m-0 leading-tight">
+                            {item.title}
+                          </h3>
+                          <span className="text-[0.9rem] text-white/30 tracking-tight hidden sm:inline-block">
+                            {item.category}
+                          </span>
+                        </div>
+                        
+                        <p className="text-[1.05rem] leading-relaxed text-white/60 m-0 mb-3 max-w-[620px]">
+                          {item.description}
+                        </p>
+                        
+                        <div className="text-[0.95rem] text-white/30 tracking-wide font-light flex items-center">
+                          {item.tech.join("  ·  ")}
+                          {item.link && (
+                            <ArrowRight className="w-4 h-4 ml-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+                          )}
+                        </div>
+                      </div>
+                    </motion.div>
+                  );
+
+                  return (
+                    <FadeIn key={j} delay={(index * 0.1) + (j * 0.05)}>
+                      {item.link ? (
+                        <Link to={item.link} className="block no-underline">
+                          {rowContent}
                         </Link>
+                      ) : (
+                        <div className="block no-underline">
+                          {rowContent}
+                        </div>
                       )}
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </div>
+                    </FadeIn>
+                  );
+                })}
+              </div>
+            </FadeIn>
+            
+            {index < timelineData.length - 1 && (
+              <div className="h-12" />
+            )}
           </div>
         ))}
       </div>

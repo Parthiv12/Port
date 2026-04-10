@@ -32,34 +32,58 @@ const resume = {
   ],
   projects: [
     {
-      name: 'Dearborn Hacks 2025 - Best Use of ElevenLabs',
+      name: 'TraceLens — Distributed Tracing Platform',
+      period: 'March 2026',
       bullets: [
-        'Integrated Fetch.ai ASI-1 model for contextual real-time conversation',
-        'Built browser-based speech-to-text pipeline + ElevenLabs AI voices for natural TTS',
-        'Multi-agent architecture used for voice routing, memory, and response generation',
-        'React frontend with live conversation tracking'
+        'Built an observability platform using OpenTelemetry and Jaeger to trace microservice request flows',
+        'Deployed services in Docker containers for real-time trace ingestion and analysis',
+        'Engineered a NestJS pipeline to reconstruct cross-service request paths and span relationships',
+        'Developed a graph-based UI to visualize execution flows and identify latency bottlenecks'
       ],
-      tech: ['Fetch.ai ASI-1', 'uAgents', 'ElevenLabs TTS', 'Web Speech API', 'Flask', 'React', 'TensorFlow']
+      tech: ['OpenTelemetry', 'Jaeger', 'Docker', 'NestJS', 'React']
     },
     {
-      name: 'Grizz Hacks 2024 - HarmonAIze (Interactive Media)',
-      bullets: ['Full-stack web app recommending songs based on heart rate', 'Improved BPM prediction accuracy using K-Means'],
-      tech: ['Flask', 'React', 'K-Means']
+      name: 'SpeechMatch — Capstone Team Lead',
+      period: 'Jan 2026 - Present',
+      bullets: [
+        'Leading development of a mobile pronunciation platform with an end-to-end speech evaluation pipeline',
+        'Built backend services for audio processing, OCR ingestion, and scoring using Azure Speech Services',
+        'Implemented timing and deviation scoring using word-level alignment and edit distance'
+      ],
+      tech: ['Azure Speech', 'OCR', 'Python', 'Mobile']
     },
     {
-      name: 'Movie Recommendation System',
-      bullets: ['Full-stack app suggesting movies using collaborative filtering and K-Means clustering'],
-      tech: ['Flask', 'Supabase', 'K-Means']
+      name: 'Retrieval-Augmented Generation (RAG) Research Study',
+      period: 'Jan 2025 - May 2025',
+      bullets: [
+        'Implemented RAG pipelines using DPR, ColBERT, and SELF-RAG architectures',
+        'Built retrieval systems with document chunking, indexing, and embedding-based search',
+        'Benchmarked RAG vs LLM-only generation using MS MARCO'
+      ],
+      tech: ['Python', 'DPR', 'ColBERT', 'SELF-RAG', 'MS MARCO']
+    },
+    {
+      name: 'HarmonAIze — Heart Rate Music Recommendation (GrizzHacks Winner)',
+      period: '2024',
+      bullets: [
+        'Built a music recommendation system based on target heart rate using clustering',
+        'Improved performance by replacing low-correlation supervised models with unsupervised clustering',
+        'Integrated ML inference into a full-stack application with a user interface'
+      ],
+      tech: ['React', 'Flask', 'K-Means', 'Python']
+    },
+    {
+      name: 'AWS S3 Encrypted FUSE Filesystem',
+      period: 'Sep 2025 - Dec 2025',
+      bullets: [
+        'Built a FUSE3 filesystem that encrypts files before upload to an S3 bucket',
+        'Intercepted file descriptor cache to insert write operations prior to upload',
+        'Designed a SHA-256 hashing pipeline for data integrity'
+      ],
+      tech: ['C++', 'FUSE3', 'AWS S3', 'SHA-256']
     }
   ],
-  current: [
-    {
-      name: 'Job Search App',
-      status: 'In Progress',
-      bullets: ['Gamified job search platform', 'AI match scoring & progression system'],
-      tech: ['React', 'Flask', 'MongoDB', 'JWT']
-    }
-  ]
+  current: []
 }
 
 export default resume

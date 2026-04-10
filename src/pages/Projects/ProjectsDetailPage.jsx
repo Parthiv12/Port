@@ -1,164 +1,113 @@
 import { useParams, Link } from "react-router-dom";
 import { projectBySlug } from "../../data/projects.js";
+import { Badge } from "../../components/ui/badge.jsx";
+import { Separator } from "../../components/ui/separator.jsx";
+import { ArrowLeft, Github, Globe, FileText } from "lucide-react";
+import FadeIn from "../../components/ui/FadeIn.jsx";
 
 export default function ProjectDetailPage() {
   const { slug } = useParams();
   const project = projectBySlug[slug];
 
-  if (!project)
+  if (!project) {
     return (
-      <div style={{ color: "white", paddingTop: "160px", textAlign: "center" }}>
-        <h1>Project Not Found</h1>
-        <p style={{ marginTop: "20px", opacity: 0.7 }}>
-          The project you're looking for doesn't exist.
-        </p>
-        <Link to="/projects" style={{ color: "#fff", marginTop: "20px", display: "inline-block" }}>← Back to Projects</Link>
+      <div className="flex flex-col items-center justify-center min-h-screen text-white bg-background">
+        <h1 className="text-3xl font-bold">Project Not Found</h1>
+        <Link to="/projects" className="mt-4 text-white/60 hover:text-white transition-colors">
+          ← Back to Projects
+        </Link>
       </div>
     );
+  }
 
   return (
-    <div style={{ padding: "124px clamp(20px, 5vw, 64px) 96px", color: "white", maxWidth: "860px", margin: "0 auto", fontFamily: "system-ui, sans-serif" }}>
-      
-      {/* 1. Hero */}
-      <header style={{ marginBottom: "64px" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px", fontSize: "0.9rem", color: "rgba(255,255,255,0.5)", textTransform: "uppercase", letterSpacing: "0.05em" }}>
-          <span>{project.year}</span>
-          <span>•</span>
-          <span>Project</span>
-        </div>
-        
-        <h1 style={{ fontSize: "clamp(2.5rem, 5vw, 3.5rem)", marginBottom: "24px", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.1 }}>
-          {project.title}
-        </h1>
-        
-        <p style={{ fontSize: "1.25rem", color: "rgba(255,255,255,0.7)", lineHeight: 1.6, marginBottom: "32px", maxWidth: "760px", fontWeight: 400 }}>
-          {project.long || project.description}
-        </p>
+    <div className="min-h-screen font-sans pb-24" style={{ padding: "100px clamp(16px, 4vw, 40px) 100px", maxWidth: "800px", margin: "0 auto" }}>
+      <FadeIn>
+        {/* Back link */}
+        <Link to="/timeline" className="inline-flex items-center text-sm font-medium text-white/50 hover:text-white transition-colors mb-8 group">
+          <ArrowLeft className="w-4 h-4 mr-2 transition-transform group-hover:-translate-x-1" />
+          Back to Timeline
+        </Link>
 
-        {/* Links */}
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "16px" }}>
-          {project.links?.demo && (
-            <a href={project.links.demo} target="_blank" rel="noopener noreferrer" style={linkStyle}>
-              Live Demo ↗
-            </a>
-          )}
-          {project.links?.github && (
-            <a href={project.links.github} target="_blank" rel="noopener noreferrer" style={linkStyle}>
-              GitHub Repo ↗
-            </a>
-          )}
-          {project.links?.docs && (
-            <a href={project.links.docs} target="_blank" rel="noopener noreferrer" style={linkStyle}>
-              Documentation ↗
-            </a>
-          )}
-        </div>
-      </header>
-
-      <div style={{ width: "100%", height: "1px", background: "rgba(255,255,255,0.1)", marginBottom: "64px" }} />
-
-      {/* 2. Problem */}
-      {(project.challenge) && (
-        <section style={sectionStyle}>
-          <SectionHeading>The Problem</SectionHeading>
-          <p style={bodyStyle}>{project.challenge}</p>
-        </section>
-      )}
-
-      {/* 3. Approach */}
-      {(project.approach) && (
-        <section style={sectionStyle}>
-          <SectionHeading>Engineering Approach</SectionHeading>
-          <p style={bodyStyle}>{project.approach}</p>
-        </section>
-      )}
-
-      {/* 4. Key Features */}
-      {project.proofPoints && project.proofPoints.length > 0 && (
-        <section style={sectionStyle}>
-          <SectionHeading>Key Features</SectionHeading>
-          <ul style={{ paddingLeft: "20px", margin: 0, color: "rgba(255,255,255,0.8)", fontSize: "1.1rem", lineHeight: 1.8 }}>
-            {project.proofPoints.map((point) => (
-              <li key={point} style={{ marginBottom: "8px" }}>{point}</li>
-            ))}
-          </ul>
-        </section>
-      )}
-
-      {/* 5. Tech Stack */}
-      {project.tags && project.tags.length > 0 && (
-        <section style={sectionStyle}>
-          <SectionHeading>Tech Stack</SectionHeading>
-          <div style={{ fontSize: "1.1rem", color: "rgba(255,255,255,0.9)", fontWeight: 500 }}>
-            {project.tags.join("  ·  ")}
+        {/* Hero */}
+        <header className="mb-10">
+          <div className="flex items-center gap-3 mb-3 text-xs font-semibold text-white/40 uppercase tracking-widest">
+            <span>{project.year}</span>
+            <span className="w-1 h-1 rounded-full bg-white/20" />
+            <span>Project</span>
           </div>
-        </section>
-      )}
+          
+          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-4 leading-tight">
+            {project.title}
+          </h1>
+          
+          <p className="text-[1.1rem] text-white/70 leading-relaxed mb-6 max-w-[650px]">
+            {project.long || project.description}
+          </p>
 
-      {/* 6. What I Learned / Outcome */}
-      {(project.outcome) && (
-        <section style={sectionStyle}>
-          <SectionHeading>Outcome & Learnings</SectionHeading>
-          <p style={bodyStyle}>{project.outcome}</p>
-        </section>
-      )}
+          <div className="flex flex-wrap gap-2 mb-8">
+            {project.tags?.map((tag) => (
+              <Badge key={tag} variant="secondary" className="bg-white/5 hover:bg-white/10 text-white/70 border border-white/5 font-medium px-2.5 py-0.5 shadow-none">
+                {tag}
+              </Badge>
+            ))}
+          </div>
 
-      <div style={{ width: "100%", height: "1px", background: "rgba(255,255,255,0.1)", margin: "80px 0 40px" }} />
+          <div className="flex flex-wrap gap-3">
+            {project.links?.demo && (
+              <a href={project.links.demo} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-sm font-medium bg-white text-black px-4 py-2 rounded-lg hover:bg-white/90 transition-colors">
+                <Globe className="w-4 h-4 mr-2" /> Live Demo
+              </a>
+            )}
+            {project.links?.github && (
+              <a href={project.links.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-sm font-medium bg-white/10 text-white px-4 py-2 rounded-lg hover:bg-white/20 border border-white/5 transition-colors">
+                <Github className="w-4 h-4 mr-2" /> GitHub Repo
+              </a>
+            )}
+            {project.links?.docs && (
+              <a href={project.links.docs} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-sm font-medium bg-white/10 text-white px-4 py-2 rounded-lg hover:bg-white/20 border border-white/5 transition-colors">
+                <FileText className="w-4 h-4 mr-2" /> Documentation
+              </a>
+            )}
+          </div>
+        </header>
 
-      {/* Back Button */}
-      <Link to="/projects" style={{
-        display: "inline-flex",
-        alignItems: "center",
-        color: "rgba(255,255,255,0.6)",
-        textDecoration: "none",
-        fontSize: "1rem",
-        fontWeight: 500,
-        transition: "color 0.2s"
-      }}
-      onMouseEnter={(e) => e.target.style.color = "white"}
-      onMouseLeave={(e) => e.target.style.color = "rgba(255,255,255,0.6)"}
-      >
-        ← Back to Projects
-      </Link>
+        <Separator className="bg-white/10 mb-10" />
+
+        <div className="grid gap-10">
+          {project.challenge && (
+            <section>
+              <h2 className="text-[1.15rem] font-semibold text-white mb-2 tracking-tight">The Problem</h2>
+              <p className="text-[1.05rem] text-white/60 leading-relaxed max-w-[650px]">{project.challenge}</p>
+            </section>
+          )}
+
+          {project.approach && (
+            <section>
+              <h2 className="text-[1.15rem] font-semibold text-white mb-2 tracking-tight">Approach</h2>
+              <p className="text-[1.05rem] text-white/60 leading-relaxed max-w-[650px]">{project.approach}</p>
+            </section>
+          )}
+
+          {project.proofPoints && project.proofPoints.length > 0 && (
+            <section>
+              <h2 className="text-[1.15rem] font-semibold text-white mb-3 tracking-tight">Key Implementations</h2>
+              <ul className="list-disc list-inside text-[1.05rem] text-white/60 leading-relaxed space-y-1">
+                {project.proofPoints.map((point) => (
+                  <li key={point}>{point}</li>
+                ))}
+              </ul>
+            </section>
+          )}
+
+          {project.outcome && (
+            <section>
+              <h2 className="text-[1.15rem] font-semibold text-white mb-2 tracking-tight">Outcome</h2>
+              <p className="text-[1.05rem] text-white/60 leading-relaxed max-w-[650px]">{project.outcome}</p>
+            </section>
+          )}
+        </div>
+      </FadeIn>
     </div>
   );
 }
-
-const sectionStyle = {
-  marginBottom: "56px"
-};
-
-const bodyStyle = {
-  fontSize: "1.15rem",
-  color: "rgba(255,255,255,0.8)",
-  lineHeight: 1.8,
-  margin: 0,
-  fontWeight: 400
-};
-
-function SectionHeading({ children }) {
-  return (
-    <h2 style={{
-      fontSize: "1.5rem",
-      fontWeight: 600,
-      color: "white",
-      marginBottom: "16px",
-      letterSpacing: "-0.02em"
-    }}>
-      {children}
-    </h2>
-  );
-}
-
-const linkStyle = {
-  display: "inline-block",
-  padding: "10px 20px",
-  borderRadius: "8px",
-  border: "1px solid rgba(255,255,255,0.15)",
-  color: "white",
-  textDecoration: "none",
-  fontSize: "0.95rem",
-  fontWeight: 500,
-  background: "rgba(255,255,255,0.03)",
-  transition: "background 0.2s"
-};
