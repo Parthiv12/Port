@@ -1,208 +1,114 @@
-import { motion } from "framer-motion";
-import FadeIn from "../../components/ui/FadeIn.jsx";
+import React from "react";
 import { Link } from "react-router-dom";
-import "./TimelinePage.css";
+import { motion, AnimatePresence } from "framer-motion";
+import { FolderGit2, BookOpen, Cpu, Briefcase, TestTube, ArrowUpRight } from "lucide-react";
+import { Badge } from "../../components/ui/badge.jsx";
+import FadeIn from "../../components/ui/FadeIn.jsx";
+import { projectsCatalog } from "../../data/projects.js";
 
-const segmentedTimeline = [
-  {
-    category: "Projects",
-    type: "PROJECT",
-    items: [
-      {
-        year: "2025",
-        role: "Movie Recommendation Engine",
-        context: "Clustering and metadata-based recommendation engine.",
-        link: "/projects/movie-recommender",
-        linkText: "See more →"
-      },
-      {
-        year: "2024",
-        role: "TraceLens – Distributed Tracing Platform",
-        context: "Observability tool that pinpoints bottlenecks across microservices natively.",
-        link: "/projects/tracelens",
-        linkText: "View details →"
-      },
-      {
-        year: "2024",
-        role: "HarmonAIze",
-        company: "GrizzHacks",
-        context: "BPM-based music recommender updating in real-time via heart rate changes.",
-        link: "/projects/harmonaize",
-        linkText: "See more →"
-      },
-      {
-        year: "2024",
-        role: "Secure S3 File System",
-        context: "Encrypted file system over AWS S3 using FUSE and AES-256-CBC hooks.",
-        link: "/projects/aws-s3-fuse-filesystem",
-        linkText: "View details →"
-      },
-      {
-        year: "2024",
-        role: "Team Lead — SpeechMatch",
-        context: "Led backend architecture and scoring pipelines for an AI speech evaluation tool.",
-        link: "/projects/speechmatch",
-        linkText: "See more →"
-      }
-    ]
-  },
-  {
-    category: "Work Experience",
-    type: "EXPERIENCE",
-    items: [
-      {
-        year: "2025",
-        role: "Database Intern",
-        company: "365 Retail Markets",
-        context: "Tuned SQL queries, configured instance replication, and optimized buffer pools.",
-      },
-      {
-        year: "2024",
-        role: "Operations & Hardware Intern",
-        company: "365 Retail Markets",
-        context: "Managed Linux imaging workflows and self-service kiosk infrastructure.",
-      }
-    ]
-  },
-  {
-    category: "Coursework / Foundations",
-    type: "COURSEWORK",
-    items: [
-      {
-        year: "Current",
-        role: "B.S. Computer Science / AI Focus",
-        company: "Oakland University",
-        context: "Relevant focus on operating systems, algorithms, distributed systems, and sequence models.",
-      }
-    ]
+const getTypeIcon = (type) => {
+  switch(type) {
+    case "Personal": return <FolderGit2 className="w-4 h-4 text-white/50" />;
+    case "Course": return <BookOpen className="w-4 h-4 text-white/50" />;
+    case "Hackathon": return <Cpu className="w-4 h-4 text-white/50" />;
+    case "Work": return <Briefcase className="w-4 h-4 text-white/50" />;
+    case "Research": return <TestTube className="w-4 h-4 text-white/50" />;
+    default: return <FolderGit2 className="w-4 h-4 text-white/50" />;
   }
-];
+}
 
 export default function TimelinePage() {
+  const featuredItems = projectsCatalog.filter(p => p.featured);
+
+  const groupedByYear = featuredItems.reduce((acc, item) => {
+    if (!acc[item.year]) acc[item.year] = [];
+    acc[item.year].push(item);
+    return acc;
+  }, {});
+
+  const years = Object.keys(groupedByYear).sort((a, b) => b - a);
+
   return (
-    <div
-      style={{
-        padding: "112px clamp(16px, 3.2vw, 56px) 92px",
-        minHeight: "100vh",
-        maxWidth: "1040px",
-        margin: "0 auto",
-        fontFamily: "system-ui, sans-serif"
-      }}
-    >
+    <div className="min-h-screen font-sans w-full max-w-6xl mx-auto" style={{ padding: "140px clamp(16px, 5vw, 64px) 100px" }}>
       <FadeIn>
-        <h1
-          style={{
-            color: "white",
-            fontSize: "clamp(2.5rem, 5vw, 3.5rem)",
-            width: "100%",
-            margin: "0 0 16px",
-            fontWeight: 700,
-            letterSpacing: "-0.02em"
-          }}
-        >
-          Timeline
-        </h1>
-        <p
-          style={{
-            color: "rgba(255,255,255,0.6)",
-            marginTop: "0",
-            marginBottom: "80px",
-            maxWidth: "600px",
-            lineHeight: 1.65,
-            fontSize: "1.1rem"
-          }}
-        >
-          A curated progression of systems engineering, applied AI projects, and professional experience.
-        </p>
+        <div className="flex flex-col gap-4 mb-20 md:mb-32">
+          <h1 className="text-5xl font-bold tracking-tight text-white m-0">
+            Timeline
+          </h1>
+          <p className="text-xl text-white/60 font-light max-w-xl">
+            Selected projects over time.
+          </p>
+        </div>
       </FadeIn>
 
-      <div style={{ display: "flex", flexDirection: "column", gap: "80px" }}>
-        {segmentedTimeline.map((block, i) => (
-          <div key={block.category} style={{ position: "relative", marginLeft: "12px" }}>
-            <FadeIn delay={i * 0.1}>
-              <h2 style={{
-                fontSize: "1.5rem",
-                color: "white",
-                fontWeight: 600,
-                marginBottom: "40px",
-                marginLeft: "32px",
-                display: "flex",
-                alignItems: "center"
-              }}>
-                {block.category}
-              </h2>
-            </FadeIn>
-
-            {/* Vertical line connecting nodes for this segment */}
-            <div style={{
-              position: "absolute",
-              top: "60px",
-              bottom: 0,
-              left: "8px",
-              width: "1px",
-              background: "linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.02) 100%)",
-              zIndex: 0
-            }} />
-
-            <div style={{ display: "flex", flexDirection: "column", gap: "40px" }}>
-              {block.items.map((item, j) => {
-                const isProject = block.type === "PROJECT";
-                const typeClass = isProject ? "type-project" : (block.type === "EXPERIENCE" ? "type-experience" : "type-coursework");
-
-                return (
+      <div className="flex flex-col gap-24">
+        {years.map((year) => (
+          <div
+            key={year}
+            className="grid grid-cols-1 md:grid-cols-[120px_1fr] gap-8 md:gap-16 items-start"
+          >
+            <h2 className="text-4xl font-bold text-white/20 sticky top-32 tracking-tight m-0">
+              {year}
+            </h2>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 w-full">
+              {groupedByYear[year].map((item, i) => {
+                const cardContent = (
                   <motion.div
-                    key={j}
-                    initial={{ opacity: 0, y: 15 }}
+                    initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-50px" }}
-                    transition={{ duration: 0.5, delay: j * 0.05 }}
-                    className={`timeline-node ${isProject ? 'is-project' : ''}`}
+                    transition={{ duration: 0.5, delay: i * 0.1 }}
+                    whileHover={{ y: -4 }}
+                    className="flex flex-col h-full bg-transparent border-t border-white/10 hover:bg-neutral-900/30 rounded-xl p-6 transition-all duration-300 cursor-pointer relative group"
                   >
-                    {/* Timeline Dot */}
-                    <div className="timeline-dot" />
-
-                    <div style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: "4px"
-                    }}>
-                      <div className={typeClass} style={{ 
-                        fontSize: "0.85rem", 
-                        textTransform: "uppercase", 
-                        letterSpacing: "0.06em",
-                        marginBottom: "4px",
-                      }}>
-                        {item.year}
-                      </div>
-                      <div style={{
-                        fontSize: "1.2rem",
-                        fontWeight: 500,
-                        color: isProject ? "rgba(255,255,255,0.95)" : "rgba(255,255,255,0.75)"
-                      }}>
-                        {item.role} {item.company && <span style={{ color: "rgba(255,255,255,0.4)" }}>@ {item.company}</span>}
-                      </div>
-                      <p style={{
-                        fontSize: "1.05rem",
-                        color: "rgba(255,255,255,0.65)",
-                        lineHeight: 1.5,
-                        margin: "4px 0 0 0",
-                        maxWidth: "680px"
-                      }}>
-                        {item.context}
-                      </p>
-                      
-                      {isProject && item.link && (
-                        <Link to={item.link} className="timeline-cta">
-                          {item.linkText}
-                        </Link>
-                      )}
+                   <div className="absolute top-6 right-6 opacity-0 translate-x-[-10px] group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+                      <ArrowUpRight className="w-4 h-4 text-white/30" />
+                    </div>
+                    
+                    <div className="flex items-center gap-3 mb-5">
+                      {getTypeIcon(item.type)}
+                      <Badge variant="secondary" className="bg-transparent text-white/40 font-medium px-0 py-0 border-none uppercase tracking-widest text-[0.7rem]">
+                        {item.type}
+                      </Badge>
+                    </div>
+                    
+                    <h3 className="text-xl font-bold text-white/90 mb-3 leading-tight tracking-tight">
+                      {item.title}
+                    </h3>
+                    <p className="text-[1.05rem] text-white/50 leading-relaxed mb-8 font-light flex-1">
+                      {item.description}
+                    </p>
+                    
+                    <div className="mt-auto flex flex-wrap gap-2 text-[0.8rem] font-medium text-white/30 tracking-wide">
+                      {item.tags.slice(0, 4).map((tag, idx) => (
+                        <span key={tag}>
+                          {tag}{idx < Math.min(item.tags.length, 4) - 1 ? "  ·  " : ""}
+                        </span>
+                      ))}
                     </div>
                   </motion.div>
+                );
+
+                return item.slug ? (
+                  <Link key={item.slug} to={`/projects/${item.slug}`} className="block outline-none h-full">
+                    {cardContent}
+                  </Link>
+                ) : (
+                  <div key={item.title} className="h-full">
+                    {cardContent}
+                  </div>
                 );
               })}
             </div>
           </div>
         ))}
+        
+        {years.length === 0 && (
+          <div className="py-20 text-center text-white/40 text-lg">
+            No featured projects available.
+          </div>
+        )}
       </div>
     </div>
   );

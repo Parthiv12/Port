@@ -1,143 +1,68 @@
 import FadeIn from "../../components/ui/FadeIn.jsx";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "../../components/ui/tabs.jsx";
-import { motion } from "framer-motion";
+import { Terminal, Database, Cloud, Code2, BrainCircuit, Wrench } from "lucide-react";
 
-const categorizedStack = [
+const stackData = [
   {
-    title: "Core",
-    description: "The primary toolkit for raw system building.",
-    items: ["Python", "Next.js & React", "Node.js", "C++"],
+    category: "Languages",
+    icon: Code2,
+    skills: ["Python", "Java", "JavaScript", "SQL", "C", "C++", "Kotlin", "Ruby", "R"],
   },
   {
-    title: "LLM Systems",
-    description: "Machine learning pipelines and architectures.",
-    items: ["RAG pipelines", "Fine-tuning", "Prompt systems"],
+    category: "AI / ML",
+    icon: BrainCircuit,
+    skills: ["Transformers", "BERT", "GPT", "RAG", "Fine-Tuning", "RLHF", "Multimodal Models"],
   },
   {
-    title: "Distributed Systems",
-    description: "System engineering and distributed architectures.",
-    items: ["API design", "Observability", "Multi-agent systems", "REST & JWT"],
+    category: "Frameworks",
+    icon: Terminal,
+    skills: ["React", "Next.js", "Flask", "Ruby on Rails", "PyTorch"],
   },
   {
-    title: "Data / Infra",
-    description: "Databases, deployment, and infrastructure.",
-    items: ["PostgreSQL (Supabase)", "MySQL & MongoDB", "Docker", "Ubuntu Server"],
+    category: "Databases",
+    icon: Database,
+    skills: ["PostgreSQL", "MySQL", "SQL Server", "MongoDB", "Firebase"],
+  },
+  {
+    category: "DevOps / Cloud",
+    icon: Cloud,
+    skills: ["Docker", "Kubernetes", "Terraform", "Jenkins", "Nginx"],
+  },
+  {
+    category: "Tools",
+    icon: Wrench,
+    skills: ["Postman", "SSMS", "Expo"],
   }
 ];
 
 export default function StackPage() {
   return (
-    <div style={{ padding: "122px clamp(20px, 5vw, 64px) 96px", maxWidth: "960px", margin: "0 auto", fontFamily: "system-ui, sans-serif", minHeight: "100vh" }}>
+    <div className="min-h-screen font-sans" style={{ padding: "120px clamp(16px, 4vw, 40px) 100px", maxWidth: "860px", margin: "0 auto" }}>
       <FadeIn>
-        <h1
-          style={{
-            color: "white",
-            fontSize: "clamp(2.5rem, 5vw, 3.5rem)",
-            fontWeight: 700,
-            marginBottom: "16px",
-            letterSpacing: "-0.02em"
-          }}
-        >
+        <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-white mb-20">
           Tech Stack
         </h1>
-        <p
-          style={{
-            color: "rgba(255,255,255,0.7)",
-            fontSize: "1.15rem",
-            maxWidth: "680px",
-            lineHeight: 1.6,
-            marginBottom: "64px",
-          }}
-        >
-          A capability map representing the systems and tools I actively wield.
-        </p>
       </FadeIn>
 
-      <motion.div
-        initial="hidden"
-        animate="show"
-        variants={{
-          hidden: { opacity: 0, y: 10 },
-          show: { opacity: 1, y: 0, transition: { duration: 0.5 } }
-        }}
-        style={{ maxWidth: "800px" }}
-      >
-        <Tabs defaultValue="Core" className="w-full">
-          <TabsList style={{ background: "transparent", borderBottom: "1px solid rgba(255,255,255,0.1)", padding: 0, borderRadius: 0, marginBottom: "40px", display: "flex", flexWrap: "wrap", justifyContent: "flex-start", gap: "32px", width: "100%" }}>
-            {categorizedStack.map((category) => (
-              <TabsTrigger 
-                key={category.title} 
-                value={category.title}
-                style={{
-                   padding: "12px 0", 
-                   fontSize: "1.05rem",
-                   color: "rgba(255,255,255,0.5)",
-                   transition: "color 0.2s",
-                   background: "transparent",
-                   position: "relative",
-                   boxShadow: "none"
-                }}
-                className="data-[state=active]:text-white data-[state=active]:after:content-[''] data-[state=active]:after:absolute data-[state=active]:after:bottom-0 data-[state=active]:after:left-0 data-[state=active]:after:w-full data-[state=active]:after:h-[2px] data-[state=active]:after:bg-white"
-              >
-                {category.title}
-              </TabsTrigger>
-            ))}
-          </TabsList>
-
-          {categorizedStack.map((category) => (
-            <TabsContent key={category.title} value={category.title} style={{ outline: "none" }}>
-              <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
-                <div>
-                  <h2 style={{
-                    color: "white",
-                    fontSize: "1.5rem",
-                    fontWeight: 600,
-                    marginBottom: "8px",
-                    letterSpacing: "-0.01em"
-                  }}>
-                    {category.title}
+      <div className="flex flex-col gap-12 sm:gap-16">
+        {stackData.map((group, index) => {
+          const Icon = group.icon;
+          return (
+            <FadeIn key={group.category} delay={index * 0.05}>
+              <div className="grid grid-cols-1 sm:grid-cols-[180px_1fr] gap-3 sm:gap-8 items-start">
+                <div className="flex items-center gap-3 mt-1">
+                  <Icon className="w-5 h-5 text-white/40" />
+                  <h2 className="text-[1.1rem] font-medium text-white/90 tracking-tight m-0">
+                    {group.category}
                   </h2>
-                  <p style={{
-                    color: "rgba(255,255,255,0.5)",
-                    fontSize: "1.05rem",
-                    lineHeight: 1.6,
-                    maxWidth: "500px",
-                    margin: 0
-                  }}>
-                    {category.description}
-                  </p>
                 </div>
-
-                <div style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "16px",
-                  marginTop: "16px"
-                }}>
-                  {category.items.map((item, i) => (
-                    <div key={i} style={{
-                      display: "grid",
-                      gridTemplateColumns: "16px 1fr",
-                      gap: "16px",
-                      alignItems: "center"
-                    }}>
-                      <div style={{ width: "6px", height: "1px", background: "rgba(255,255,255,0.3)" }} />
-                      <span style={{
-                        color: "rgba(255,255,255,0.9)",
-                        fontSize: "1.1rem",
-                        fontWeight: 400,
-                        letterSpacing: "-0.01em"
-                      }}>
-                        {item}
-                      </span>
-                    </div>
-                  ))}
+                <div className="text-[1.1rem] leading-relaxed text-white/50 tracking-wide font-light">
+                  {group.skills.join("  ·  ")}
                 </div>
               </div>
-            </TabsContent>
-          ))}
-        </Tabs>
-      </motion.div>
+            </FadeIn>
+          );
+        })}
+      </div>
     </div>
   );
 }
