@@ -2,7 +2,8 @@ import { useParams, Link } from "react-router-dom";
 import { projectBySlug } from "../../data/projects.js";
 import { Badge } from "../../components/ui/badge.jsx";
 import { Separator } from "../../components/ui/separator.jsx";
-import { ArrowLeft, Github, Globe, FileText } from "lucide-react";
+import { ArrowLeft, Globe, FileText } from "lucide-react";
+import { FaGithub } from "react-icons/fa";
 import FadeIn from "../../components/ui/FadeIn.jsx";
 
 export default function ProjectDetailPage() {
@@ -61,7 +62,7 @@ export default function ProjectDetailPage() {
             )}
             {project.links?.github && (
               <a href={project.links.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-sm font-medium bg-white/10 text-white px-4 py-2 rounded-lg hover:bg-white/20 border border-white/5 transition-colors">
-                <Github className="w-4 h-4 mr-2" /> GitHub Repo
+                <FaGithub className="w-4 h-4 mr-2" /> GitHub Repo
               </a>
             )}
             {project.links?.docs && (
